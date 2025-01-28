@@ -3,190 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WANTEDS</title>
-    <style>
-        /* Estilos gerais */
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #121212; /* Cor de fundo escura */
-            color: #fff; /* Texto branco */
-        }
-
-        header {
-            position: relative;
-            text-align: center;
-            padding: 100px 20px;
-        }
-
-        header h1 {
-            font-size: 3em;
-            z-index: 10;
-            color: #fff;
-        }
-
-        .logo {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('logo.png.png'); /* Coloque o caminho da sua logo */
-            background-size: cover;
-            background-position: center;
-            z-index: 1;
-            filter: brightness(0.5);
-        }
-
-        /* Menu hamburguer */
-        .hamburger {
-            display: none;
-            cursor: pointer;
-            position: absolute;
-            top: 30px;
-            right: 30px;
-            z-index: 20;
-        }
-
-        .hamburger div {
-            width: 35px;
-            height: 5px;
-            background-color: white;
-            margin: 6px 0;
-            transition: 0.4s;
-        }
-
-        nav {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            background-color: #333;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        nav a {
-            color: white;
-            font-size: 1.5em;
-            margin: 10px;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        nav a:hover {
-            color: #f39c12;
-        }
-
-        .active {
-            transform: rotate(45deg);
-        }
-
-        .active + .active {
-            transform: rotate(-45deg);
-        }
-
-        /* Produto e seções */
-        .produtos {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .produto {
-            background-color: #222;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: 0.3s;
-        }
-
-        .produto img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-
-        .produto h3 {
-            color: #f39c12;
-            font-size: 1.2em;
-        }
-
-        .produto button {
-            background-color: #f39c12;
-            border: none;
-            padding: 10px;
-            color: white;
-            font-size: 1em;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .produto button:hover {
-            background-color: #e67e22;
-        }
-
-        /* Responsividade */
-        @media screen and (max-width: 768px) {
-            .produtos {
-                grid-template-columns: 1fr;
-            }
-        }
-
-    </style>
+    <title>Welcome to Wanteds</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <header>
-        <div class="logo"></div>
-        <h1>BEM VINDO A WANTEDS</h1>
-        <div class="hamburger" onclick="toggleMenu()">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </header>
-
     <!-- Menu Hamburguer -->
-    <nav id="menu">
-        <a href="produtos.html">Produtos</a>
-        <a href="contato.html">Contato</a>
-    </nav>
+    <div class="menu-toggle" id="menu-toggle">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
 
-    <!-- Produtos -->
-    <section class="produtos">
-        <div class="produto">
-            <img src="produto1.jpg" alt="Produto 1">
-            <h3>Produto 1</h3>
-            <button>Adicionar ao Carrinho</button>
-        </div>
-        <div class="produto">
-            <img src="produto2.jpg" alt="Produto 2">
-            <h3>Produto 2</h3>
-            <button>Adicionar ao Carrinho</button>
-        </div>
-        <div class="produto">
-            <img src="produto3.jpg" alt="Produto 3">
-            <h3>Produto 3</h3>
-            <button>Adicionar ao Carrinho</button>
-        </div>
-        <!-- Adicione mais produtos aqui -->
-    </section>
+    <!-- Carrinho -->
+    <div class="cart" id="cart">
+        <a href="carrinho.html"><img src="cart-icon.png" alt="Carrinho" class="cart-icon"></a>
+        <span id="cart-count">0</span>
+    </div>
 
-    <script>
-        function toggleMenu() {
-            var menu = document.getElementById('menu');
-            var hamburger = document.querySelector('.hamburger');
-            menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
-            hamburger.classList.toggle('active');
-        }
-    </script>
+    <!-- Tela Inicial (Hero Section) com Logo -->
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1>BEM VINDO A WANTEDS</h1>
+            <p>AQUI VOCÊ ENCONTRA OS PODS MAIS PROCURADOS!</p>
+        </div>
+        <!-- Logo no fundo -->
+        <div class="logo-background">
+            <img src="logo.png.png" alt="Logo Wanteds">
+        </div>
+    </div>
+
+    <!-- Menu Lateral -->
+    <div class="side-menu" id="side-menu">
+        <ul>
+            <li><a href="produtos.html">Produtos</a></li>
+            <li><a href="contato.html">Contato</a></li>
+        </ul>
+    </div>
 </body>
 </html>
