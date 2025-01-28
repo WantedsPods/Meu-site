@@ -1,118 +1,36 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Produtos - Wanteds Pods</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos - Wanted's Pods</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-
-  <!-- Menu hamburguer -->
-  <nav>
-    <ul id="hamburger-menu">
-      <li><a href="index.html">Início</a></li>
-      <li><a href="produtos.html">Produtos</a></li>
-      <li><a href="contato.html">Contato</a></li>
-    </ul>
-  </nav>
-
-  <!-- Produtos -->
-  <section class="produtos">
-    <h2>Produtos</h2>
-
-    <div class="produto">
-      <img src="produtos/imagem1.png" alt="Produto 1">
-      <h3>Promoção V150</h3>
-      <p>Preço: 125$</p>
-      <label for="sabor1">Escolha o sabor:</label>
-      <select id="sabor1">
-        <option value="strawberry_ice">Strawberry Ice</option>
-        <option value="icy_mint">Icy Mint</option>
-        <option value="watermelon_ice">Watermelon Ice</option>
-        <option value="cherry_watermelon_ice">Cherry Watermelon Ice</option>
-        <option value="watermelon_dragon_fruit">Watermelon Dragon Fruit</option>
-      </select>
-      <button class="add-to-cart" onclick="addToCart('Promoção V150', '125$', document.getElementById('sabor1').value)">Adicionar ao Carrinho</button>
+    <header>
+        <div class="menu">
+            <div id="hamburger" onclick="toggleMenu()">&#9776;</div>
+            <div id="cart-icon" onclick="toggleCart()">🛒 <span id="cart-count">0</span></div>
+        </div>
+    </header>
+    <div class="product-list">
+        <!-- Produtos -->
+        <div class="product">
+            <img src="images/produto1.jpg" alt="Produto 1">
+            <h3>Produto 1</h3>
+            <p>Preço: 125$</p>
+            <select onchange="addToCart('Produto 1', 125, this.value)">
+                <option value="Sabor 1">Sabor 1</option>
+                <option value="Sabor 2">Sabor 2</option>
+                <option value="Sabor 3">Sabor 3</option>
+            </select>
+            <button onclick="addToCart('Produto 1', 125, document.querySelector('select').value)">Adicionar ao Carrinho</button>
+        </div>
+        <!-- Repita para cada produto -->
     </div>
-
-    <div class="produto">
-      <img src="produtos/imagem2.png" alt="Produto 2">
-      <h3>ELFBAR BC 10K (edição especial)</h3>
-      <p>Preço: 115$</p>
-      <label for="sabor2">Escolha o sabor:</label>
-      <select id="sabor2">
-        <option value="blue_razz_ice">Blue Razz Ice</option>
-        <option value="admiration_blue">Admiration Blue</option>
-      </select>
-      <button class="add-to-cart" onclick="addToCart('ELFBAR BC 10K', '115$', document.getElementById('sabor2').value)">Adicionar ao Carrinho</button>
-    </div>
-
-    <div class="produto">
-      <img src="produtos/imagem3.png" alt="Produto 3">
-      <h3>Elfbar Ice King 40K</h3>
-      <p>Preço: 165$</p>
-      <label for="sabor3">Escolha o sabor:</label>
-      <select id="sabor3">
-        <option value="cherry_fuse">Cherry Fuse</option>
-        <option value="blue_razz_ice_40k">Blue Razz Ice</option>
-      </select>
-      <button class="add-to-cart" onclick="addToCart('Elfbar Ice King 40K', '165$', document.getElementById('sabor3').value)">Adicionar ao Carrinho</button>
-    </div>
-
-    <!-- Outros produtos aqui -->
-
-    <!-- Exemplo de outro produto -->
-    <div class="produto">
-      <img src="produtos/imagem4.png" alt="Produto 4">
-      <h3>LOST MARY 5K</h3>
-      <p>Preço: 90$</p>
-      <label for="sabor4">Escolha o sabor:</label>
-      <select id="sabor4">
-        <option value="yummy">Yummy</option>
-        <option value="ginger_beer">Ginger Beer</option>
-      </select>
-      <button class="add-to-cart" onclick="addToCart('LOST MARY 5K', '90$', document.getElementById('sabor4').value)">Adicionar ao Carrinho</button>
-    </div>
-
-    <!-- Continue adicionando os outros produtos aqui -->
-
-  </section>
-
-  <!-- Carrinho de compras -->
-  <div id="cart">
-    <h2>Carrinho</h2>
-    <ul id="cart-items"></ul>
-    <button id="finalizar-compra" onclick="finalizarCompra()">Finalizar Compra</button>
-  </div>
-
-  <script>
-    let cart = [];
-
-    function addToCart(produto, preco, sabor) {
-      cart.push({ produto, preco, sabor });
-      updateCart();
-    }
-
-    function updateCart() {
-      const cartItems = document.getElementById("cart-items");
-      cartItems.innerHTML = "";
-      cart.forEach(item => {
-        const li = document.createElement("li");
-        li.textContent = `${item.produto} - ${item.sabor} - ${item.preco}`;
-        cartItems.appendChild(li);
-      });
-    }
-
-    function finalizarCompra() {
-      if (cart.length === 0) {
-        alert("O carrinho está vazio!");
-      } else {
-        // Redirecionar para a página de pagamento
-        window.location.href = "finalizar-compra.html";
-      }
-    }
-  </script>
-
+    <footer>
+        <p><a href="index.html">Voltar à página inicial</a></p>
+    </footer>
 </body>
 </html>
