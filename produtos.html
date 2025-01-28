@@ -4,29 +4,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produtos - Wanteds</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2C2F33;
+            color: #FFF;
+            margin: 0;
+            padding: 0;
+        }
+        .menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #1E1F23;
+        }
+        .menu a {
+            color: #FFF;
+            text-decoration: none;
+            padding: 8px 16px;
+            font-size: 18px;
+        }
+        .menu a:hover {
+            background-color: #00BFFF;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            justify-content: space-between;
+        }
+        .hamburger div {
+            width: 100%;
+            height: 4px;
+            background-color: #FFF;
+        }
+        @media (max-width: 768px) {
+            .menu a {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .menu.active a {
+                display: block;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Produtos</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="produtos.html">Produtos</a></li>
-                <li><a href="contato.html">Fale Conosco</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-        <h2>Nossos Produtos</h2>
-        <p>Confira a nossa seleção de pods de alta qualidade e preços incríveis.</p>
-    </main>
+    <!-- Menu -->
+    <div class="menu">
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="links">
+            <a href="index.html">Início</a>
+            <a href="produtos.html">Produtos</a>
+            <a href="contato.html">Fale Conosco</a>
+        </div>
+    </div>
 
-    <footer>
-        <a href="https://wa.me/55<seu-numero>" target="_blank">
-            <button class="whatsapp-btn">Contato pelo WhatsApp</button>
-        </a>
-    </footer>
+    <!-- Conteúdo da página -->
+    <h1>Produtos</h1>
+    <p>Aqui estão alguns dos nossos pods mais populares.</p>
+
+    <a href="index.html">Voltar à página inicial</a>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('.menu');
+            menu.classList.toggle('active');
+        }
+    </script>
+
 </body>
 </html>
