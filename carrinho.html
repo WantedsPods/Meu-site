@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho - Wanteds Pods</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Logo da loja">
+        </div>
+        <nav class="hamburger-menu">
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <div id="menu" class="menu">
+                <a href="index.html">Página Inicial</a>
+                <a href="produtos.html">Produtos</a>
+                <a href="contato.html">Contato</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Carrinho de Compras -->
+    <section class="carrinho">
+        <h2>Carrinho</h2>
+
+        <!-- Itens no carrinho -->
+        <div class="item-carrinho">
+            <p>V150 - Strawberry Ice</p>
+            <p>Quantidade: 1</p>
+            <p>Preço: 125$</p>
+        </div>
+
+        <!-- Formulário de Pagamento -->
+        <form action="finalizar-compra.html" method="POST">
+            <h3>Dados de Entrega</h3>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required><br>
+
+            <label for="endereco">Endereço:</label>
+            <input type="text" id="endereco" name="endereco" required><br>
+
+            <label for="referencia">Ponto de Referência:</label>
+            <input type="text" id="referencia" name="referencia" required><br>
+
+            <h3>Forma de Pagamento</h3>
+            <label for="pix">Pix</label>
+            <input type="radio" id="pix" name="pagamento" value="pix" required>
+            <label for="dinheiro">Dinheiro</label>
+            <input type="radio" id="dinheiro" name="pagamento" value="dinheiro">
+            <label for="cartao">Cartão</label>
+            <input type="radio" id="cartao" name="pagamento" value="cartao"><br>
+
+            <p><strong>Taxa de entrega: R$ 10,00</strong> (aplica-se no pagamento em Dinheiro ou Cartão. Sem taxa no Pix)</p>
+
+            <button type="submit">Finalizar Compra</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Wanteds Pods</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
