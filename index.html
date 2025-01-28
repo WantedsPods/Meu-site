@@ -3,42 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Wanteds</title>
+    <title>Wanted's Pods</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
 </head>
 <body>
-    <!-- Menu Hamburguer -->
-    <div class="menu-toggle" id="menu-toggle">
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-    </div>
-
-    <!-- Carrinho -->
-    <div class="cart" id="cart">
-        <a href="carrinho.html"><img src="cart-icon.png" alt="Carrinho" class="cart-icon"></a>
-        <span id="cart-count">0</span>
-    </div>
-
-    <!-- Tela Inicial (Hero Section) com Logo -->
-    <div class="hero-section">
-        <div class="hero-content">
-            <h1>BEM VINDO A WANTEDS</h1>
-            <p>AQUI VOCÊ ENCONTRA OS PODS MAIS PROCURADOS!</p>
+    <header>
+        <div class="menu">
+            <div id="hamburger" onclick="toggleMenu()">&#9776;</div>
+            <div id="cart-icon" onclick="toggleCart()">🛒 <span id="cart-count">0</span></div>
         </div>
-        <!-- Logo no fundo -->
-        <div class="logo-background">
-            <img src="logo.png.png" alt="Logo Wanteds">
+        <div class="header-content">
+            <img src="images/logo.png.png" alt="Logo Wanted's" class="logo"> <!-- Logo inserida aqui -->
+            <h1>Bem-vindo à Wanted's</h1>
+            <p>Aqui você encontra os pods mais procurados!</p>
         </div>
-    </div>
-
-    <!-- Menu Lateral -->
-    <div class="side-menu" id="side-menu">
+    </header>
+    <div id="sidebar" class="sidebar">
         <ul>
             <li><a href="produtos.html">Produtos</a></li>
             <li><a href="contato.html">Contato</a></li>
         </ul>
+    </div>
+    <div class="content">
+        <h2>Explore nossos produtos</h2>
+        <div class="product-list">
+            <!-- Produtos aqui -->
+        </div>
     </div>
 </body>
 </html>
