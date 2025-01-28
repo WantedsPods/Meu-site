@@ -1,94 +1,90 @@
-/* Estilo geral */
+/* Estilos Globais */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #1a1a1a;
+    background-color: #222;
     color: white;
 }
 
 /* Cabeçalho */
 header {
-    background: linear-gradient(135deg, #000000, #8b0000); /* Degradê */
-    padding: 60px 0;
-    text-align: center;
-    position: relative;
-}
-
-header h1 {
-    font-size: 50px;
-}
-
-header p {
-    font-size: 20px;
-}
-
-header .logo {
-    position: absolute;
-    top: 10%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 150px;
-    opacity: 0.1; /* Logo ao fundo */
-}
-
-/* Menu Hamburguer */
-.menu-hamburguer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #000;
     position: fixed;
-    top: 20px;
-    left: 20px;
-}
-
-.menu-hamburguer .menu-icon {
-    font-size: 30px;
-    cursor: pointer;
-}
-
-.menu {
-    display: none;
-    background-color: #333;
-    position: absolute;
+    width: 100%;
     top: 0;
-    left: 0;
-    width: 200px;
+    z-index: 1000;
+}
+
+/* Logo */
+.logo-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    max-height: 120px; /* Aumentei a altura da logo */
+    opacity: 0.8; /* Ajustei a opacidade para 80% */
+    transition: opacity 0.3s ease;
+}
+
+.logo:hover {
+    opacity: 1; /* Aumenta a opacidade ao passar o mouse */
+}
+
+/* Menu */
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-items {
+    display: flex;
+}
+
+.menu-items a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    margin-left: 15px;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.menu-items a:hover {
+    color: #ff7b00;
+}
+
+/* Tela Inicial */
+.welcome {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    background-color: #333;
     padding: 20px;
 }
 
-.menu a {
+.welcome-text h1 {
+    font-size: 3rem;
     color: white;
-    text-decoration: none;
-    display: block;
-    margin: 10px 0;
 }
 
-.menu a:hover {
-    background-color: #555;
+.welcome-text p {
+    font-size: 1.5rem;
+    color: #ff7b00;
 }
 
-/* Botão do WhatsApp */
-.whatsapp {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #25d366;
-    color: white;
-    padding: 15px;
-    border-radius: 50%;
-}
-
-/* Botão de Produtos */
-.botao-produtos {
-    display: block;
-    text-align: center;
-    padding: 15px;
-    background-color: #f44336;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    width: 200px;
-    margin: 20px auto;
-}
-
-.botao-produtos:hover {
-    background-color: #e53935;
+/* Estilo do Carrinho */
+#cart-count {
+    font-weight: bold;
+    color: #ff7b00;
 }
