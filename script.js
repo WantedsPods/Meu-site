@@ -99,4 +99,13 @@ function selectFlavor(productId, flavor) {
 function addToCart() {
     const addButton = document.getElementById('add-to-cart');
     const productId = addButton.getAttribute('data-product-id');
-    const flavor = add
+    const flavor = addButton.getAttribute('data-flavor');
+    
+    if (!flavor) {
+        alert("Por favor, selecione um sabor.");
+        return;
+    }
+
+    const product = products[productId];
+    
+    // Adicionar o produto e
