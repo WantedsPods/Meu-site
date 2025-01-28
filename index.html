@@ -3,33 +3,268 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wanted's Pods</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+    <title>Bem-vindo à Wanteds</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            color: white;
+            background-color: #121212;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+        }
+
+        #logo-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+
+        #logo {
+            max-width: 100%;
+            height: auto;
+            opacity: 0.3;
+        }
+
+        .intro {
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        .intro h1 {
+            font-size: 3rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+        }
+
+        .intro p {
+            font-size: 1.5rem;
+            margin-top: 10px;
+        }
+
+        .menu-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 20;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 25px;
+        }
+
+        .menu-toggle .bar {
+            width: 35px;
+            height: 5px;
+            background-color: white;
+            border-radius: 5px;
+        }
+
+        .products {
+            text-align: center;
+            margin-top: 150px;
+        }
+
+        #products-button {
+            padding: 10px 20px;
+            background-color: #f44336;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #products-button:hover {
+            background-color: #d32f2f;
+        }
+
+        .menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100%;
+            background-color: #333;
+            transform: translateX(-250px);
+            transition: transform 0.3s ease;
+            z-index: 30;
+        }
+
+        .menu.open {
+            transform: translateX(0);
+        }
+
+        .menu ul {
+            padding: 20px;
+            list-style-type: none;
+        }
+
+        .menu ul li {
+            padding: 15px;
+            font-size: 1.5rem;
+            color: white;
+            border-bottom: 1px solid #444;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .menu ul li:hover {
+            background-color: #555;
+        }
+
+        .cart-icon {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10;
+            cursor: pointer;
+        }
+
+        .cart-icon img {
+            width: 40px;
+            height: auto;
+        }
+
+        .product-item {
+            padding: 10px;
+            margin-bottom: 20px;
+            background-color: #222;
+            border-radius: 8px;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .product-item button {
+            padding: 5px 15px;
+            margin: 5px;
+            background-color: #f44336;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .product-item button:hover {
+            background-color: #d32f2f;
+        }
+
+        .product-item h3, .product-item p {
+            margin: 10px 0;
+        }
+
+        /* Personalizando o botão do menu */
+        .menu ul li.active {
+            background-color: #f44336;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <div class="menu">
-            <div id="hamburger" onclick="toggleMenu()">&#9776;</div>
-            <div id="cart-icon" onclick="toggleCart()">🛒 <span id="cart-count">0</span></div>
+        <div id="logo-container">
+            <img src="logo.png.png" alt="Logo" id="logo"> <!-- Logo aqui -->
         </div>
-        <div class="header-content">
-            <img src="images/logo.png.png" alt="Logo Wanted's" class="logo"> <!-- Logo inserida aqui -->
-            <h1>Bem-vindo à Wanted's</h1>
-            <p>Aqui você encontra os pods mais procurados!</p>
+        <div id="menu-toggle" class="menu-toggle">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
         </div>
     </header>
-    <div id="sidebar" class="sidebar">
+
+    <section class="intro">
+        <h1>Bem-vindo à Wanteds</h1>
+        <p>Aqui você encontra os pods mais procurados!</p>
+    </section>
+
+    <div class="products">
+        <button id="products-button">Produtos</button>
+    </div>
+
+    <div id="cart-icon" class="cart-icon">
+        <img src="cart-icon.png" alt="Carrinho"> <!-- Ícone do carrinho -->
+    </div>
+
+    <div id="menu" class="menu">
         <ul>
-            <li><a href="produtos.html">Produtos</a></li>
-            <li><a href="contato.html">Contato</a></li>
+            <li onclick="window.location.href='#produtos'">Produtos</li>
+            <li onclick="window.location.href='#contato'">Contato</li>
+            <li onclick="window.location.href='#carrinho'">Carrinho</li>
         </ul>
     </div>
-    <div class="content">
-        <h2>Explore nossos produtos</h2>
-        <div class="product-list">
-            <!-- Produtos aqui -->
+
+    <div id="products" style="display: none; padding: 20px;">
+        <h2>Produtos</h2>
+        <div id="product-list">
+            <!-- Os produtos serão listados aqui -->
         </div>
     </div>
+
+    <script>
+        // Menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const menu = document.getElementById('menu');
+        menuToggle.addEventListener('click', () => {
+            menu.classList.toggle('open');
+        });
+
+        // Mock de produtos
+        const products = [
+            { name: "Strawberry Ice", price: "125$", flavors: ["Original", "Mint", "Lemon", "Grape", "Watermelon"] },
+            { name: "Icy Mint", price: "125$", flavors: ["Original", "Grape", "Lemon", "Peach", "Tropical"] },
+            { name: "Watermelon Ice", price: "125$", flavors: ["Original", "Lime", "Lemon", "Mango"] },
+            { name: "Lemonade", price: "120$", flavors: ["Original", "Raspberry", "Blueberry", "Peach"] },
+            { name: "Blueberry Ice", price: "130$", flavors: ["Original", "Mint", "Peach", "Watermelon"] },
+            { name: "Grape Ice", price: "130$", flavors: ["Original", "Lemon", "Peach", "Mango"] },
+            { name: "Tropical", price: "135$", flavors: ["Original", "Passion Fruit", "Mango", "Peach"] },
+            { name: "Peach Ice", price: "125$", flavors: ["Original", "Mint", "Grape", "Watermelon"] },
+            { name: "Mango Ice", price: "130$", flavors: ["Original", "Peach", "Lime", "Tropical"] }
+        ];
+
+        const productList = document.getElementById('product-list');
+        products.forEach(product => {
+            const productItem = document.createElement('div');
+            productItem.classList.add('product-item');
+
+            const productName = document.createElement('h3');
+            productName.textContent = product.name;
+            productItem.appendChild(productName);
+
+            const productPrice = document.createElement('p');
+            productPrice.textContent = `Preço: ${product.price}`;
+            productItem.appendChild(productPrice);
+
+            const flavorList = document.createElement('div');
+            flavorList.style.marginBottom = '10px';
+
+            product.flavors.forEach(flavor => {
+                const flavorButton = document.createElement('button');
+                flavorButton.textContent = flavor;
+                flavorButton.style.marginRight = '10px';
+                flavorButton.addEventListener('click', () => {
+                    alert(`${flavor} adicionado ao carrinho!`);
+                });
+                flavorList.appendChild(flavorButton);
+            });
+
+            productItem.appendChild(flavorList);
+            productList.appendChild(productItem);
+        });
+
+        // Exibindo os produtos ao clicar no botão "Produtos"
+        const productsButton = document.getElementById('products-button');
+        const productsSection = document.getElementById('products');
+        productsButton.addEventListener('click', () => {
+            productsSection.style.display = 'block';
+        });
+    </script>
 </body>
 </html>
