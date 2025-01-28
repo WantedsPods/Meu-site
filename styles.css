@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #222;
+    background-color: #111;
     color: white;
 }
 
@@ -12,11 +12,11 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
-    background-color: #000;
+    padding: 20px;
     position: fixed;
     width: 100%;
     top: 0;
+    background-color: rgba(0, 0, 0, 0.8);
     z-index: 1000;
 }
 
@@ -29,13 +29,13 @@ header {
 }
 
 .logo {
-    max-height: 120px; /* Aumentei a altura da logo */
-    opacity: 0.8; /* Ajustei a opacidade para 80% */
+    max-height: 150px; /* Logo maior */
+    opacity: 0.9; /* Opacidade ajustada */
     transition: opacity 0.3s ease;
 }
 
 .logo:hover {
-    opacity: 1; /* Aumenta a opacidade ao passar o mouse */
+    opacity: 1;
 }
 
 /* Menu */
@@ -47,14 +47,14 @@ header {
 
 .menu-items {
     display: flex;
+    gap: 20px;
 }
 
 .menu-items a {
     color: white;
     text-decoration: none;
-    padding: 10px;
-    margin-left: 15px;
     font-size: 18px;
+    padding: 10px;
     transition: color 0.3s;
 }
 
@@ -68,14 +68,14 @@ header {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background: linear-gradient(to bottom, #111, #222);
+    color: white;
     text-align: center;
-    background-color: #333;
-    padding: 20px;
 }
 
 .welcome-text h1 {
-    font-size: 3rem;
-    color: white;
+    font-size: 4rem; /* Título maior */
+    font-weight: bold;
 }
 
 .welcome-text p {
@@ -87,4 +87,30 @@ header {
 #cart-count {
     font-weight: bold;
     color: #ff7b00;
+}
+
+/* Menu Hambúrguer */
+.hamburger {
+    font-size: 30px;
+    display: none;
+    cursor: pointer;
+}
+
+.menu-items {
+    display: flex;
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    .menu-items {
+        display: none;
+        flex-direction: column;
+    }
+
+    .menu-items.active {
+        display: flex;
+    }
 }
