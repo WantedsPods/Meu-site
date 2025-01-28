@@ -1,4 +1,4 @@
-// Exemplo de produtos com sabores e preços
+// Produtos (de acordo com os dados fornecidos)
 const produtos = {
     produto1: {
         nome: "*PROMOÇÃO V150*",
@@ -75,12 +75,11 @@ function showProductDetails(productId) {
 
     let flavorList = '';
     product.sabores.forEach(sabor => {
-        flavorList += `<div class="flavor-option">${sabor}</div>`;
+        flavorList += `<div class="flavor-option" onclick="selectFlavor('${productId}', '${sabor}')">${sabor}</div>`;
     });
     document.getElementById("flavors-list").innerHTML = flavorList;
 
     document.getElementById("product-popup").style.display = 'flex';
-    document.getElementById("add-to-cart").onclick = function() { addToCart(productId); };
 }
 
 // Função para fechar o pop-up de detalhes do produto
@@ -88,10 +87,12 @@ function closeProductDetails() {
     document.getElementById("product-popup").style.display = 'none';
 }
 
-// Função para adicionar ao carrinho
-function addToCart(productId) {
+// Função para selecionar o sabor e adicionar ao carrinho
+function selectFlavor(productId, flavor) {
     const product = produtos[productId];
-    cart.push(product);
+    const selectedProduct = {...product, flavor};
+    
+    cart.push(selectedProduct);
     updateCart();
     closeProductDetails();
 }
@@ -100,11 +101,15 @@ function addToCart(productId) {
 function updateCart() {
     let cartContent = '';
     let total = 0;
-    cart.forEach((product, index) => {
+
+    cart.forEach(product => {
         cartContent += `<div class="cart-item">
-            ${product.nome} - R$ ${product.preco}
+            ${product.nome} (${product.flavor}) - R$ ${product.preco}
         </div>`;
         total += product.preco;
     });
 
-    document.getElementById("cart
+    document.getElementById("cart-count").innerText = cart.length;
+    document.getElementById("cart-content").innerHTML = cartContent;
+    document.getElementById("total-price").innerText = `Total: R$ ${total.toFixed(2)}`;
+}
