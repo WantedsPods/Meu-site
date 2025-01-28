@@ -3,122 +3,222 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bem-vindo à Wanteds Pods</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Wanteds Pods</title>
     <style>
+        /* Configuração da página */
         body {
-            background-color: #333; /* Cor de fundo escura */
-            color: #fff; /* Texto claro para contraste */
-            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #222; /* Cor escura de fundo */
+            color: white;
         }
 
-        header {
-            background-color: #222; /* Cor escura para o cabeçalho */
-            padding: 10px;
-            text-align: center;
-        }
-
+        /* Logo interativa */
         .logo {
-            width: 150px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70%;
             height: auto;
+            transition: transform 0.5s ease, opacity 0.5s ease;
         }
 
-        nav {
-            margin-top: 20px;
+        /* Efeito de movimento ao passar o mouse */
+        .logo:hover {
+            transform: translate(-50%, -50%) scale(1.2);
+            opacity: 0.8;
         }
 
-        nav ul {
-            list-style-type: none;
-            padding: 0;
+        /* Menu hamburguer */
+        .menu {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            background-color: #111;
+            position: absolute;
+            top: 10px;
+            left: 0;
+            right: 0;
         }
 
-        nav ul li {
-            display: inline;
-            margin-right: 20px;
-        }
-
-        nav ul li a {
-            color: #fff;
+        .menu a {
+            color: white;
             text-decoration: none;
-            font-size: 18px;
+            padding: 10px;
+            transition: background-color 0.3s;
         }
 
-        .menu-toggle {
+        .menu a:hover {
+            background-color: #333;
+        }
+
+        .menu a.active {
+            background-color: #555;
+        }
+
+        /* Menu hamburguer */
+        #menu-toggle {
             display: none;
         }
 
-        main {
+        #menu-icon {
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 100;
+        }
+
+        #menu-toggle:checked + #menu {
+            display: block;
+        }
+
+        #menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #333;
             padding: 20px;
             text-align: center;
+            transition: 0.3s ease;
+            z-index: 99;
         }
 
-        footer {
-            background-color: #222;
-            color: #fff;
-            text-align: center;
+        #menu a {
+            display: block;
             padding: 10px;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
+            color: white;
+            text-decoration: none;
         }
 
-        .whatsapp-icon {
+        #menu a:hover {
+            background-color: #444;
+        }
+
+        /* Botão do WhatsApp no canto inferior esquerdo */
+        .whatsapp-btn {
             position: fixed;
             bottom: 20px;
             left: 20px;
             background-color: #25D366;
             color: white;
             border-radius: 50%;
-            padding: 10px;
+            padding: 15px;
             font-size: 24px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             cursor: pointer;
-            text-align: center;
         }
 
-        .whatsapp-icon:hover {
+        .whatsapp-btn:hover {
             background-color: #128C7E;
         }
 
-        .whatsapp-icon a {
-            color: white;
-            text-decoration: none;
+        /* Estilo dos produtos */
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
         }
+
+        .product-card {
+            background-color: #333;
+            width: 30%;
+            margin: 10px;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+
+        .product-card h3 {
+            margin: 10px 0;
+        }
+
+        .product-card p {
+            margin: 10px 0;
+        }
+
+        /* Definições de animações de abertura do menu */
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* Animações para o menu hamburguer */
+        #menu-toggle:checked + #menu {
+            animation: slideIn 0.3s forwards;
+        }
+
+        /* Menu ativo quando o botão é clicado */
+        #menu-toggle:not(:checked) + #menu {
+            animation: slideOut 0.3s forwards;
+        }
+
     </style>
 </head>
 <body>
-    <header>
-        <img src="images/logo.png" alt="Logo da Wanteds" class="logo">
-        <div class="menu-toggle" id="mobile-menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
+
+    <!-- Logo -->
+    <img src="logo.png" alt="Logo" class="logo" />
+
+    <!-- Menu hamburguer -->
+    <label id="menu-icon" for="menu-toggle">&#9776;</label>
+    <input type="checkbox" id="menu-toggle">
+    <div id="menu">
+        <a href="#produtos" class="active">Produtos</a>
+        <a href="#contato">Contato</a>
+    </div>
+
+    <!-- Produtos -->
+    <div id="produtos" class="products">
+        <div class="product-card">
+            <h3>ELFBAR BC 10K</h3>
+            <p>Preço: 115$</p>
+            <p>Blue Razz Ice, Admiration Blue</p>
         </div>
-        <nav class="navbar" id="navbar">
-            <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="produtos.html">Produtos</a></li>
-                <li><a href="contato.html">Fale Conosco</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <h1>Bem-vindo à Wanteds Pods!</h1>
-        <p>Aqui você encontra os pods mais procurados. Navegue por nossas seções e descubra tudo o que temos a oferecer.</p>
-    </main>
-
-    <footer>
-        <p>&copy; 2025 Wanteds Pods. Todos os direitos reservados.</p>
-    </footer>
+        <div class="product-card">
+            <h3>ELFBAR GH 23K</h3>
+            <p>Preço: 150$</p>
+            <p>Miami Mint</p>
+        </div>
+        <div class="product-card">
+            <h3>LOST MARY 5K</h3>
+            <p>Preço: 90$</p>
+            <p>Yummy, Ginger Beer</p>
+        </div>
+        <!-- Continue a adicionar os outros produtos aqui... -->
+    </div>
 
     <!-- Botão WhatsApp -->
-    <div class="whatsapp-icon">
-        <a href="https://wa.me/16992229661" target="_blank">
-            <img src="images/whatsapp-icon.png" alt="WhatsApp">
-        </a>
+    <a href="https://wa.me/16992229661" target="_blank" class="whatsapp-btn">
+        <img src="whatsapp-icon.png" alt="WhatsApp" style="width: 24px; height: 24px;" />
+    </a>
+
+    <!-- Contato -->
+    <div id="contato" style="padding: 20px;">
+        <h2>Entre em contato</h2>
+        <p>Para mais informações, envie uma mensagem pelo WhatsApp.</p>
     </div>
+
 </body>
 </html>
