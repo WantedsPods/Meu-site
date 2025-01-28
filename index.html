@@ -1,77 +1,51 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bem-vindo à Wanteds</title>
+    <title>Bem Vindo à Wanteds</title>
     <style>
-        /* Reset básico de margem e padding */
-        * {
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2C2F33; /* Cor escura de fundo */
+            color: #FFF; /* Texto claro */
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
         }
-
-        /* Corpo da página */
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #2E2E2E; /* Fundo escuro */
-            color: #F5F5F5; /* Texto claro */
-        }
-
-        /* Cabeçalho */
-        header {
-            background-color: #1A1A1A; /* Cabeçalho mais escuro */
-            color: #F5F5F5; /* Texto claro no cabeçalho */
-            text-align: center;
-            padding: 60px 20px;
-        }
-
-        header h1 {
+        h1 {
             font-size: 36px;
-            font-weight: bold;
+            margin-bottom: 20px;
         }
-
-        /* Descrição */
-        main {
-            padding: 40px 20px;
+        .content {
             text-align: center;
         }
-
-        main p {
+        a {
+            text-decoration: none;
+            color: #00BFFF; /* Cor dos links */
             font-size: 18px;
-            color: #D1D1D1; /* Texto mais suave */
+            margin: 10px 0;
+            display: block;
         }
-
-        /* Rodapé */
-        footer {
-            background-color: #333333; /* Rodapé escuro */
-            color: #F5F5F5;
-            text-align: center;
-            padding: 20px;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
+        a:hover {
+            color: #1E90FF; /* Cor ao passar o mouse */
         }
     </style>
 </head>
 <body>
 
-    <!-- Cabeçalho -->
-    <header>
-        <h1>Bem-vindo à Wanteds</h1>
-    </header>
-
-    <!-- Corpo Principal -->
-    <main>
-        <p>Aqui você encontra os pods mais procurados.</p>
-    </main>
-
-    <!-- Rodapé -->
-    <footer>
-        <p>© 2025 Wanteds - Todos os direitos reservados.</p>
-    </footer>
+    <div class="content">
+        <h1>Bem Vindo à Wanteds</h1>
+        <p>Aqui você encontra os pods mais procurados</p>
+        
+        <!-- Links para as outras páginas -->
+        <a href="produtos.html">Produtos</a>
+        <a href="contato.html">Fale Conosco</a>
+    </div>
 
 </body>
 </html>
