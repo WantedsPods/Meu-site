@@ -1,116 +1,45 @@
-/* Estilos Globais */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #111;
-    color: white;
+    background-color: #f0f0f0;
 }
 
-/* Cabeçalho */
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: 1000;
+    background-color: #ffffff;
+    padding: 10px 20px;
+    box-shadow: 0 4px 2px -2px gray;
 }
 
-/* Logo */
 .logo-container {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
 }
 
 .logo {
-    max-height: 150px; /* Logo maior */
-    opacity: 0.9; /* Opacidade ajustada */
-    transition: opacity 0.3s ease;
-}
-
-.logo:hover {
-    opacity: 1;
-}
-
-/* Menu */
-.menu {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    width: 150px;
 }
 
 .menu-items {
     display: flex;
-    gap: 20px;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 16px;
 }
 
 .menu-items a {
-    color: white;
     text-decoration: none;
-    font-size: 18px;
+    color: #333;
     padding: 10px;
-    transition: color 0.3s;
 }
 
 .menu-items a:hover {
-    color: #ff7b00;
+    background-color: #ddd;
 }
 
-/* Tela Inicial */
 .welcome {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: linear-gradient(to bottom, #111, #222);
-    color: white;
+    padding: 50px;
     text-align: center;
 }
 
 .welcome-text h1 {
-    font-size: 4rem; /* Título maior */
-    font-weight: bold;
-}
-
-.welcome-text p {
-    font-size: 1.5rem;
-    color: #ff7b00;
-}
-
-/* Estilo do Carrinho */
-#cart-count {
-    font-weight: bold;
-    color: #ff7b00;
-}
-
-/* Menu Hambúrguer */
-.hamburger {
-    font-size: 30px;
-    display: none;
-    cursor: pointer;
-}
-
-.menu-items {
-    display: flex;
-}
-
-@media (max-width: 768px) {
-    .hamburger {
-        display: block;
-    }
-
-    .menu-items {
-        display: none;
-        flex-direction: column;
-    }
-
-    .menu-items.active {
-        display: flex;
-    }
-}
+   
