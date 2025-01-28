@@ -3,133 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contato - Wanteds</title>
+    <title>Bem-vindo à Wanteds Pods</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
         body {
+            background-color: #333; /* Cor de fundo escura */
+            color: #fff; /* Texto claro para contraste */
             font-family: Arial, sans-serif;
-            background-color: #2C2F33;
-            color: #FFF;
             margin: 0;
             padding: 0;
         }
-        .menu {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-            background-color: #1E1F23;
-            position: relative;
+
+        header {
+            background-color: #222; /* Cor escura para o cabeçalho */
+            padding: 10px;
+            text-align: center;
         }
-        .menu a {
-            color: #FFF;
+
+        .logo {
+            width: 150px;
+            height: auto;
+        }
+
+        nav {
+            margin-top: 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
             text-decoration: none;
-            padding: 8px 16px;
             font-size: 18px;
         }
-        .menu a:hover {
-            background-color: #00BFFF;
+
+        .menu-toggle {
+            display: none;
         }
-        .hamburger {
-            display: flex;
-            flex-direction: column;
-            cursor: pointer;
-            width: 30px;
-            height: 30px;
-            justify-content: space-between;
+
+        main {
+            padding: 20px;
+            text-align: center;
         }
-        .hamburger div {
+
+        footer {
+            background-color: #222;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
             width: 100%;
-            height: 4px;
-            background-color: #FFF;
+            bottom: 0;
         }
-        .menu-links {
-            position: absolute;
-            top: 0;
-            left: -250px;
-            width: 250px;
-            height: 100vh;
-            background-color: #1E1F23;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-top: 60px;
-            transition: left 0.3s ease;
-        }
-        .menu-links a {
-            color: #FFF;
-            font-size: 24px;
-            margin: 20px 0;
-        }
-        .menu.active .menu-links {
-            left: 0;
-        }
-        @media (max-width: 768px) {
-            .menu a {
-                display: none;
-            }
-            .hamburger {
-                display: flex;
-            }
-        }
-        /* Estilo para o ícone do WhatsApp no canto inferior esquerdo */
-        .whatsapp {
+
+        .whatsapp-icon {
             position: fixed;
             bottom: 20px;
             left: 20px;
             background-color: #25D366;
-            padding: 15px;
+            color: white;
             border-radius: 50%;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            font-size: 24px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             cursor: pointer;
+            text-align: center;
         }
-        .whatsapp img {
-            width: 40px;
-            height: 40px;
+
+        .whatsapp-icon:hover {
+            background-color: #128C7E;
+        }
+
+        .whatsapp-icon a {
+            color: white;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
-
-    <!-- Menu -->
-    <div class="menu">
-        <div class="hamburger" onclick="toggleMenu()">
-            <div></div>
-            <div></div>
-            <div></div>
+    <header>
+        <img src="images/logo.png" alt="Logo da Wanteds" class="logo">
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
         </div>
-        <div class="links">
-            <a href="index.html">Início</a>
-            <a href="produtos.html">Produtos</a>
-            <a href="contato.html">Fale Conosco</a>
-        </div>
+        <nav class="navbar" id="navbar">
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="produtos.html">Produtos</a></li>
+                <li><a href="contato.html">Fale Conosco</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Bem-vindo à Wanteds Pods!</h1>
+        <p>Aqui você encontra os pods mais procurados. Navegue por nossas seções e descubra tudo o que temos a oferecer.</p>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Wanteds Pods. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Botão WhatsApp -->
+    <div class="whatsapp-icon">
+        <a href="https://wa.me/16992229661" target="_blank">
+            <img src="images/whatsapp-icon.png" alt="WhatsApp">
+        </a>
     </div>
-
-    <div class="menu-links">
-        <a href="index.html">Início</a>
-        <a href="produtos.html">Produtos</a>
-        <a href="contato.html">Fale Conosco</a>
-    </div>
-
-    <!-- Conteúdo da página -->
-    <h1>Contato</h1>
-    <p>Se você tiver alguma dúvida, entre em contato conosco!</p>
-    <p>Email: wantedstabacaria@gmail.com</p>
-    <p>Telefone: (16) 992229661</p>
-
-    <a href="index.html">Voltar à página inicial</a>
-
-    <!-- Ícone do WhatsApp -->
-    <a href="https://wa.me/55119987654321" target="_blank" class="whatsapp">
-        <img src="URL_DO_SEU_ICONE_PERSONALIZADO.png" alt="WhatsApp com Cogumelo">
-    </a>
-
-    <script>
-        function toggleMenu() {
-            const menu = document.querySelector('.menu');
-            menu.classList.toggle('active');
-        }
-    </script>
-
 </body>
 </html>
-
