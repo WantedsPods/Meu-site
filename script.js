@@ -1,115 +1,102 @@
-// Produtos (de acordo com os dados fornecidos)
-const produtos = {
+let cart = [];
+
+// Dados dos produtos
+const products = {
     produto1: {
-        nome: "*PROMOÇÃO V150*",
-        preco: 125,
-        sabores: [
-            "Strawberry Ice", "Icy Mint", "Watermelon Ice", 
-            "Cherry Watermelon Ice", "Watermelon Dragon Fruit"
-        ],
-        imagem: "produto1.jpg"
+        name: "PROMOÇÃO V150",
+        price: "125$",
+        flavors: ["Strawberry Ice", "Icy Mint", "Watermelon Ice", "Cherry Watermelon Ice", "Watermelon Dragon Fruit"]
     },
     produto2: {
-        nome: "*ELFBAR BC 10K (especial edition)",
-        preco: 115,
-        sabores: ["Blue Razz Ice", "Admiration Blue"],
-        imagem: "produto2.jpg"
+        name: "ELFBAR BC 10K",
+        price: "115$",
+        flavors: ["Blue Razz Ice", "Admiration Blue"]
     },
     produto3: {
-        nome: "*Elfbar Ice King 40K",
-        preco: 165,
-        sabores: ["Cherry Fuse", "Blue Razz Ice"],
-        imagem: "produto3.jpg"
+        name: "Elfbar Ice King 40K",
+        price: "165$",
+        flavors: ["Cherry Fuse", "Blue Razz Ice"]
     },
     produto4: {
-        nome: "*ELFBAR GH 23K",
-        preco: 150,
-        sabores: ["Miami Mint"],
-        imagem: "produto4.jpg"
+        name: "ELFBAR GH 23K",
+        price: "150$",
+        flavors: ["Miami Mint"]
     },
     produto5: {
-        nome: "*LOST MARY 5K",
-        preco: 90,
-        sabores: ["Yummy", "Ginger Beer"],
-        imagem: "produto5.jpg"
+        name: "LOST MARY 5K",
+        price: "90$",
+        flavors: ["Yummy", "Ginger Beer"]
     },
     produto6: {
-        nome: "*LOST MARY 20K",
-        preco: 130,
-        sabores: ["Miami Mint", "Peach+", "Pure Ice"],
-        imagem: "produto6.jpg"
+        name: "LOST MARY 20K",
+        price: "130$",
+        flavors: ["Miami Mint", "Peach+", "Pure Ice"]
     },
     produto7: {
-        nome: "*IGNITE V50 BLACK",
-        preco: 95,
-        sabores: ["Blue Dream", "Peach Mango Watermelon", "Strawberry Kiwi", "Aloe Grape", "Watermelon Mix", "Peach Raspberry", "Strawberry Banana"],
-        imagem: "produto7.jpg"
+        name: "IGNITE V50 BLACK",
+        price: "95$",
+        flavors: ["Blue Dream", "Peach Mango Watermelon", "Strawberry Kiwi", "Aloe Grape", "Watermelon Mix", "Peach Raspberry", "Strawberry Banana"]
     },
     produto8: {
-        nome: "*IGNITE V80",
-        preco: 120,
-        sabores: ["Strawberry Kiwi (Silver)", "Blueberry Ice (Silver)", "Banana Ice (Silver)", "Banana Cherry (Silver)", "Strawberry Ice (Silver)", "Cactus (Silver)"],
-        imagem: "produto8.jpg"
+        name: "IGNITE V80",
+        price: "120$",
+        flavors: ["Strawberry Kiwi (Silver)", "Blueberry Ice (Silver)", "Banana Ice (Silver)", "Banana Cherry (Silver)", "Strawberry Ice (Silver)", "Cactus (Silver)"]
     },
     produto9: {
-        nome: "*RABBEATS 10K",
-        preco: 95,
-        sabores: ["Clear", "Cherry Lemon", "Strawberry Kiwi Ice"],
-        imagem: "produto9.jpg"
+        name: "RABBEATS 10K",
+        price: "95$",
+        flavors: ["Clear", "Cherry Lemon", "Strawberry Kiwi Ice"]
     },
     produto10: {
-        nome: "*OXBAR 30K",
-        preco: 130,
-        sabores: ["Mr Bull"],
-        imagem: "produto10.jpg"
+        name: "OXBAR 30K",
+        price: "130$",
+        flavors: ["Mr Bull"]
     }
 };
 
-let cart = [];
-
-// Função para mostrar os detalhes do produto
+// Função para mostrar os detalhes do produto e sabores
 function showProductDetails(productId) {
-    const product = produtos[productId];
-    document.getElementById("product-title").innerText = product.nome;
-    document.getElementById("popup-image").src = product.imagem;
+    const product = products[productId];
+    const popup = document.getElementById('product-popup');
+    const title = document.getElementById('product-title');
+    const flavorsList = document.getElementById('flavors-list');
+    const addButton = document.getElementById('add-to-cart');
 
-    let flavorList = '';
-    product.sabores.forEach(sabor => {
-        flavorList += `<div class="flavor-option" onclick="selectFlavor('${productId}', '${sabor}')">${sabor}</div>`;
-    });
-    document.getElementById("flavors-list").innerHTML = flavorList;
-
-    document.getElementById("product-popup").style.display = 'flex';
-}
-
-// Função para fechar o pop-up de detalhes do produto
-function closeProductDetails() {
-    document.getElementById("product-popup").style.display = 'none';
-}
-
-// Função para selecionar o sabor e adicionar ao carrinho
-function selectFlavor(productId, flavor) {
-    const product = produtos[productId];
-    const selectedProduct = {...product, flavor};
+    title.textContent = product.name + " - " + product.price;
     
-    cart.push(selectedProduct);
-    updateCart();
-    closeProductDetails();
-}
-
-// Função para atualizar o carrinho
-function updateCart() {
-    let cartContent = '';
-    let total = 0;
-
-    cart.forEach(product => {
-        cartContent += `<div class="cart-item">
-            ${product.nome} (${product.flavor}) - R$ ${product.preco}
-        </div>`;
-        total += product.preco;
+    // Limpar sabores anteriores
+    flavorsList.innerHTML = "";
+    
+    // Adicionar sabores ao popup
+    product.flavors.forEach(flavor => {
+        const flavorButton = document.createElement('button');
+        flavorButton.textContent = flavor;
+        flavorButton.onclick = () => selectFlavor(productId, flavor);
+        flavorsList.appendChild(flavorButton);
     });
-
-    document.getElementById("cart-count").innerText = cart.length;
-    document.getElementById("cart-content").innerHTML = cartContent;
-    document.getElementById("total-price").innerText = `Total: R$ ${total.toFixed(2)}`;
+    
+    // Exibir popup
+    popup.style.display = 'flex';
+    
+    // Armazenar o produto no botão de adicionar ao carrinho
+    addButton.setAttribute('data-product-id', productId);
 }
+
+// Função para fechar o popup de detalhes do produto
+function closeProductDetails() {
+    const popup = document.getElementById('product-popup');
+    popup.style.display = 'none';
+}
+
+// Função para selecionar o sabor
+function selectFlavor(productId, flavor) {
+    const addButton = document.getElementById('add-to-cart');
+    addButton.setAttribute('data-flavor', flavor);
+    addButton.textContent = `Adicionar ${flavor} ao Carrinho`;
+}
+
+// Função para adicionar o produto ao carrinho
+function addToCart() {
+    const addButton = document.getElementById('add-to-cart');
+    const productId = addButton.getAttribute('data-product-id');
+    const flavor = add
