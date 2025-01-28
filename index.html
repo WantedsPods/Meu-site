@@ -3,29 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bem-vindo à WANTEDS</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Minha Loja - Wanted's Pods</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Menu Hambúrguer -->
-    <div class="menu-hamburguer" onclick="toggleMenu()">☰</div>
-    
-    <!-- Menu de Navegação -->
-    <div id="menu" class="menu">
-        <a href="produtos.html">Produtos</a>
-        <a href="carrinho.html">Carrinho</a>
+    <header>
+        <h1>BEM-VINDO À WANTEDS</h1>
+        <p>AQUI VOCÊ ENCONTRA OS PODS MAIS PROCURADOS!</p>
+        <img src="sua-logo.png" alt="Logo" class="logo">
+    </header>
+
+    <!-- Menu Hamburguer -->
+    <div class="menu-hamburguer">
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <div id="menu" class="menu">
+            <a href="produtos.html">Produtos</a>
+            <a href="checkout.html">Finalizar Compra</a>
+        </div>
     </div>
 
-    <!-- Conteúdo Principal -->
-    <div class="main-content">
-        <h1>Bem-vindo à WANTEDS</h1>
-        <p>Aqui você encontra os pods mais procurados!</p>
-    </div>
+    <!-- WhatsApp -->
+    <a href="https://wa.me/5531999999999" class="whatsapp">
+        <img src="whatsapp-icon.png" alt="WhatsApp">
+    </a>
 
-    <div class="logo-background">
-        <img src="images/logo.png" alt="Logo WANTEDS">
-    </div>
+    <!-- Link para produtos -->
+    <a href="produtos.html" class="botao-produtos">Ver Produtos</a>
 
-    <script src="js/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
