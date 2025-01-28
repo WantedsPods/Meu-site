@@ -3,32 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minha Loja - Wanted's Pods</title>
+    <title>Wanteds Pods</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Cabeçalho com Logo e Menu -->
     <header>
-        <h1>BEM-VINDO À WANTEDS</h1>
-        <p>AQUI VOCÊ ENCONTRA OS PODS MAIS PROCURADOS!</p>
-        <img src="logo.png.png" alt="Logo" class="logo">
+        <div class="logo-container">
+            <img src="logo.png.png" alt="Logo Wanteds Pods" class="logo">
+        </div>
+        <nav class="menu">
+            <div id="hamburger" class="hamburger" onclick="toggleMenu()">&#9776;</div>
+            <div class="menu-items">
+                <a href="produtos.html">Produtos</a>
+                <a href="carrinho.html">Carrinho (<span id="cart-count">0</span>)</a>
+            </div>
+        </nav>
     </header>
 
-    <!-- Menu Hamburguer -->
-    <div class="menu-hamburguer">
-        <div class="menu-icon" onclick="toggleMenu()">☰</div>
-        <div id="menu" class="menu">
-            <a href="produtos.html">Produtos</a>
-            <a href="checkout.html">Finalizar Compra</a>
+    <!-- Tela Inicial -->
+    <section class="welcome">
+        <div class="welcome-text">
+            <h1>Bem-vindo à Wanteds</h1>
+            <p>Aqui você encontra os pods mais procurados!</p>
         </div>
-    </div>
-
-    <!-- WhatsApp -->
-    <a href="https://wa.me/5531999999999" class="whatsapp">
-        <img src="whatsapp-icon.png" alt="WhatsApp">
-    </a>
-
-    <!-- Link para produtos -->
-    <a href="produtos.html" class="botao-produtos">Ver Produtos</a>
+    </section>
 
     <script src="script.js"></script>
 </body>
