@@ -1,0 +1,110 @@
+/* Resetando estilos padrões */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #fff;
+}
+
+/* Menu Hamburguer */
+.menu-toggle {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.menu-toggle .line {
+    width: 30px;
+    height: 3px;
+    background-color: #fff;
+    margin: 6px 0;
+}
+
+/* Carrinho */
+.cart {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+}
+
+.cart-icon {
+    width: 30px;
+    height: 30px;
+}
+
+/* Tela Inicial (Hero Section) */
+.hero-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background: linear-gradient(to bottom, #000000, #8B0000); /* Degrade preto e vermelho escuro */
+    position: relative;
+}
+
+.hero-content {
+    text-align: center;
+    z-index: 5;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+}
+
+.logo-background {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 0;
+}
+
+.logo-background img {
+    width: 150px; /* Ajuste o tamanho da logo conforme necessário */
+    opacity: 0.3; /* Deixe a logo mais suave para o fundo */
+}
+
+/* Menu Lateral */
+.side-menu {
+    position: absolute;
+    top: 0;
+    left: -200px;
+    height: 100%;
+    width: 200px;
+    background-color: #333;
+    transition: all 0.3s ease-in-out;
+}
+
+.side-menu ul {
+    list-style: none;
+    padding: 20px;
+}
+
+.side-menu ul li {
+    margin: 20px 0;
+}
+
+.side-menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+/* Exemplo de efeito de menu */
+.side-menu.open {
+    left: 0;
+}
