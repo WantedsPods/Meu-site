@@ -7,96 +7,144 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Cabeçalho com Logo e Menu -->
+
     <header>
-        <div class="logo-container">
-            <img src="logo.png" alt="Logo Wanteds Pods" class="logo">
+        <div class="menu-items">
+            <a href="index.html">Home</a>
+            <a href="carrinho.html">Carrinho (<span id="cart-count">0</span>)</a>
         </div>
-        <nav class="menu">
-            <div id="hamburger" class="hamburger" onclick="toggleMenu()">&#9776;</div>
-            <div class="menu-items">
-                <a href="index.html">Início</a>
-                <a href="carrinho.html">Carrinho (<span id="cart-count">0</span>)</a>
-            </div>
-        </nav>
     </header>
 
-    <!-- Produtos -->
-    <div class="produtos">
-        <!-- Produto: PROMOÇÃO V150 -->
-        <div class="produto">
-            <img src="promo_v150.jpg" alt="Promoção V150" class="produto-img">
-            <h3>PROMOÇÃO V150 - R$125</h3>
-            <p>Sabores:</p>
-            <div class="sabores">
-                <button onclick="addToCart('PROMOÇÃO V150', 125, 'Strawberry Ice')">Strawberry Ice</button>
-                <button onclick="addToCart('PROMOÇÃO V150', 125, 'Icy Mint')">Icy Mint</button>
-                <button onclick="addToCart('PROMOÇÃO V150', 125, 'Watermelon Ice')">Watermelon Ice</button>
-                <button onclick="addToCart('PROMOÇÃO V150', 125, 'Cherry Watermelon Ice')">Cherry Watermelon Ice</button>
-                <button onclick="addToCart('PROMOÇÃO V150', 125, 'Watermelon Dragon Fruit')">Watermelon Dragon Fruit</button>
-            </div>
+    <section class="product-list">
+        <!-- Produto 1 - PROMOÇÃO V150 -->
+        <div class="product" onclick="showFlavors('produto1')">
+            <img src="produto1.jpg" alt="PROMOÇÃO V150" class="product-image">
+            <p class="product-name">*PROMOÇÃO V150* <br> ~150~ ➡️  125$</p>
+            <p class="product-flavors">
+                - Strawberry Ice<br>
+                - Icy Mint<br>
+                - Watermelon Ice<br>
+                - Cherry Watermelon Ice<br>
+                - Watermelon Dragon Fruit
+            </p>
         </div>
 
-        <!-- Produto: ELFBAR BC 10K (especial edition) -->
-        <div class="produto">
-            <img src="elfbar_bc10k.jpg" alt="ELFBAR BC 10K" class="produto-img">
-            <h3>ELFBAR BC 10K (especial edition) - R$115</h3>
-            <p>Sabores:</p>
-            <div class="sabores">
-                <button onclick="addToCart('ELFBAR BC 10K', 115, 'Blue Razz Ice')">Blue Razz Ice</button>
-                <button onclick="addToCart('ELFBAR BC 10K', 115, 'Admiration Blue')">Admiration Blue</button>
-            </div>
+        <!-- Produto 2 - ELFBAR BC 10K -->
+        <div class="product" onclick="showFlavors('produto2')">
+            <img src="produto2.jpg" alt="ELFBAR BC 10K" class="product-image">
+            <p class="product-name">*ELFBAR BC 10K (especial edition) 115$</p>
+            <p class="product-flavors">
+                - Blue Razz Ice<br>
+                - Admiration Blue
+            </p>
         </div>
 
-        <!-- Produto: Elfbar Ice King 40K -->
-        <div class="produto">
-            <img src="elfbar_ice_king.jpg" alt="Elfbar Ice King 40K" class="produto-img">
-            <h3>Elfbar Ice King 40K - R$165</h3>
-            <p>Sabores:</p>
-            <div class="sabores">
-                <button onclick="addToCart('Elfbar Ice King 40K', 165, 'Cherry Fuse')">Cherry Fuse</button>
-                <button onclick="addToCart('Elfbar Ice King 40K', 165, 'Blue Razz Ice')">Blue Razz Ice</button>
-            </div>
+        <!-- Produto 3 - Elfbar Ice King 40K -->
+        <div class="product" onclick="showFlavors('produto3')">
+            <img src="produto3.jpg" alt="Elfbar Ice King 40K" class="product-image">
+            <p class="product-name">*Elfbar Ice King 40K 165$</p>
+            <p class="product-flavors">
+                - Cherry Fuse<br>
+                - Blue Razz Ice
+            </p>
         </div>
 
-        <!-- Produto: ELFBAR GH 23K -->
-        <div class="produto">
-            <img src="elfbar_gh23k.jpg" alt="ELFBAR GH 23K" class="produto-img">
-            <h3>ELFBAR GH 23K - R$150</h3>
-            <p>Sabores:</p>
-            <div class="sabores">
-                <button onclick="addToCart('ELFBAR GH 23K', 150, 'Miami Mint')">Miami Mint</button>
-            </div>
+        <!-- Produto 4 - ELFBAR GH 23K -->
+        <div class="product" onclick="showFlavors('produto4')">
+            <img src="produto4.jpg" alt="ELFBAR GH 23K" class="product-image">
+            <p class="product-name">*ELFBAR GH 23K - 150$</p>
+            <p class="product-flavors">
+                - Miami Mint
+            </p>
         </div>
 
-        <!-- Produto: LOST MARY 5K -->
-        <div class="produto">
-            <img src="lost_mary_5k.jpg" alt="LOST MARY 5K" class="produto-img">
-            <h3>LOST MARY 5K - R$90</h3>
-            <p>Sabores:</p>
-            <div class="sabores">
-                <button onclick="addToCart('LOST MARY 5K', 90, 'Yummy')">Yummy</button>
-                <button onclick="addToCart('LOST MARY 5K', 90, 'Ginger Beer')">Ginger Beer</button>
-            </div>
+        <!-- Produto 5 - LOST MARY 5K -->
+        <div class="product" onclick="showFlavors('produto5')">
+            <img src="produto5.jpg" alt="LOST MARY 5K" class="product-image">
+            <p class="product-name">*LOST MARY 5K 90$</p>
+            <p class="product-flavors">
+                - Yummy<br>
+                - Ginger Beer
+            </p>
         </div>
 
-        <!-- Produto: LOST MARY 20K -->
-        <div class="produto">
-            <img src="lost_mary_20k.jpg" alt="LOST MARY 20K" class="produto-img">
-            <h3>LOST MARY 20K - R$130</h3>
-            <p>Sabores:</p>
-            <div class="sabores">
-                <button onclick="addToCart('LOST MARY 20K', 130, 'Miami Mint')">Miami Mint</button>
-                <button onclick="addToCart('LOST MARY 20K', 130, 'Peach+')">Peach+</button>
-                <button onclick="addToCart('LOST MARY 20K', 130, 'Pure Ice')">Pure Ice</button>
-            </div>
+        <!-- Produto 6 - LOST MARY 20K -->
+        <div class="product" onclick="showFlavors('produto6')">
+            <img src="produto6.jpg" alt="LOST MARY 20K" class="product-image">
+            <p class="product-name">*LOST MARY 20K 130$</p>
+            <p class="product-flavors">
+                - Miami Mint<br>
+                - Peach+<br>
+                - Pure Ice
+            </p>
         </div>
 
-        <!-- Produto: IGNITE V50 BLACK -->
-        <div class="produto">
-            <img src="ignite_v50_black.jpg" alt="IGNITE V50 BLACK" class="produto-img">
-            <h3>IGNITE V50 BLACK - R$95</h3>
-            <p>Sabores:</p>
-            <div class="sabores">
-                <button onclick="addToCart('IGNITE V50 BLACK', 95, 'Blue Dream')">Blue Dream</button>
-                <button
+        <!-- Produto 7 - IGNITE V50 BLACK -->
+        <div class="product" onclick="showFlavors('produto7')">
+            <img src="produto7.jpg" alt="IGNITE V50 BLACK" class="product-image">
+            <p class="product-name">*IGNITE V50 BLACK 95$</p>
+            <p class="product-flavors">
+                - Blue Dream<br>
+                - Peach Mango Watermelon<br>
+                - Strawberry Kiwi<br>
+                - Aloe Grape<br>
+                - Watermelon Mix<br>
+                - Peach Raspberry<br>
+                - Strawberry Banana
+            </p>
+        </div>
+
+        <!-- Produto 8 - IGNITE V80 -->
+        <div class="product" onclick="showFlavors('produto8')">
+            <img src="produto8.jpg" alt="IGNITE V80" class="product-image">
+            <p class="product-name">*IGNITE V80 - 120$</p>
+            <p class="product-flavors">
+                - Strawberry Kiwi (Silver)<br>
+                - Blueberry Ice (Silver)<br>
+                - Banana Ice (Silver)<br>
+                - Banana Cherry (Silver)<br>
+                - Strawberry Ice (Silver)<br>
+                - Cactus (Silver)
+            </p>
+        </div>
+
+        <!-- Produto 9 - RABBEATS 10K -->
+        <div class="product" onclick="showFlavors('produto9')">
+            <img src="produto9.jpg" alt="RABBEATS 10K" class="product-image">
+            <p class="product-name">*RABBEATS 10K 95$</p>
+            <p class="product-flavors">
+                - Clear<br>
+                - Cherry Lemon<br>
+                - Strawberry Kiwi Ice
+            </p>
+        </div>
+
+        <!-- Produto 10 - OXBAR 30K -->
+        <div class="product" onclick="showFlavors('produto10')">
+            <img src="produto10.jpg" alt="OXBAR 30K" class="product-image">
+            <p class="product-name">*OXBAR 30K 130$</p>
+            <p class="product-flavors">
+                - Mr Bull
+            </p>
+        </div>
+    </section>
+
+    <!-- Modal de Sabores -->
+    <div id="flavors-modal" class="flavors-modal">
+        <div class="flavors-content">
+            <h3>Escolha o sabor:</h3>
+            <ul id="flavor-list">
+                <li onclick="addToCart('Sabor 1')">Sabor 1</li>
+                <li onclick="addToCart('Sabor 2')">Sabor 2</li>
+                <li onclick="addToCart('Sabor 3')">Sabor 3</li>
+                <li onclick="addToCart('Sabor 4')">Sabor 4</li>
+                <li onclick="addToCart('Sabor 5')">Sabor 5</li>
+                <!-- Adicione os sabores conforme necessário -->
+            </ul>
+            <button onclick="closeFlavors()">Fechar</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
