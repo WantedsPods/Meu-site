@@ -1,227 +1,118 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WANTEDS</title>
-    <style>
-        /* Estilos gerais */
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Arial', sans-serif;
-            background-color: #121212; /* Cor de fundo escura */
-            color: #fff; /* Texto branco */
-            font-size: 18px; /* Fonte maior para uma aparência moderna */
-        }
-
-        header {
-            position: relative;
-            text-align: center;
-            padding: 120px 20px;
-        }
-
-        header h1 {
-            font-size: 4em;
-            z-index: 10;
-            color: #fff;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
-            font-family: 'Roboto', sans-serif; /* Fonte mais moderna */
-        }
-
-        .logo {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('logo.png'); /* Coloque o caminho da sua logo */
-            background-size: cover;
-            background-position: center;
-            z-index: 1;
-            filter: brightness(0.5);
-        }
-
-        /* Menu hamburguer */
-        .hamburger {
-            display: none;
-            cursor: pointer;
-            position: absolute;
-            top: 30px;
-            right: 30px;
-            z-index: 20;
-        }
-
-        .hamburger div {
-            width: 35px;
-            height: 5px;
-            background-color: white;
-            margin: 6px 0;
-            transition: 0.4s;
-        }
-
-        nav {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            background-color: #333;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        nav a {
-            color: white;
-            font-size: 1.5em;
-            margin: 10px;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        nav a:hover {
-            color: #f39c12;
-        }
-
-        .active {
-            transform: rotate(45deg);
-        }
-
-        .active + .active {
-            transform: rotate(-45deg);
-        }
-
-        /* Produto e seções */
-        .produtos {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .produto {
-            background-color: #222;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: 0.3s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .produto img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-
-        .produto h3 {
-            color: #f39c12;
-            font-size: 1.5em;
-            margin: 15px 0;
-        }
-
-        .produto select {
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 4px;
-            font-size: 1em;
-            color: #333;
-            background-color: #fff;
-            border: none;
-        }
-
-        .produto button {
-            background-color: #f39c12;
-            border: none;
-            padding: 10px;
-            color: white;
-            font-size: 1.2em;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .produto button:hover {
-            background-color: #e67e22;
-        }
-
-        /* Responsividade */
-        @media screen and (max-width: 768px) {
-            .produtos {
-                grid-template-columns: 1fr;
-            }
-        }
-
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produtos - Wanteds Pods</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <div class="logo"></div>
-        <h1>BEM VINDO A WANTEDS</h1>
-        <div class="hamburger" onclick="toggleMenu()">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </header>
 
-    <!-- Menu Hamburguer -->
-    <nav id="menu">
-        <a href="produtos.html">Produtos</a>
-        <a href="contato.html">Contato</a>
-    </nav>
+  <!-- Menu hamburguer -->
+  <nav>
+    <ul id="hamburger-menu">
+      <li><a href="index.html">Início</a></li>
+      <li><a href="produtos.html">Produtos</a></li>
+      <li><a href="contato.html">Contato</a></li>
+    </ul>
+  </nav>
 
-    <!-- Produtos -->
-    <section class="produtos">
-        <div class="produto">
-            <img src="produto1.jpg" alt="Produto 1">
-            <h3>Produto 1</h3>
-            <select>
-                <option value="sabor1">Sabor 1</option>
-                <option value="sabor2">Sabor 2</option>
-                <option value="sabor3">Sabor 3</option>
-            </select>
-            <button>Adicionar ao Carrinho</button>
-        </div>
+  <!-- Produtos -->
+  <section class="produtos">
+    <h2>Produtos</h2>
 
-        <div class="produto">
-            <img src="produto2.jpg" alt="Produto 2">
-            <h3>Produto 2</h3>
-            <select>
-                <option value="sabor1">Sabor 1</option>
-                <option value="sabor2">Sabor 2</option>
-                <option value="sabor3">Sabor 3</option>
-            </select>
-            <button>Adicionar ao Carrinho</button>
-        </div>
+    <div class="produto">
+      <img src="produtos/imagem1.png" alt="Produto 1">
+      <h3>Promoção V150</h3>
+      <p>Preço: 125$</p>
+      <label for="sabor1">Escolha o sabor:</label>
+      <select id="sabor1">
+        <option value="strawberry_ice">Strawberry Ice</option>
+        <option value="icy_mint">Icy Mint</option>
+        <option value="watermelon_ice">Watermelon Ice</option>
+        <option value="cherry_watermelon_ice">Cherry Watermelon Ice</option>
+        <option value="watermelon_dragon_fruit">Watermelon Dragon Fruit</option>
+      </select>
+      <button class="add-to-cart" onclick="addToCart('Promoção V150', '125$', document.getElementById('sabor1').value)">Adicionar ao Carrinho</button>
+    </div>
 
-        <div class="produto">
-            <img src="produto3.jpg" alt="Produto 3">
-            <h3>Produto 3</h3>
-            <select>
-                <option value="sabor1">Sabor 1</option>
-                <option value="sabor2">Sabor 2</option>
-                <option value="sabor3">Sabor 3</option>
-            </select>
-            <button>Adicionar ao Carrinho</button>
-        </div>
+    <div class="produto">
+      <img src="produtos/imagem2.png" alt="Produto 2">
+      <h3>ELFBAR BC 10K (edição especial)</h3>
+      <p>Preço: 115$</p>
+      <label for="sabor2">Escolha o sabor:</label>
+      <select id="sabor2">
+        <option value="blue_razz_ice">Blue Razz Ice</option>
+        <option value="admiration_blue">Admiration Blue</option>
+      </select>
+      <button class="add-to-cart" onclick="addToCart('ELFBAR BC 10K', '115$', document.getElementById('sabor2').value)">Adicionar ao Carrinho</button>
+    </div>
 
-        <!-- Adicione mais produtos aqui, cada um com suas opções de sabores -->
-    </section>
+    <div class="produto">
+      <img src="produtos/imagem3.png" alt="Produto 3">
+      <h3>Elfbar Ice King 40K</h3>
+      <p>Preço: 165$</p>
+      <label for="sabor3">Escolha o sabor:</label>
+      <select id="sabor3">
+        <option value="cherry_fuse">Cherry Fuse</option>
+        <option value="blue_razz_ice_40k">Blue Razz Ice</option>
+      </select>
+      <button class="add-to-cart" onclick="addToCart('Elfbar Ice King 40K', '165$', document.getElementById('sabor3').value)">Adicionar ao Carrinho</button>
+    </div>
 
-    <script>
-        function toggleMenu() {
-            var menu = document.getElementById('menu');
-            var hamburger = document.querySelector('.hamburger');
-            menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
-            hamburger.classList.toggle('active');
-        }
-    </script>
+    <!-- Outros produtos aqui -->
+
+    <!-- Exemplo de outro produto -->
+    <div class="produto">
+      <img src="produtos/imagem4.png" alt="Produto 4">
+      <h3>LOST MARY 5K</h3>
+      <p>Preço: 90$</p>
+      <label for="sabor4">Escolha o sabor:</label>
+      <select id="sabor4">
+        <option value="yummy">Yummy</option>
+        <option value="ginger_beer">Ginger Beer</option>
+      </select>
+      <button class="add-to-cart" onclick="addToCart('LOST MARY 5K', '90$', document.getElementById('sabor4').value)">Adicionar ao Carrinho</button>
+    </div>
+
+    <!-- Continue adicionando os outros produtos aqui -->
+
+  </section>
+
+  <!-- Carrinho de compras -->
+  <div id="cart">
+    <h2>Carrinho</h2>
+    <ul id="cart-items"></ul>
+    <button id="finalizar-compra" onclick="finalizarCompra()">Finalizar Compra</button>
+  </div>
+
+  <script>
+    let cart = [];
+
+    function addToCart(produto, preco, sabor) {
+      cart.push({ produto, preco, sabor });
+      updateCart();
+    }
+
+    function updateCart() {
+      const cartItems = document.getElementById("cart-items");
+      cartItems.innerHTML = "";
+      cart.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = `${item.produto} - ${item.sabor} - ${item.preco}`;
+        cartItems.appendChild(li);
+      });
+    }
+
+    function finalizarCompra() {
+      if (cart.length === 0) {
+        alert("O carrinho está vazio!");
+      } else {
+        // Redirecionar para a página de pagamento
+        window.location.href = "finalizar-compra.html";
+      }
+    }
+  </script>
+
 </body>
 </html>
