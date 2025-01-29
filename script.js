@@ -1,27 +1,38 @@
-document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll(".product-name").forEach(product => {
-        product.addEventListener("click", function () {
-            let parent = this.parentElement;
-            let details = parent.querySelector(".product-details");
+document.addEventListener("DOMContentLoaded", () => {
+    const products = document.querySelectorAll(".product");
 
-            // Alterna a visibilidade da área de detalhes
-            if (details.style.display === "block") {
-                details.style.display = "none";
-            } else {
-                let flavors = parent.getAttribute("data-flavors").split(", ");
-                
-                // Garante que não duplique os sabores toda vez que clica
-                details.innerHTML = `<p class="flavors-list"><strong>Sabores:</strong> ${flavors.join(", ")}</p>
-                    <button class="add-to-cart">Adicionar ao Carrinho</button>`;
-                
-                details.style.display = "block";
+    products.forEach(product => {
+        const productName = product.querySelector(".product-name");
+        const flavorsDiv = product.querySelector(".flavors");
 
-                // Adiciona evento para o botão "Adicionar ao Carrinho"
-                details.querySelector(".add-to-cart").addEventListener("click", function () {
-                    let cartCount = document.querySelector(".cart-count");
-                    cartCount.textContent = parseInt(cartCount.textContent) + 1;
-                });
-            }
+        productName.addEventListener("click", () => {
+            // Fecha todos os outros menus antes de abrir o atual
+            document.querySelectorAll(".flavors").forEach(div => {
+                if (div !== flavorsDiv) div.style.display = "none";
+            });
+
+            // Alterna a visibilidade do menu atual
+            flavorsDiv.style.display = (flavorsDiv.style.display === "none" || flavorsDiv.style.display === "") ? "block" : "none";
+        });
+
+        // Clique em um sabor para adicionar ao carrinho
+        const flavorButtons = flavorsDiv.querySelectorAll(".flavor-btn");
+        flavorButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                const productNameText = product.getAttribute("data-name");
+                const productPrice = product.getAttribute("data-price");
+                const selectedFlavor = button.textContent;
+
+                addToCart(productNameText, selectedFlavor, productPrice);
+            });
         });
     });
 });
+
+// Função para adicionar itens ao carrinho
+function addToCart(productName, flavor, price) {
+    const cart = document.getElementById("cart");
+    const cartItem = document.createElement("li");
+    cartItem.textContent = `${productName} - ${flavor} - $${price}`;
+    cart.appendChild(cartItem);
+}
