@@ -1,56 +1,47 @@
+/* Reset básico */
 body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    overflow-x: hidden; /* Impede rolagem lateral */
     background-color: #333; /* Fundo escuro */
 }
 
-.background-logo {
-    position: fixed;
-    top: 0;
-    left: 0;
+/* Contêiner da logo no topo */
+.logo-container {
+    position: relative;
     width: 100%;
-    height: 100%;
-    background-image: url('logo.png'); /* Logo estática no fundo */
-    background-size: cover;
-    background-position: center;
-    z-index: -1;
-    opacity: 0; /* Inicialmente a logo está invisível */
-    transition: opacity 1s ease-in-out; /* Animação para aparecer */
+    height: 30vh; /* A logo ocupa 30% da tela */
+    background-color: #222; /* Cor escura para o fundo da logo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.rolling-img {
-    width: 100%;
-    height: auto;
-    transition: transform 0.2s ease;
+.logo {
+    max-height: 80%; /* Logo ocupa 80% da altura do container */
+    object-fit: contain;
 }
 
+/* Degradê e conteúdo */
 .content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+    background: linear-gradient(to bottom, #222 30%, #555 100%); /* Degradê do fundo escuro para cinza claro */
     color: white;
-    z-index: 1;
+    padding: 20px;
+    text-align: center;
 }
 
+/* Estilo do nome da loja */
 .store-name {
     font-family: 'Bungee', cursive;
     font-size: 4em;
-    margin: 0;
     text-transform: uppercase; /* Nome em maiúsculas */
+    margin: 0;
 }
 
+/* Estilo da frase */
 .store-slogan {
     font-family: 'Pathway Gothic One', sans-serif;
     font-size: 1.5em;
     margin-top: 20px;
     text-transform: uppercase; /* Frase em maiúsculas */
-}
-
-/* Estilo para quando rolar a tela e logo aparecer */
-body.scrolled .background-logo {
-    opacity: 1; /* Logo ficará visível após o scroll */
 }
