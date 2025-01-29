@@ -17,3 +17,10 @@ function checkout() {
     // Lógica para finalizar a compra
     console.log('Finalizando a compra.');
 }
+<script>
+    // Função para alternar a visibilidade do menu
+    function toggleMenu() {
+        const menu = document.getElementById('menu');
+        menu.classList.toggle('hidden'); // Adiciona ou remove a classe 'hidden' para esconder ou mostrar o menu
+    }
+</script>
