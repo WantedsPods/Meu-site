@@ -15,31 +15,52 @@ document.addEventListener("DOMContentLoaded", () => {
             flavorsDiv.style.display = (flavorsDiv.style.display === "none" || flavorsDiv.style.display === "") ? "block" : "none";
         });
 
-        // Adiciona evento de clique aos botões de sabor quando o menu abre
-        flavorsDiv.addEventListener("click", (event) => {
-            if (event.target.classList.contains("flavor-btn")) {
+        // Clique em um sabor para adicionar ao carrinho
+        const flavorButtons = flavorsDiv.querySelectorAll(".flavor-btn");
+        flavorButtons.forEach(button => {
+            button.addEventListener("click", () => {
                 const productNameText = product.getAttribute("data-name");
                 const productPrice = product.getAttribute("data-price");
-                const selectedFlavor = event.target.textContent;
+                const selectedFlavor = button.textContent;
 
                 addToCart(productNameText, selectedFlavor, productPrice);
-            }
+            });
         });
     });
 });
 
 // Função para adicionar itens ao carrinho
 function addToCart(productName, flavor, price) {
-    let cart = document.getElementById("cart");
+    const cart = document.getElementById("cart");
+    
+    // Verifica se o item já existe no carrinho
+    const existingItem = Array.from(cart.children).find(item => {
+        return item.textContent.includes(productName) && item.textContent.includes(flavor);
+    });
 
-    // Se o carrinho ainda não existir, cria um
-    if (!cart) {
-        cart = document.createElement("ul");
-        cart.id = "cart";
-        document.body.appendChild(cart); // Adiciona o carrinho ao final do body
+    if (existingItem) {
+        // Se o item já estiver no carrinho, apenas incrementa a quantidade
+        const quantity = existingItem.querySelector(".quantity");
+        quantity.textContent = parseInt(quantity.textContent) + 1;
+    } else {
+        // Se não, cria um novo item no carrinho
+        const cartItem = document.createElement("li");
+        cartItem.textContent = `${productName} - ${flavor} - $${price} - `;
+
+        const quantity = document.createElement("span");
+        quantity.classList.add("quantity");
+        quantity.textContent = 1;
+        cartItem.appendChild(quantity);
+
+        // Adiciona botão de remover
+        const removeBtn = document.createElement("button");
+        removeBtn.textContent = "Remover";
+        removeBtn.classList.add("remove-btn");
+        removeBtn.addEventListener("click", () => {
+            cartItem.remove();
+        });
+
+        cartItem.appendChild(removeBtn);
+        cart.appendChild(cartItem);
     }
-
-    const cartItem = document.createElement("li");
-    cartItem.textContent = `${productName} - ${flavor} - $${price}`;
-    cart.appendChild(cartItem);
 }
