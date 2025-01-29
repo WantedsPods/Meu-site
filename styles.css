@@ -59,6 +59,22 @@ p {
 }
 
 /* Carrinho escondido inicialmente */
+/* Ícone do carrinho no canto superior direito */
+.toggle-cart {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    z-index: 999;
+}
+
+/* Carrinho escondido inicialmente */
 #cart-container {
     display: none; /* Inicia escondido */
     position: fixed;
@@ -72,16 +88,6 @@ p {
     z-index: 999;
     max-height: 70vh;
     overflow-y: auto;
-}
-
-/* Botão de abrir carrinho */
-.toggle-cart {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
 }
 
 /* Estilos para o carrinho */
@@ -119,6 +125,7 @@ p {
 #cart:empty {
     text-align: center;
     color: #999;
+}
 }
 
 }
