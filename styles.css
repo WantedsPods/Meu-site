@@ -188,3 +188,49 @@ footer {
     cursor: pointer;
     border-radius: 5px;
 }
+
+/* Estilo simples para o layout */
+body {
+    font-family: 'Pathway Gothic One', sans-serif;
+    background-color: #222;
+    color: #fff;
+    margin: 0;
+    padding: 20px;
+}
+
+.products {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.product {
+    background: #333;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+}
+
+.product-name {
+    font-size: 1.2em;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.flavors {
+    margin-top: 10px;
+}
+
+.flavor-btn {
+    background: #444;
+    color: white;
+    border: none;
+    padding: 8px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.flavor-btn:hover {
+    background: #555;
+}
