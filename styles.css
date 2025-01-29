@@ -137,3 +137,52 @@ footer {
     color: white;
     margin-top: 5px;
 }
+
+.products-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product {
+    text-align: center;
+    margin: 20px 0;
+    max-width: 300px;
+}
+
+.product img {
+    width: 150px; 
+    height: 150px; 
+    object-fit: cover;
+    display: block;
+    margin: 10px auto;
+}
+
+.product-name {
+    cursor: pointer;
+    color: white;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.product-details {
+    display: none;
+    background: #333;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.flavors-list {
+    color: white;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.add-to-cart {
+    background: #ff9800;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+}
