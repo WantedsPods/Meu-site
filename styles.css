@@ -103,3 +103,11 @@ footer {
     padding: 10px;
     background-color: #222;
 }
+
+/* Frase */
+.frase {
+  font-family: 'Pathway Gothic One', sans-serif;
+  font-size: 24px; /* Ajuste o tamanho conforme necessário */
+  color: #ffffff; /* Cor da fonte */
+  text-align: center;
+  margin-top: 600px; /* Ajusta o valor para mover a frase mais para baixo */
