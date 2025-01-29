@@ -1,7 +1,11 @@
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        document.body.classList.add('scrolled');
+// Função para adicionar a classe de rolagem quando o usuário rola a página
+window.addEventListener("scroll", function() {
+    const logo = document.querySelector('.scrolling-logo');
+    const scrollPosition = window.scrollY;
+
+    if (scrollPosition > 50) {
+        logo.classList.add('scroll');
     } else {
-        document.body.classList.remove('scrolled');
+        logo.classList.remove('scroll');
     }
 });
