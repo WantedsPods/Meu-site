@@ -19,22 +19,28 @@
         </div>
     </section>
 
-    <!-- Botão para abrir/fechar o carrinho -->
-<button id="toggle-cart" class="toggle-cart">Abrir Carrinho</button>
+    <!-- Ícone do carrinho no canto superior direito -->
+<button id="toggle-cart" class="toggle-cart">
+    🛒 Carrinho (<span class="cart-count">0</span>)
+</button>
 
-<!-- Carrinho -->
+<!-- Carrinho (inicialmente escondido) -->
 <div id="cart-container" class="cart-container">
     <p><strong>Itens no Carrinho:</strong></p>
-    <span class="cart-count">0</span> <!-- Contador de itens -->
     <ul id="cart"></ul> <!-- Lista de itens do carrinho -->
     
     <!-- Botão para finalizar compra -->
     <button id="checkout-button" class="checkout-button">Finalizar Compra</button>
-</div><!-- WhatsApp -->
-    <div class="whatsapp">
-        <a href="https://wa.me/5516992229661" target="_blank">
-            <img src="whatsapp.png" alt="WhatsApp">
-        </a>
+</div>
+
+<!-- Produtos -->
+<div class="product" data-price="125">
+    <h3 class="product-name">Produto 1</h3>
+    <div class="product-details" style="display:none;"></div>
+    <button class="product-name" data-flavors="Strawberry Ice, Icy Mint, Watermelon Ice">Ver Sabores</button>
+</div>
+
+<!-- Outros produtos aqui -->
     </div>
 
     <footer>
