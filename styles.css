@@ -1,47 +1,91 @@
 /* Reset básico */
-body {
+* {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #333; /* Fundo escuro */
+    box-sizing: border-box;
 }
 
-/* Contêiner da logo no topo */
-.logo-container {
-    position: relative;
-    width: 100%;
-    height: 30vh; /* A logo ocupa 30% da tela */
-    background-color: #222; /* Cor escura para o fundo da logo */
+/* Corpo e fontes */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Cabeçalho */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #222;
+    padding: 10px 20px;
+}
+
+.logo-container .logo {
+    max-height: 50px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Seção principal */
+.hero {
+    background: url('hero-image.jpg') no-repeat center center/cover;
+    height: 60vh;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.logo {
-    max-height: 100%; /* Logo ocupa toda a altura do container */
-    object-fit: contain;
-}
-
-/* Degradê e conteúdo */
-.content {
-    background: linear-gradient(to bottom, #222 30%, #555 100%); /* Degradê do fundo escuro para cinza claro */
-    color: white;
-    padding: 40px 20px;
     text-align: center;
+    color: #fff;
 }
 
-/* Estilo do nome da loja */
-.store-name {
+.hero h1 {
     font-family: 'Bungee', cursive;
     font-size: 4em;
-    text-transform: uppercase; /* Nome em maiúsculas */
-    margin: 0;
+    text-transform: uppercase;
 }
 
-/* Estilo da frase */
-.store-slogan {
+.hero p {
     font-family: 'Pathway Gothic One', sans-serif;
     font-size: 1.5em;
+    margin-top: 10px;
+}
+
+/* Seção de produtos */
+.product-section {
+    padding: 20px;
+    background-color: #fff;
+}
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Seção sobre */
+.about-section, .contact-section {
+    padding: 20px;
+    background-color: #fff;
     margin-top: 20px;
-    text-transform: uppercase; /* Frase em maiúsculas */
+}
+
+/* Rodapé */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #222;
+    color: #fff;
 }
