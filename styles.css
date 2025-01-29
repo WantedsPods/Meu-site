@@ -116,12 +116,12 @@ footer {
 }
 
 .product img {
-    width: 50px;  /* Ajuste para o tamanho das imagens */
-    height: 50px;  /* Mantém a altura igual à largura */
-    object-fit: cover;  /* Garantir que a imagem não distorça */
+    width: 150px; /* Define um tamanho fixo para as imagens */
+    height: 150px; /* Mantém as imagens quadradas */
+    object-fit: contain; /* Garante que a imagem se encaixe sem distorcer */
     display: block;
-    margin: 0 auto;  /* Centraliza a imagem */
-    border-radius: 8px;  /* Borda arredondada */
+    margin: 0 auto; /* Centraliza a imagem */
+
 }
 
 .product h2 {
