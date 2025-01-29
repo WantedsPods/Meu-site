@@ -1,11 +1,15 @@
-// Função para adicionar a classe de rolagem quando o usuário rola a página
-window.addEventListener("scroll", function() {
-    const logo = document.querySelector('.scrolling-logo');
-    const scrollPosition = window.scrollY;
+window.addEventListener('scroll', function() {
+    var body = document.body;
+    var offset = window.pageYOffset;
 
-    if (scrollPosition > 50) {
-        logo.classList.add('scroll');
+    // Quando rolar 100px ou mais
+    if (offset > 100) {
+        body.classList.add('scrolled');
     } else {
-        logo.classList.remove('scroll');
+        body.classList.remove('scrolled');
     }
+
+    // Código para rolar a imagem para cima
+    var img = document.getElementById("rolling-img");
+    img.style.transform = "translateY(-" + offset / 2 + "px)";
 });
