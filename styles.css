@@ -18,26 +18,17 @@ body {
   top: 10%; /* Logo mais para cima */
   left: 50%;
   transform: translateX(-50%);
-  width: auto;
-  height: 150px; /* Ajuste o tamanho conforme necessário */
+  width: 250px; /* Logo maior, ajuste conforme necessário */
+  height: auto;
 }
 
-/* Estilo do título (nome da loja) */
-h1 {
-  font-family: 'Angle Square', sans-serif; /* Fonte Angle Square */
-  font-size: 60px; /* Ajuste o tamanho conforme necessário */
-  color: white;
-  text-align: center;
-  margin-top: 20px; /* Ajuste a margem conforme necessário */
-}
-
-/* Estilo da frase abaixo do nome */
+/* Estilo da frase abaixo da logo */
 h2 {
   font-family: 'Pathway Gothic One', sans-serif; /* Fonte Pathway Gothic One */
-  font-size: 30px;
+  font-size: 30px; /* Ajuste o tamanho conforme necessário */
   color: white;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 /* Estilo do botão de WhatsApp */
