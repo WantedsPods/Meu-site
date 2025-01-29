@@ -34,15 +34,15 @@ body {
     height: auto;
 }
 
-/* Overlay (texto abaixo da logo) */
+/* Frase */
 .overlay {
     position: absolute;
-    bottom: 35px; /* Distância do texto em relação ao fundo da logo */
-    width: 100%;
-    text-align: center;
+    top: 75%; /* Coloca a frase mais para baixo */
+    left: 10%; /* Alinha a frase à esquerda */
+    width: 80%; /* Deixa a frase ocupar a largura disponível */
+    text-align: left; /* Alinha o texto à esquerda */
     color: white;
-    background: linear-gradient(to top, rgba(34, 34, 34, 1), rgba(34, 34, 34, 0)); /* Degradê para transição suave */
-    padding: 20px;
+    padding: 10px;
 }
 
 h1 {
