@@ -27,7 +27,7 @@ body {
 /* Logo */
 .logo {
     position: absolute;
-    top: 20%; /* Coloca a logo mais para cima */
+    top: 10%; /* Logo um pouco mais para cima */
     left: 50%;
     transform: translateX(-50%);
     width: 300px; /* Ajuste o tamanho da logo conforme necessário */
@@ -86,6 +86,8 @@ p {
     position: fixed;
     bottom: 20px;
     left: 20px;
+    border-radius: 50%; /* Torna a imagem redonda */
+    overflow: hidden; /* Garante que a imagem seja cortada para ser redonda */
 }
 
 .whatsapp img {
