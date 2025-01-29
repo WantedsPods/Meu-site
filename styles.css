@@ -30,13 +30,12 @@ body {
 
 /* Logo */
 .logo {
-  position: absolute;
-  top: 50%; /* Centraliza verticalmente */
-  left: 50%; /* Centraliza horizontalmente */
-  transform: translate(-50%, -50%); /* Ajusta a posição exata da logo */
-  width: 250px; /* Ajuste o tamanho da logo conforme necessário */
-  height: auto; /* Mantém a proporção da imagem */
-
+    position: absolute;
+    top: 15%; /* Logo um pouco mais para cima */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 250px; /* Ajuste o tamanho da logo conforme necessário */
+    height: auto;
 }
 
 .overlay {
@@ -102,12 +101,5 @@ footer {
     text-align: center;
     padding: 10px;
     background-color: #222;
+    color: white;
 }
-
-/* Frase */
-.frase {
-  font-family: 'Pathway Gothic One', sans-serif;
-  font-size: 24px; /* Ajuste o tamanho conforme necessário */
-  color: #ffffff; /* Cor da fonte */
-  text-align: center;
-  margin-top: 600px; /* Ajusta o valor para mover a frase mais para baixo */
