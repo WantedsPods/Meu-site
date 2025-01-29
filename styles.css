@@ -37,7 +37,7 @@ body {
 /* Overlay (texto abaixo da logo) */
 .overlay {
     position: absolute;
-    bottom: 10px; /* Distância do texto em relação ao fundo da logo */
+    bottom: 35px; /* Distância do texto em relação ao fundo da logo */
     width: 100%;
     text-align: center;
     color: white;
