@@ -27,10 +27,10 @@ body {
 /* Logo */
 .logo {
     position: absolute;
-    top: 10%; /* Logo um pouco mais para cima */
+    top: 5%; /* Logo um pouco mais para cima */
     left: 50%;
     transform: translateX(-50%);
-    width: 300px; /* Ajuste o tamanho da logo conforme necessário */
+    width: 200px; /* Ajuste o tamanho da logo conforme necessário */
     height: auto;
 }
 
