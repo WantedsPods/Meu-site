@@ -10,24 +10,9 @@
 </head>
 
 <body>
-    <!-- Menu Hamburguer -->
-    <header>
-        <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
-        <nav id="menu" class="hidden">
-            <ul>
-                <li><a href="#">Início</a></li>
-                <li><a href="#">Produtos</a></li>
-                <li><a href="#" id="whatsapp-link">
-                    <img src="whatsapp-icon.png" alt="WhatsApp">
-                    WhatsApp
-                </a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- Conteúdo principal -->
-    <section class="content">
-        <div class="hero">
+    <!-- Logo e Texto Principal -->
+    <section class="hero">
+        <div class="hero-content">
             <img src="logo.png" alt="Logo" class="logo">
             <div class="overlay">
                 <h1>WANTEDS PODS</h1>
@@ -35,6 +20,19 @@
             </div>
         </div>
     </section>
+
+    <!-- Carrinho -->
+    <div class="cart-container">
+        <img src="cart-icon.png" alt="Carrinho" class="cart-icon">
+        <span class="cart-count">0</span>
+    </div>
+
+    <!-- WhatsApp -->
+    <div class="whatsapp">
+        <a href="https://wa.me/seunumerodetelefone" target="_blank">
+            <img src="whatsapp-icon.png" alt="WhatsApp">
+        </a>
+    </div>
 
     <footer>
         <p>&copy; 2025 Wanteds Pods. Todos os direitos reservados.</p>
