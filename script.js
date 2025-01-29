@@ -1,25 +1,28 @@
-// script.js
+document.addEventListener("DOMContentLoaded", function () {
+    let cartCount = 0;
 
-// Função para adicionar um produto ao carrinho
-function addToCart(productId) {
-    // Lógica para adicionar o produto ao carrinho
-    console.log(`Produto ${productId} adicionado ao carrinho.`);
-}
+    document.querySelectorAll(".product-name").forEach(product => {
+        product.addEventListener("click", function () {
+            let parent = this.parentElement;
+            let details = parent.querySelector(".product-details");
 
-// Função para exibir o carrinho
-function viewCart() {
-    // Lógica para exibir os itens do carrinho
-    console.log('Exibindo itens do carrinho.');
-}
+            // Se estiver visível, esconde. Se não, mostra.
+            if (details.style.display === "block") {
+                details.style.display = "none";
+            } else {
+                let flavors = parent.getAttribute("data-flavors").split(", ");
+                let productName = parent.getAttribute("data-name");
+                let price = parent.getAttribute("data-price");
 
-// Função para finalizar a compra
-function checkout() {
-    // Lógica para finalizar a compra
-    console.log('Finalizando a compra.');
-}
+                details.innerHTML = `<p class="flavors-list"><strong>Sabores:</strong> ${flavors.join(", ")}</p>
+                    <button class="add-to-cart">Adicionar ao Carrinho</button>`;
+                details.style.display = "block";
 
-// Função para alternar a visibilidade do menu
-function toggleMenu() {
-    const menu = document.getElementById('menu');
-    menu.classList.toggle('hidden'); // Alterna a classe 'hidden' para mostrar ou esconder o menu
-}
+                details.querySelector(".add-to-cart").addEventListener("click", function () {
+                    cartCount++;
+                    document.querySelector(".cart-count").textContent = cartCount;
+                });
+            }
+        });
+    });
+});
