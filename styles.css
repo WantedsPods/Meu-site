@@ -1,93 +1,46 @@
-* {
+body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden; /* Impede rolagem lateral */
 }
 
-html, body {
-    height: 100%;
-    width: 100%;
-    font-family: 'Nunito', sans-serif;
-    background-color: #333;
-    color: white;
-    overflow-x: hidden;
-}
-
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    text-align: center;
-}
-
-.landing-page {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.logo-background {
-    position: absolute;
+.background-logo {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('logo.png') no-repeat center;
+    background-image: url('logo.png'); /* Logo estática no fundo */
     background-size: cover;
-    opacity: 0.2;
-    z-index: -2;
+    background-position: center;
+    z-index: -1;
 }
 
-.scrolling-logo {
+.rolling-img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.2s ease;
+}
+
+.content {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    opacity: 0.8;
-    z-index: -1;
-    transition: transform 0.3s ease-out;
+    text-align: center;
+    color: white;
+    z-index: 1;
 }
 
-.scrolling-logo-img {
-    max-width: 30%;
-}
-
-.content h1 {
-    font-family: 'Bungee', sans-serif;
-    font-size: 50px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    margin-bottom: 10px;
-    z-index: 2;
-    position: relative;
-}
-
-.content p {
-    font-family: 'Pathway Gothic One', sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-    text-transform: uppercase;
-    margin-top: 10px;
-    z-index: 2;
-}
-
-.content {
-    position: relative;
-    z-index: 2;
-}
-
-/* Efeito de rolagem para a logo */
-body.scroll .scrolling-logo {
-    transform: translate(-50%, -100%);
-}
-
-body {
+.store-name {
+    font-family: 'Bungee', cursive;
+    font-size: 4em;
     margin: 0;
-    padding: 0;
-    font-family: "Nunito", sans-serif;
+}
+
+.store-slogan {
+    font-family: 'Pathway Gothic One', sans-serif;
+    font-size: 1.5em;
+    margin-top: 20px;
 }
