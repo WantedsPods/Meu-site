@@ -1,15 +1,19 @@
-window.addEventListener('scroll', function() {
-    var body = document.body;
-    var offset = window.pageYOffset;
+// script.js
 
-    // Quando rolar 100px ou mais
-    if (offset > 100) {
-        body.classList.add('scrolled');
-    } else {
-        body.classList.remove('scrolled');
-    }
+// Função para adicionar um produto ao carrinho
+function addToCart(productId) {
+    // Lógica para adicionar o produto ao carrinho
+    console.log(`Produto ${productId} adicionado ao carrinho.`);
+}
 
-    // Código para rolar a imagem para cima
-    var img = document.getElementById("rolling-img");
-    img.style.transform = "translateY(-" + offset / 2 + "px)";
-});
+// Função para exibir o carrinho
+function viewCart() {
+    // Lógica para exibir os itens do carrinho
+    console.log('Exibindo itens do carrinho.');
+}
+
+// Função para finalizar a compra
+function checkout() {
+    // Lógica para finalizar a compra
+    console.log('Finalizando a compra.');
+}
