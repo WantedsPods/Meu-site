@@ -200,15 +200,15 @@ body {
 
 /* Estilos dos botões de sabores */
 .flavors {
-    margin-top: 10px;
+    margin-top: 25px;
 }
 
 .flavor-btn {
-    background-color: #4CAF50;
+    background-color: #000000;
     color: white;
     border: none;
     padding: 10px;
-    margin: 5px;
+    margin: 0% auto;
     cursor: pointer;
     border-radius: 5px;
     font-size: 14px;
@@ -221,7 +221,7 @@ body {
 
 /* Adiciona o botão de "Adicionar ao Carrinho" */
 .add-to-cart {
-    background-color: #f39c12;
+    background-color: #000000;
     color: white;
     border: none;
     padding: 10px;
@@ -236,11 +236,13 @@ body {
     background-color: #e67e22;
 }
 
-/* Centraliza o nome e os sabores */
 .product-name,
 .flavors,
 .add-to-cart {
-    text-align: center;
+  width: 300px; /* Define a largura fixa */
+  margin: 0 auto; /* Centraliza o elemento horizontalmente */
+  text-align: center; /* Centraliza o texto dentro do elemento */
+
 }
 
 /* Layout responsivo - em telas menores */
