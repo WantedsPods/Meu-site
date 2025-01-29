@@ -37,8 +37,8 @@ body {
 /* Frase */
 .overlay {
     position: absolute;
-    top: 75%; /* Coloca a frase mais para baixo */
-    left: 10%; /* Alinha a frase à esquerda */
+    top: 150%; /* Coloca a frase mais para baixo */
+    left: 2%; /* Alinha a frase à esquerda */
     width: 80%; /* Deixa a frase ocupar a largura disponível */
     text-align: left; /* Alinha o texto à esquerda */
     color: white;
