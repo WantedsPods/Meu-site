@@ -103,134 +103,243 @@ footer {
     padding: 10px;
     background-color: #222;
 
-    /* Estilo dos produtos */
-.products {
+/* Estilos gerais */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
     display: flex;
-    flex-direction: column;
-    gap: 80px;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    background-color: #f8f8f8;
+}
+
+/* Container principal dos produtos */
+.product {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
     padding: 20px;
-}
-
-.product {
+    width: 200px;
     text-align: center;
+    position: relative;
 }
 
+/* Estilos das imagens */
 .product img {
-    width: 60px; !important; /* Define um tamanho fixo para as imagens */
-    height: 50px; !important; /* Mantém as imagens quadradas */
-    object-fit: contain; /* Garante que a imagem se encaixe sem distorcer */
-    display: block;
-    margin: 0 auto; /* Centraliza a imagem */
     max-width: 100%;
-    max-height: 200px; /* Define um limite máximo */
-    background-color: #333; /* Cor de fundo escura (pode mudar) */
-    border: 2px solid white; /* Borda branca ao redor da imagem *//* Espaço interno entre a borda e a imagem */
-    border-radius: 10px; /* Deixa a borda levemente arredondada */
-}
-
-.product h2 {
-    font-size: 18px;
-    color: white;
-    margin-top: 30px;
-}
-
-.product p {
-    font-size: 16px;
-    color: white;
-    margin-top: 5px;
-}
-
-.products-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.product {
-    text-align: center;
-    margin: 20px 0;
-    max-width: 300px;
-}
-
-.product img {
-    width: 150px; 
-    height: 150px; 
-    object-fit: cover;
-    display: block;
-    margin: 10px auto;
-}
-
-.product-name {
-    cursor: pointer;
-    color: white;
-    font-size: 18px;
-    margin-bottom: 5px;
-}
-
-.product-details {
-    display: none;
-    background: #333;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-.flavors-list {
-    color: white;
-    font-size: 16px;
+    max-height: 150px; /* Limite máximo de altura */
+    object-fit: contain;
+    border-radius: 8px;
     margin-bottom: 10px;
 }
 
-.add-to-cart {
-    background: #ff9800;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-/* Estilo simples para o layout */
-body {
-    font-family: 'Pathway Gothic One', sans-serif;
-    background-color: #222;
-    color: #fff;
-    margin: 0;
-    padding: 20px;
-}
-
-.products {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.product {
-    background: #333;
-    padding: 10px;
-    border-radius: 5px;
-    color: white;
-}
-
+/* Nome do produto */
 .product-name {
-    font-size: 1.2em;
+    font-size: 16px;
+    font-weight: bold;
     cursor: pointer;
-    margin: 10px 0;
+    color: #333;
+    margin: 0;
 }
 
+/* Detalhes do produto */
+.product-details {
+    display: none;
+    margin-top: 10px;
+}
+
+/* Estilos dos botões de sabores */
 .flavors {
     margin-top: 10px;
 }
 
 .flavor-btn {
-    background: #444;
+    background-color: #4CAF50;
     color: white;
     border: none;
-    padding: 8px;
+    padding: 10px;
     margin: 5px;
     cursor: pointer;
     border-radius: 5px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
 }
 
 .flavor-btn:hover {
-    background: #555;
+    background-color: #45a049;
+}
+
+/* Adiciona o botão de "Adicionar ao Carrinho" */
+.add-to-cart {
+    background-color: #f39c12;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.add-to-cart:hover {
+    background-color: #e67e22;
+}
+
+/* Centraliza o nome e os sabores */
+.product-name,
+.flavors,
+.add-to-cart {
+    text-align: center;
+}
+
+/* Layout responsivo - em telas menores */
+@media (max-width: 768px) {
+    .product {
+        width: 150px; /* Ajuste do tamanho do produto em telas menores */
+    }
+
+    .product img {
+        max-height: 120px;
+
+}
+
+    /* Estilizando o body */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 20px;
+}
+
+/* Estilo para o título do produto */
+h2.product-name {
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    padding: 10px;
+    background-color: #ffcc00;
+    border-radius: 5px;
+    margin: 10px 0;
+    transition: background-color 0.3s;
+}
+
+/* Mudando a cor de fundo ao passar o mouse */
+h2.product-name:hover {
+    background-color: #ff9900;
+}
+
+/* Estilo das imagens dos produtos */
+.product img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Centralizando o conteúdo dos produtos */
+.product {
+    width: 300px;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Estilo da lista de sabores */
+.flavors {
+    display: none;
+    margin-top: 10px;
+    text-align: left;
+}
+
+/* Botões de sabores */
+.flavor-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    margin: 5px 0;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+/* Efeito ao passar o mouse sobre os botões */
+.flavor-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo para o carrinho */
+.cart {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Lista do carrinho */
+#cart-items {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Estilo para o botão de remover do carrinho */
+#cart-items button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Efeito ao passar o mouse sobre o botão de remover */
+#cart-items button:hover {
+    background-color: #c82333;
+}
+
+/* Total do carrinho */
+#cart-total {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Botão limpar carrinho */
+button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Efeito ao passar o mouse sobre o botão de limpar */
+button:hover {
+    background-color: #218838;
 }
