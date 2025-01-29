@@ -116,8 +116,8 @@ footer {
 }
 
 .product img {
-    width: 150px; /* Define um tamanho fixo para as imagens */
-    height: 150px; /* Mantém as imagens quadradas */
+    width: 150px; !important; /* Define um tamanho fixo para as imagens */
+    height: 150px; !important; /* Mantém as imagens quadradas */
     object-fit: contain; /* Garante que a imagem se encaixe sem distorcer */
     display: block;
     margin: 0 auto; /* Centraliza a imagem */
