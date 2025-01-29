@@ -21,31 +21,28 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.hero-content {
-    width: 100%;
     text-align: center;
 }
 
 /* Logo */
 .logo {
     position: absolute;
-    top: 15%; /* Logo um pouco mais para cima */
+    top: 20%; /* Coloca a logo mais para cima */
     left: 50%;
     transform: translateX(-50%);
-    width: 250px; /* Ajuste o tamanho da logo conforme necessário */
+    width: 300px; /* Ajuste o tamanho da logo conforme necessário */
     height: auto;
 }
 
+/* Overlay (texto abaixo da logo) */
 .overlay {
     position: absolute;
-    bottom: 20px;
+    bottom: 10px; /* Distância do texto em relação ao fundo da logo */
     width: 100%;
     text-align: center;
     color: white;
     background: linear-gradient(to top, rgba(34, 34, 34, 1), rgba(34, 34, 34, 0)); /* Degradê para transição suave */
-    padding: 10px;
+    padding: 20px;
 }
 
 h1 {
@@ -101,5 +98,4 @@ footer {
     text-align: center;
     padding: 10px;
     background-color: #222;
-    color: white;
 }
