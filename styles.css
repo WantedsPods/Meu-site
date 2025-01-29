@@ -18,7 +18,7 @@ body {
 }
 
 .logo {
-    max-height: 80%; /* Logo ocupa 80% da altura do container */
+    max-height: 100%; /* Logo ocupa toda a altura do container */
     object-fit: contain;
 }
 
@@ -26,7 +26,7 @@ body {
 .content {
     background: linear-gradient(to bottom, #222 30%, #555 100%); /* Degradê do fundo escuro para cinza claro */
     color: white;
-    padding: 20px;
+    padding: 40px 20px;
     text-align: center;
 }
 
