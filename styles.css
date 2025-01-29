@@ -119,12 +119,12 @@ footer {
     align-items: center; /* Alinha os elementos ao centro */
     justify-content: center;
     width: 300px; /* Largura fixa para os produtos */
-    margin-bottom: 40px; /* Espaço para o próximo produto */
+    margin-bottom: 80px; /* Espaço para o próximo produto */
 }
 
 /* Imagem do produto */
 .product-img {
-    width: 50px; /* Define o tamanho da imagem para 300px */
+    width: 50px;
     height: 50px; /* Altura da imagem */
     object-fit: cover; /* Faz a imagem cobrir a área sem distorcer */
     margin-bottom: 10px; /* Espaço entre a imagem e o nome */
