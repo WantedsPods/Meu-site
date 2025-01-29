@@ -121,6 +121,8 @@ footer {
     object-fit: contain; /* Garante que a imagem se encaixe sem distorcer */
     display: block;
     margin: 0 auto; /* Centraliza a imagem */
+    max-width: 100%;
+    max-height: 200px; /* Define um limite máximo */
 
 }
 
