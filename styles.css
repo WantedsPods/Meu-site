@@ -124,11 +124,21 @@ footer {
 
 /* Estilo para as imagens dos produtos */
 .product img {
-    width: 50px; /* Definindo a largura da imagem */
-    height: auto; /* Mantendo a proporção da imagem */
-    max-width: 100%; /* Garantindo que a imagem não ultrapasse o limite de sua área */
-    display: block; /* Remover qualquer espaço indesejado abaixo da imagem */
-    margin: 0 auto; /* Centralizando a imagem horizontalmente */
+    width: 100%;  /* Faz com que a imagem ocupe a largura disponível */
+    max-width: 100px;  /* Limita a largura máxima para 300px */
+    height: auto;  /* Mantém a proporção da imagem */
+    object-fit: cover;  /* Garante que a imagem cubra o espaço sem distorcer */
+    display: block;  /* Remove qualquer espaço extra */
+    margin: 0 auto;  /* Centraliza a imagem */
+}
+
+/* Adicionando um container para as imagens para garantir o layout correto */
+.product {
+    text-align: center;  /* Centraliza o conteúdo dentro de cada produto */ /* Espaço entre os produtos */
+    padding: 20px;  /* Espaçamento interno */
+    border: 1px solid #ddd;  /* Adiciona borda ao redor de cada produto */
+    background-color: #333;  /* Cor de fundo do produto */
+
 
 }
 
