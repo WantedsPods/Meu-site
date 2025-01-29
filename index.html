@@ -3,23 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wanteds Pods</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Pathway+Gothic+One&display=swap" rel="stylesheet">
+    <title>Minha Loja</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="landing-page">
-        <div class="logo-background">
-            <img src="logo.png" alt="Logo Wanteds Pods" class="logo-background-img">
-        </div>
-        <div class="scrolling-logo">
-            <img src="img.png" alt="Logo Animada" class="scrolling-logo-img">
-        </div>
-        <div class="content">
-            <h1>WANTEDS PODS</h1>
-            <p>AQUI VOCÊ ENCONTRA OS PODS MAIS PROCURADOS!</p>
-        </div>
+    <!-- A logo que ficará fixa no fundo -->
+    <div class="background-logo"></div>
+
+    <!-- A imagem que irá sumir conforme o rolar da tela -->
+    <img src="img.png" alt="Imagem Desaparecendo" class="rolling-img" id="rolling-img">
+
+    <!-- Nome e frase da loja -->
+    <div class="content">
+        <h1 class="store-name">Nome da Loja</h1>
+        <p class="store-slogan">AQUI VOCÊ ENCONTRA OS PODS MAIS PROCURADOS!</p>
     </div>
-    <script src="script.js"></script>
+
+    <script>
+        // Código para rolar a imagem para cima ao rolar a tela
+        window.addEventListener("scroll", function() {
+            var img = document.getElementById("rolling-img");
+            var offset = window.pageYOffset;
+            img.style.transform = "translateY(-" + offset / 2 + "px)";
+        });
+    </script>
 </body>
 </html>
