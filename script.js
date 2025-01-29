@@ -1,4 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // Mostra ou esconde o carrinho quando clica no botão "Abrir Carrinho"
+    document.getElementById("toggle-cart").addEventListener("click", function() {
+        const cartContainer = document.getElementById("cart-container");
+        cartContainer.style.display = cartContainer.style.display === "none" || cartContainer.style.display === "" ? "block" : "none";
+    });
+
+    // Ao clicar no nome do produto
     document.querySelectorAll(".product-name").forEach(product => {
         product.addEventListener("click", function () {
             let parent = this.parentElement;
@@ -28,6 +35,20 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     });
+
+    // Finalizar compra - Aqui você pode adicionar um processo real de checkout
+    document.getElementById("checkout-button").addEventListener("click", function() {
+        const cart = document.getElementById("cart");
+        const totalItems = cart.children.length;
+        if (totalItems > 0) {
+            alert(`Obrigado pela sua compra! Você comprou ${totalItems} itens.`);
+            cart.innerHTML = "";  // Limpa o carrinho
+            updateCartCount();
+            document.getElementById("cart-container").style.display = "none";  // Fecha o carrinho
+        } else {
+            alert("O carrinho está vazio.");
+        }
+    });
 });
 
 // Função para adicionar itens ao carrinho
@@ -47,5 +68,6 @@ function updateCartCount() {
     const cartCount = document.querySelector(".cart-count");
 
     // Conta o número de itens no carrinho e atualiza o contador
-    cartCount.textContent = cart.children.length;
+    let itemCount = cart.children.length;
+    cartCount.textContent = itemCount;
 }
