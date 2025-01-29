@@ -3,64 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WANTEDS PODS</title>
+    <title>Wanteds Pods</title>
     <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Pathway+Gothic+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Cabeçalho com logo e menu de navegação -->
+
+    <!-- Menu Hamburguer -->
     <header>
-        <div class="logo-container">
-            <img src="logo.png" alt="Logo da WANTEDS PODS" class="logo">
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
         </div>
-        <nav>
+        <nav id="menu" class="hidden">
             <ul>
-                <li><a href="#home">Início</a></li>
-                <li><a href="#produtos">Produtos</a></li>
-                <li><a href="#sobre">Sobre</a></li>
-                <li><a href="#contato">Contato</a></li>
+                <li><a href="#">INÍCIO</a></li>
+                <li><a href="#">PRODUTOS</a></li>
+                <li><a href="#" class="whatsapp-link">
+                    <img src="whatsapp-icon.png" alt="WhatsApp"> <!-- Adicione sua imagem aqui -->
+                    </a>
+                </li>
             </ul>
         </nav>
     </header>
 
-    <!-- Seção principal com imagem de destaque e frase -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>WANTEDS PODS</h1>
-            <p>AQUI VOCÊ ENCONTRA OS PODS MAIS PROCURADOS!</p>
+    <!-- Seção do site -->
+    <div class="content">
+        <div class="hero">
+            <img src="logo.png" alt="Logo" class="hero-logo">
+            <div class="overlay">
+                <h1>WANTEDS PODS</h1>
+                <p>AQUI VOCÊ ENCONTRA OS PODS MAIS PROCURADOS!</p>
+            </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Seção de produtos -->
-    <section id="produtos" class="product-section">
-        <h2>Produtos em Destaque</h2>
-        <div class="product-list">
-            <!-- Produtos serão inseridos aqui -->
-        </div>
-    </section>
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('hidden');
+        }
+    </script>
 
-    <!-- Seção sobre a loja -->
-    <section id="sobre" class="about-section">
-        <h2>Sobre a WANTEDS PODS</h2>
-        <p>Informações sobre a loja...</p>
-    </section>
-
-    <!-- Seção de contato -->
-    <section id="contato" class="contact-section">
-        <h2>Contato</h2>
-        <form id="contact-form">
-            <input type="text" id="name" name="name" placeholder="Seu Nome" required>
-            <input type="email" id="email" name="email" placeholder="Seu Email" required>
-            <textarea id="message" name="message" placeholder="Sua Mensagem" required></textarea>
-            <button type="submit">Enviar</button>
-        </form>
-    </section>
-
-    <!-- Rodapé -->
-    <footer>
-        <p>&copy; 2025 WANTEDS PODS. Todos os direitos reservados.</p>
-    </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>
