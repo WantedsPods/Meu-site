@@ -103,57 +103,35 @@ footer {
     padding: 10px;
     background-color: #222;
 
-/* Container dos produtos */
+    /* Estilo dos produtos */
 .products {
     display: flex;
-    flex-wrap: wrap; /* Permite que os produtos se ajustem na tela conforme necessário */
-    justify-content: center; /* Centraliza os produtos horizontalmente */
-    gap: 20px; /* Espaçamento entre os produtos */
+    flex-direction: column;
+    gap: 80px;
     padding: 20px;
 }
 
-/* Produto individual */
 .product {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Alinha os elementos ao centro */
-    justify-content: center;
-    width: 300px; /* Largura fixa para os produtos */
-    margin-bottom: 80px; /* Espaço para o próximo produto */
+    text-align: center;
 }
 
-/* Estilo para as imagens dos produtos */
 .product img {
-    width: 100%;  /* Faz com que a imagem ocupe a largura disponível */
-    max-width: 100px;  /* Limita a largura máxima para 300px */
-    height: auto;  /* Mantém a proporção da imagem */
-    object-fit: cover;  /* Garante que a imagem cubra o espaço sem distorcer */
-    display: block;  /* Remove qualquer espaço extra */
+    width: 50px;  /* Ajuste para o tamanho das imagens */
+    height: 50px;  /* Mantém a altura igual à largura */
+    object-fit: cover;  /* Garantir que a imagem não distorça */
+    display: block;
     margin: 0 auto;  /* Centraliza a imagem */
+    border-radius: 8px;  /* Borda arredondada */
 }
 
-/* Adicionando um container para as imagens para garantir o layout correto */
-.product {
-    text-align: center;  /* Centraliza o conteúdo dentro de cada produto */ /* Espaço entre os produtos */
-    padding: 20px;  /* Espaçamento interno */
-    border: 1px solid #ddd;  /* Adiciona borda ao redor de cada produto */
-    background-color: #333;  /* Cor de fundo do produto */
-
-
-}
-
-/* Nome do produto */
-h2 {
-    font-size: 30px;
-    font-weight: bold;
-    text-align: center; /* Centraliza o nome */
-}
-
-/* Preço */
-.price {
+.product h2 {
     font-size: 18px;
-    font-weight: bold;
-    color: #ff9800; /* Cor de destaque para o preço */
-    margin-top: 5px; /* Espaço entre o nome e o preço */
-    text-align: center; /* Centraliza o preço */
+    color: white;
+    margin-top: 30px;
+}
+
+.product p {
+    font-size: 16px;
+    color: white;
+    margin-top: 5px;
 }
