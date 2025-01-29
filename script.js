@@ -15,23 +15,30 @@ document.addEventListener("DOMContentLoaded", () => {
             flavorsDiv.style.display = (flavorsDiv.style.display === "none" || flavorsDiv.style.display === "") ? "block" : "none";
         });
 
-        // Clique em um sabor para adicionar ao carrinho
-        const flavorButtons = flavorsDiv.querySelectorAll(".flavor-btn");
-        flavorButtons.forEach(button => {
-            button.addEventListener("click", () => {
+        // Adiciona evento de clique aos botões de sabor quando o menu abre
+        flavorsDiv.addEventListener("click", (event) => {
+            if (event.target.classList.contains("flavor-btn")) {
                 const productNameText = product.getAttribute("data-name");
                 const productPrice = product.getAttribute("data-price");
-                const selectedFlavor = button.textContent;
+                const selectedFlavor = event.target.textContent;
 
                 addToCart(productNameText, selectedFlavor, productPrice);
-            });
+            }
         });
     });
 });
 
 // Função para adicionar itens ao carrinho
 function addToCart(productName, flavor, price) {
-    const cart = document.getElementById("cart");
+    let cart = document.getElementById("cart");
+
+    // Se o carrinho ainda não existir, cria um
+    if (!cart) {
+        cart = document.createElement("ul");
+        cart.id = "cart";
+        document.body.appendChild(cart); // Adiciona o carrinho ao final do body
+    }
+
     const cartItem = document.createElement("li");
     cartItem.textContent = `${productName} - ${flavor} - $${price}`;
     cart.appendChild(cartItem);
