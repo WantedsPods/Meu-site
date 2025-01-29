@@ -1,44 +1,29 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wanteds Pods</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Pathway+Gothic+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&family=Angle+Square&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <!-- Logo e Texto Principal -->
-    <section class="hero">
-        <div class="hero-content">
-            <img src="logo.png" alt="Logo" class="logo">
-            <div class="overlay">
-                <h1>WANTEDS PODS</h1>
-                <p>AQUI VOCÊ ENCONTRA OS PODS MAIS PROCURADOS!</p>
-            </div>
-        </div>
-    </section>
+    <div id="header">
+        <!-- Logo Centralizada -->
+        <img src="logo.png" alt="Logo" class="logo">
+
+        <!-- Frase -->
+        <h2>Onde qualidade e variedade se encontram!</h2>
+    </div>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/seunumerodetelefone" id="whatsapp" target="_blank">
+        <img src="whatsapp-icon.png" alt="WhatsApp">
+    </a>
 
     <!-- Carrinho -->
-    <div class="cart-container">
-        <img src="cart-icon.png" alt="Carrinho" class="cart-icon">
-        <span class="cart-count">0</span>
+    <div id="cart">
+        <span id="cart-count">0</span>
     </div>
-
-    <!-- WhatsApp -->
-    <div class="whatsapp">
-        <a href="https://wa.me/5516992229661" target="_blank">
-            <img src="whatsapp-icon.png" alt="WhatsApp">
-        </a>
-    </div>
-
-    <footer>
-        <!-- Removido o texto de direitos autorais -->
-    </footer>
-
-    <script src="script.js"></script>
 </body>
-
 </html>
