@@ -18,6 +18,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    text-align: center;
 }
 
 .landing-page {
@@ -27,7 +28,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
 }
 
 .logo-background {
@@ -43,27 +43,28 @@ body {
 }
 
 .logo {
-    max-width: 50%;
+    max-width: 40%;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    opacity: 0.4;
+    opacity: 0.5;
 }
 
 .content h1 {
-    font-family: 'Roboto', sans-serif;
-    font-size: 70px;
+    font-family: 'Bungee', sans-serif;
+    font-size: 50px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 6px;
+    letter-spacing: 3px;
     margin-bottom: 10px;
     z-index: 2;
     position: relative;
 }
 
 .content p {
-    font-size: 24px;
+    font-family: 'Pathway Gothic One', sans-serif;
+    font-size: 22px;
     font-weight: 700;
     text-transform: uppercase;
     margin-top: 10px;
@@ -73,22 +74,4 @@ body {
 .content {
     position: relative;
     z-index: 2;
-}
-
-body, html {
-    overflow-x: hidden;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    font-family: "Nunito", sans-serif;
-}
-
-h1, p {
-    transition: transform 0.3s ease-out;
-}
-
-body.scroll h1 {
-    transform: translateY(-200px);
 }
