@@ -124,7 +124,7 @@ footer {
 
 /* Estilo para as imagens dos produtos */
 .product img {
-    width: 300px; /* Definindo a largura da imagem */
+    width: 50px; /* Definindo a largura da imagem */
     height: auto; /* Mantendo a proporção da imagem */
     max-width: 100%; /* Garantindo que a imagem não ultrapasse o limite de sua área */
     display: block; /* Remover qualquer espaço indesejado abaixo da imagem */
