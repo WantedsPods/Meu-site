@@ -154,136 +154,80 @@
             <p>Sabores: Mr Bull</p>
             <div class="price">130$</div>
         </div>
-<script>
-    // Carrega o JSON com os dados dos produtos e sabores
-    const produtos = [
-        {
-            "id": "img1.png",
-            "nome": "PROMOÇÃO V150",
-            "imagem": "produto1.jpg",
-            "sabores": [
-                "Strawberry Ice",
-                "Icy Mint",
-                "Watermelon Ice",
-                "Cherry Watermelon Ice",
-                "Watermelon Dragon Fruit"
-            ]
-        },
-        {
-            "id": "img2.png",
-            "nome": "ELFBAR BC 10K",
-            "imagem": "produto2.jpg",
-            "sabores": [
-                "Blue Razz Ice",
-                "Admiration Blue"
-            ]
-        },
-        {
-            "id": "img3.png",
-            "nome": "ELFBAR Ice King 40K",
-            "imagem": "img3.png",
-            "sabores": [
-                "Cherry Fuse",
-                "Blue Razz Ice"
-            ]
-        },
-        {
-            "id": "produto4",
-            "nome": "ELFBAR GH 23K",
-            "imagem": "produto4.jpg",
-            "sabores": [
-                "Miami Mint"
-            ]
-        },
-        {
-            "id": "produto5",
-            "nome": "LOST MARY 5K",
-            "imagem": "produto5.jpg",
-            "sabores": [
-                "Yummy",
-                "Ginger Beer"
-            ]
-        },
-        {
-            "id": "produto6",
-            "nome": "LOST MARY 20K",
-            "imagem": "produto6.jpg",
-            "sabores": [
-                "Miami Mint",
-                "Peach+",
-                "Pure Ice"
-            ]
-        },
-        {
-            "id": "produto7",
-            "nome": "IGNITE V50 BLACK",
-            "imagem": "produto7.jpg",
-            "sabores": [
-                "Blue Dream",
-                "Peach Mango Watermelon",
-                "Strawberry Kiwi",
-                "Aloe Grape",
-                "Watermelon Mix",
-                "Peach Raspberry",
-                "Strawberry Banana"
-            ]
-        },
-        {
-            "id": "produto8",
-            "nome": "IGNITE V80",
-            "imagem": "produto8.jpg",
-            "sabores": [
-                "Strawberry Kiwi (Silver)",
-                "Blueberry Ice (Silver)",
-                "Banana Ice (Silver)",
-                "Banana Cherry (Silver)",
-                "Strawberry Ice (Silver)",
-                "Cactus (Silver)"
-            ]
-        },
-        {
-            "id": "produto9",
-            "nome": "RABBEATS 10K",
-            "imagem": "produto9.jpg",
-            "sabores": [
-                "Clear",
-                "Cherry Lemon",
-                "Strawberry Kiwi Ice"
-            ]
-        },
-        {
-            "id": "produto10",
-            "nome": "OXBAR 30K",
-            "imagem": "produto10.jpg",
-            "sabores": [
-                "Mr Bull"
-            ]
-        }
-    ];
 
-    // Função para abrir a página de sabores
-    function abrirPaginaSabores(produtoId) {
-        // Encontre o produto no JSON com base no ID
-        const produto = produtos.find(p => p.id === produtoId);
+        <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produtos</title>
+</head>
+<body>
 
-        if (produto) {
-            // Cria uma nova página ou redireciona para ela
-            const url = `sabores.html?produto=${produto.id}`;
-            window.location.href = url; // Redireciona para a nova página de sabores
-        }
-    }
+  <!-- Exemplo de imagem de produto -->
+  <div class="produto" id="v150">
+    <img src="img3.png" alt="Promoção V150" />
+    <p>Promoção V150</p>
+  </div>
 
-    // Adiciona o evento de clique nas imagens dos produtos
-    document.addEventListener('DOMContentLoaded', () => {
-        const imagensProdutos = document.querySelectorAll('.product img');
-        
-        imagensProdutos.forEach(imagem => {
-            imagem.addEventListener('click', () => {
-                const produtoId = imagem.id; // ID da imagem para identificar o produto
-                abrirPaginaSabores(produtoId);
-            });
+  <div class="produto" id="bc10k">
+    <img src="img2.png" alt="Elfbars BC 10K" />
+    <p>Elfbars BC 10K</p>
+  </div>
+
+  <div class="produto" id="iceking40k">
+    <img src="img1.png" alt="Elfbar Ice King 40K" />
+    <p>Elfbar Ice King 40K</p>
+  </div>
+
+  <div class="produto" id="gh23k">
+    <img src="img4.png" alt="ELFBAR GH 23K" />
+    <p>ELFBAR GH 23K</p>
+  </div>
+
+  <div class="produto" id="lostmary5k">
+    <img src="img5.png" alt="LOST MARY 5K" />
+    <p>LOST MARY 5K</p>
+  </div>
+
+  <div class="produto" id="lostmary20k">
+    <img src="img6.png" alt="LOST MARY 20K" />
+    <p>LOST MARY 20K</p>
+  </div>
+
+  <div class="produto" id="ignitev50black">
+    <img src="img7.png" alt="IGNITE V50 BLACK" />
+    <p>IGNITE V50 BLACK</p>
+  </div>
+
+  <div class="produto" id="ignitev80">
+    <img src="img8.png" alt="IGNITE V80" />
+    <p>IGNITE V80</p>
+  </div>
+
+  <div class="produto" id="rabbeats10k">
+    <img src="img9.png" alt="RABBEATS 10K" />
+    <p>RABBEATS 10K</p>
+  </div>
+
+  <div class="produto" id="oxbar30k">
+    <img src="img10.png" alt="OXBAR 30K" />
+    <p>OXBAR 30K</p>
+  </div>
+
+  <script>
+    // Função para carregar os dados do JSON
+    fetch('produtos.json')
+      .then(response => response.json())
+      .then(data => {
+        // Para cada produto, cria um evento de click
+        data.forEach(produto => {
+          const produtoElement = document.getElementById(produto.id);
+          produtoElement.querySelector('img').addEventListener('click', () => {
+            window.location.href = `produto.html?id=${produto.id}`;
+          });
         });
-    });
+      });
 </script>
 </body>
 </html>
