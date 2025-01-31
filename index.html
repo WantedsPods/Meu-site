@@ -13,13 +13,9 @@
             color: #fff;
             margin: 0;
             padding: 0;
-            /* Estilo para os botões flutuantes */
-/* Estilo geral dos botões flutuantes */
+            /* Estilo geral dos botões flutuantes */
         .floating-buttons {
             position: fixed;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
             z-index: 1000;
         }
 
@@ -80,16 +76,32 @@
         }
 
         /* Posicionamento do WhatsApp (canto inferior direito) */
-        .floating-buttons .whatsapp {
+        .whatsapp {
             right: 20px;
             bottom: 20px;
         }
 
         /* Posicionamento do Carrinho (canto superior direito) */
-        .floating-buttons .cart {
+        .cart {
             right: 20px;
             top: 20px;
         }
+
+    </style>
+</head>
+<body>
+    <!-- Conteúdo da sua página -->
+
+    <div class="floating-buttons">
+        <!-- Botão WhatsApp -->
+        <div class="floating-button whatsapp">
+            <img src="whatsapp-icon.png" alt="WhatsApp">
+        </div>
+
+        <!-- Botão Carrinho -->
+        <div class="floating-button cart">
+            <img src="cart-icon.png" alt="Carrinho">
+            <span id="cart-count">2</span> <!-- Exemplo de contador -->
 
     </style>
 </head>
