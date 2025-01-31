@@ -155,35 +155,135 @@
             <div class="price">130$</div>
         </div>
 <script>
-    // Fetch do arquivo JSON com os produtos e sabores
-    fetch('produtos.json')
-        .then(response => response.json())
-        .then(data => {
-            // Recebe o parâmetro 'produto' da URL para determinar qual produto exibir
-            const produtoId = new URLSearchParams(window.location.search).get('produto');
+    // Carrega o JSON com os dados dos produtos e sabores
+    const produtos = [
+        {
+            "id": "img1.png",
+            "nome": "PROMOÇÃO V150",
+            "imagem": "produto1.jpg",
+            "sabores": [
+                "Strawberry Ice",
+                "Icy Mint",
+                "Watermelon Ice",
+                "Cherry Watermelon Ice",
+                "Watermelon Dragon Fruit"
+            ]
+        },
+        {
+            "id": "img2.png",
+            "nome": "ELFBAR BC 10K",
+            "imagem": "produto2.jpg",
+            "sabores": [
+                "Blue Razz Ice",
+                "Admiration Blue"
+            ]
+        },
+        {
+            "id": "img3.png",
+            "nome": "ELFBAR Ice King 40K",
+            "imagem": "img3.png",
+            "sabores": [
+                "Cherry Fuse",
+                "Blue Razz Ice"
+            ]
+        },
+        {
+            "id": "produto4",
+            "nome": "ELFBAR GH 23K",
+            "imagem": "produto4.jpg",
+            "sabores": [
+                "Miami Mint"
+            ]
+        },
+        {
+            "id": "produto5",
+            "nome": "LOST MARY 5K",
+            "imagem": "produto5.jpg",
+            "sabores": [
+                "Yummy",
+                "Ginger Beer"
+            ]
+        },
+        {
+            "id": "produto6",
+            "nome": "LOST MARY 20K",
+            "imagem": "produto6.jpg",
+            "sabores": [
+                "Miami Mint",
+                "Peach+",
+                "Pure Ice"
+            ]
+        },
+        {
+            "id": "produto7",
+            "nome": "IGNITE V50 BLACK",
+            "imagem": "produto7.jpg",
+            "sabores": [
+                "Blue Dream",
+                "Peach Mango Watermelon",
+                "Strawberry Kiwi",
+                "Aloe Grape",
+                "Watermelon Mix",
+                "Peach Raspberry",
+                "Strawberry Banana"
+            ]
+        },
+        {
+            "id": "produto8",
+            "nome": "IGNITE V80",
+            "imagem": "produto8.jpg",
+            "sabores": [
+                "Strawberry Kiwi (Silver)",
+                "Blueberry Ice (Silver)",
+                "Banana Ice (Silver)",
+                "Banana Cherry (Silver)",
+                "Strawberry Ice (Silver)",
+                "Cactus (Silver)"
+            ]
+        },
+        {
+            "id": "produto9",
+            "nome": "RABBEATS 10K",
+            "imagem": "produto9.jpg",
+            "sabores": [
+                "Clear",
+                "Cherry Lemon",
+                "Strawberry Kiwi Ice"
+            ]
+        },
+        {
+            "id": "produto10",
+            "nome": "OXBAR 30K",
+            "imagem": "produto10.jpg",
+            "sabores": [
+                "Mr Bull"
+            ]
+        }
+    ];
 
-            if (produtoId && data[produtoId]) {
-                const produto = data[produtoId];
-                
-                // Exibe as informações do produto
-                document.getElementById('produto-nome').innerText = produto.nome;
-                document.getElementById('produto-imagem').src = produto.imagem;
-                
-                // Exibe os sabores
-                const saboresList = document.getElementById('sabores-lista');
-                produto.sabores.forEach(sabor => {
-                    const li = document.createElement('li');
-                    li.innerText = sabor;
-                    saboresList.appendChild(li);
-                });
-            } else {
-                // Caso o produto não seja encontrado, exibe um aviso
-                document.getElementById('produto-nome').innerText = 'Produto não encontrado';
-            }
-        })
-        .catch(error => {
-            console.error('Erro ao carregar o arquivo JSON:', error);
+    // Função para abrir a página de sabores
+    function abrirPaginaSabores(produtoId) {
+        // Encontre o produto no JSON com base no ID
+        const produto = produtos.find(p => p.id === produtoId);
+
+        if (produto) {
+            // Cria uma nova página ou redireciona para ela
+            const url = `sabores.html?produto=${produto.id}`;
+            window.location.href = url; // Redireciona para a nova página de sabores
+        }
+    }
+
+    // Adiciona o evento de clique nas imagens dos produtos
+    document.addEventListener('DOMContentLoaded', () => {
+        const imagensProdutos = document.querySelectorAll('.product img');
+        
+        imagensProdutos.forEach(imagem => {
+            imagem.addEventListener('click', () => {
+                const produtoId = imagem.id; // ID da imagem para identificar o produto
+                abrirPaginaSabores(produtoId);
+            });
         });
+    });
 </script>
 </body>
 </html>
