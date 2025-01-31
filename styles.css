@@ -195,35 +195,31 @@ header {
     margin-top: 10px;
 }
 
-/* Botões de WhatsApp e Carrinho */
-.whatsapp-button, .cart-button {
-    position: fixed;
-    background-color: transparent;
-    border: none;
-    outline: none;
-}
-
+/* WhatsApp no canto inferior direito */
 .whatsapp-button {
-    bottom: 20px;
-    right: 20px;
+    position: fixed;
+    bottom: 20px; /* Distância da parte inferior da tela */
+    right: 20px;  /* Distância da parte direita da tela */
+    background-color: transparent;
+    border-radius: 50%; /* Formato redondo */
+    padding: 10px;
+    z-index: 9999; /* Para garantir que fique acima de outros elementos */
 }
 
+/* Carrinho no canto superior direito */
 .cart-button {
-    top: 20px;
-    right: 20px;
-}
-
-/* Formato e tamanho dos botões */
-.whatsapp-button img {
-    width: 60px; /* Ajuste o tamanho conforme necessário */
-    height: 60px;
-    border-radius: 50%; /* Tornando o botão redondo */
+    position: fixed;
+    top: 20px;    /* Distância do topo */
+    right: 20px;  /* Distância da direita */
     background-color: transparent;
+    padding: 10px;
+    z-index: 9999; /* Para garantir que fique acima de outros elementos */
 }
 
-.cart-button img {
-    width: 50px; /* Ajuste o tamanho conforme necessário */
-    height: 50px;
-    background-color: transparent;
-
+/* Opcional: ajuste o tamanho dos ícones conforme necessário */
+.whatsapp-button img, .cart-button img {
+    width: 50px; /* Tamanho dos ícones */
+    height: auto;
 }
+
+
