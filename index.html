@@ -154,34 +154,36 @@
             <p>Sabores: Mr Bull</p>
             <div class="price">130$</div>
         </div>
-<div class="product-container" id="product-container">
-        <!-- Os produtos serão gerados aqui pelo JavaScript -->
-    </div>
+<script>
+    // Fetch do arquivo JSON com os produtos e sabores
+    fetch('produtos.json')
+        .then(response => response.json())
+        .then(data => {
+            // Recebe o parâmetro 'produto' da URL para determinar qual produto exibir
+            const produtoId = new URLSearchParams(window.location.search).get('produto');
 
-    <script>
-        // Função para carregar os dados do arquivo JSON e gerar os produtos
-        fetch('json')
-            .then(response => response.json())
-            .then(produtos => {
-                const container = document.getElementById('product-container');
-
-                produtos.forEach(produto => {
-                    const productElement = document.createElement('div');
-                    productElement.classList.add('product');
-
-                    productElement.innerHTML = `
-                        <a href="produto_${produto.nome.toLowerCase().replace(/ /g, '_')}.html">
-                            <img src="${produto.imagem}" alt="${produto.nome}">
-                        </a>
-                        <h3>${produto.nome}</h3>
-                        <p>${produto.sabores.join(', ')}</p>
-                        <div class="price">${produto.preco}</div>
-                    `;
-
-                    container.appendChild(productElement);
+            if (produtoId && data[produtoId]) {
+                const produto = data[produtoId];
+                
+                // Exibe as informações do produto
+                document.getElementById('produto-nome').innerText = produto.nome;
+                document.getElementById('produto-imagem').src = produto.imagem;
+                
+                // Exibe os sabores
+                const saboresList = document.getElementById('sabores-lista');
+                produto.sabores.forEach(sabor => {
+                    const li = document.createElement('li');
+                    li.innerText = sabor;
+                    saboresList.appendChild(li);
                 });
-            });
-    </script>
-    </div>
+            } else {
+                // Caso o produto não seja encontrado, exibe um aviso
+                document.getElementById('produto-nome').innerText = 'Produto não encontrado';
+            }
+        })
+        .catch(error => {
+            console.error('Erro ao carregar o arquivo JSON:', error);
+        });
+</script>
 </body>
 </html>
