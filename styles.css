@@ -1,56 +1,90 @@
-<div class="container">
-  <h1 class="store-title">Wanteds Pods</h1>
-  
-  <div class="product">
-    <div class="product-name" onclick="toggleFlavors(this)">Produto 1</div>
-    <ul class="product-flavors">
-      <li>Sabores: Laranja, Limão, Uva</li>
-    </ul>
-    <img src="produto1.jpg" alt="Produto 1" class="product-image">
-    <button>Adicionar ao carrinho</button>
-  </div>
-  
-  <div class="product">
-    <div class="product-name" onclick="toggleFlavors(this)">Produto 2</div>
-    <ul class="product-flavors">
-      <li>Sabores: Manga, Morango, Pêssego</li>
-    </ul>
-    <img src="produto2.jpg" alt="Produto 2" class="product-image">
-    <button>Adicionar ao carrinho</button>
-  </div>
-</div>
-
-<!-- Barra de navegação -->
-<div class="navbar">
-  <a href="#">Home</a>
-  <a href="#">Produtos</a>
-  <a href="#">Carrinho</a>
-  <a href="#">Contato</a>
-</div>
-
-<!-- Script para ativar o clique para mostrar sabores -->
-<script>
-  function toggleFlavors(element) {
-    const flavorsList = element.nextElementSibling;
-    if (flavorsList.style.display === "block") {
-      flavorsList.style.display = "none";
-    } else {
-      flavorsList.style.display = "block";
-    }
-    element.classList.toggle("active");
-  }
-</script>
-
-    /* Centraliza o container que envolve os itens */
-.container-produtos {
-  display: flex;
-  flex-direction: column; /* Ou row, dependendo do seu layout */
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+/* Estilo básico para o corpo da página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1e1e1e;
+    color: #fff;
+    margin: 0;
+    padding: 0;
 }
 
-/* Se for uma lista ou títulos de produtos */
-.produto-nome {
-  text-align: center;
+/* Contêiner principal do site */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Estilo dos produtos */
+.product {
+    background-color: #333;
+    margin: 15px;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    width: 250px;
+}
+
+.product img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.product h3 {
+    color: #ff6f61;
+    font-size: 20px;
+}
+
+.product p {
+    font-size: 16px;
+    color: #ccc;
+}
+
+/* Ícones fixos do WhatsApp e Carrinho */
+.whatsapp-icon, .cart-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366;
+    color: white;
+    border-radius: 50%;
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    font-size: 30px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.cart-icon {
+    background-color: #ff6f61;
+}
+
+.cart-icon a, .whatsapp-icon a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Estilo do header (se houver) */
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #222;
+    width: 100%;
+}
+
+header h1 {
+    color: #ff6f61;
+}
+
+/* Estilo do footer */
+footer {
+    background-color: #222;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    color: #ccc;
 }
