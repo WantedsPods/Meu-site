@@ -92,65 +92,6 @@
         <button id="close-cart">Fechar Carrinho</button>
     </div>
 </div>
-
-<script>
-    // Script para manipular o carrinho
-    let cart = [];
-
-    // Atualiza o número de itens no carrinho
-    function updateCart() {
-        let cartCount = document.getElementById('cart-count');
-        cartCount.textContent = cart.length;
-    }
-
-    // Função para adicionar itens ao carrinho
-    function addToCart(productId, productName, productPrice) {
-        cart.push({ id: productId, name: productName, price: productPrice });
-        updateCart();
-    }
-
-    // Exibe os itens no modal do carrinho
-    function showCart() {
-        let cartItems = document.getElementById('cart-items');
-        cartItems.innerHTML = '';
-        let total = 0;
-
-        cart.forEach(item => {
-            let li = document.createElement('li');
-            li.textContent = `${item.name} - ${item.price}$`;
-            cartItems.appendChild(li);
-            total += item.price;
-        });
-
-        document.getElementById('cart-total').textContent = total;
-        document.getElementById('cart-modal').style.display = 'block';
-    }
-
-    // Fecha o carrinho
-    function closeCart() {
-        document.getElementById('cart-modal').style.display = 'none';
-    }
-
-    // Ação para adicionar ao carrinho nos botões
-    document.querySelectorAll('.add-to-cart').forEach(button => {
-        button.addEventListener('click', () => {
-            const product = button.closest('.product');
-            const productId = product.dataset.id;
-            const productName = product.querySelector('h3').textContent;
-            const productPrice = parseFloat(product.querySelector('p').textContent.replace('$', ''));
-            
-            addToCart(productId, productName, productPrice);
-        });
-    });
-
-    // Ação para abrir o carrinho ao clicar no carrinho no topo
-    document.getElementById('cart').addEventListener('click', showCart);
-
-    // Ação para fechar o carrinho
-    document.getElementById('close-cart').addEventListener('click', closeCart);
-</script>
-        }
-        
     </style>
 </head>
 <body>
@@ -290,23 +231,6 @@
     <img src="img10.png" alt="OXBAR 30K" />
     <p>OXBAR 30K</p>
   </div>
-
-  <script>
-    }
-
-    // Função para adicionar o produto aos botões
-    function setupAddToCartButtons() {
-        document.querySelectorAll('.add-to-cart').forEach(button => {
-            button.addEventListener('click', () => {
-                const productName = button.getAttribute('data-product'); // Pega o nome do produto do atributo 'data-product'
-                addToCart(productName); // Adiciona o produto ao carrinho
-            });
-        });
-    }
-
-    // Atualiza o carrinho no início da página
-    updateCart();
-    setupAddToCartButtons(); // Configura os botões "Adicionar ao Carrinho" para funcionar em ambas as páginas
 </script>
         }
     document.addEventListener('DOMContentLoaded', function() {
