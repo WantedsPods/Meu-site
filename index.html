@@ -14,23 +14,103 @@
             margin: 0;
             padding: 0;
             /* Estilo para os botões flutuantes */
-.floating-buttons {
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    right: 20px;
-}
-
-.floating-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    transition: background-color 0.3s
+/* Estilo geral dos botões flutuantes */
+        .floating-buttons {
+            position: fixed;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            z-index: 1000;
         }
+
+        /* Estilo do botão flutuante */
+        .floating-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%; /* Torna os botões redondos */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            width: 60px;  /* Tamanho do botão */
+            height: 60px; /* Tamanho do botão */
+            transition: background-color 0.3s ease;
+        }
+
+        /* Estilo do botão do WhatsApp */
+        .floating-button.whatsapp {
+            background-color: #25d366; /* Cor verde do WhatsApp */
+        }
+
+        .floating-button.whatsapp:hover {
+            background-color: #128c7e; /* Cor do WhatsApp quando em hover */
+        }
+
+        /* Estilo do botão do Carrinho */
+        .floating-button.cart {
+            background-color: #f8b400; /* Cor amarela para o carrinho */
+            position: relative;
+        }
+
+        .floating-button.cart:hover {
+            background-color: #e69900; /* Cor do carrinho quando em hover */
+        }
+
+        /* Estilo para o contador do carrinho */
+        #cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #f00;
+            color: #fff;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Ajuste para as imagens dentro dos botões */
+        .floating-button img {
+            width: 80%; /* Tamanho da imagem dentro do botão */
+            height: 80%; /* Tamanho da imagem dentro do botão */
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        /* Posicionamento do WhatsApp (canto inferior direito) */
+        .floating-buttons .whatsapp {
+            right: 20px;
+            bottom: 20px;
+        }
+
+        /* Posicionamento do Carrinho (canto superior direito) */
+        .floating-buttons .cart {
+            right: 20px;
+            top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Conteúdo da sua página -->
+
+    <div class="floating-buttons">
+        <!-- Botão WhatsApp -->
+        <div class="floating-button whatsapp">
+            <img src="whatsapp-icon.png" alt="WhatsApp">
+        </div>
+
+        <!-- Botão Carrinho -->
+        <div class="floating-button cart">
+            <img src="cart-icon.png" alt="Carrinho">
+            <span id="cart-count">2</span> <!-- Exemplo de contador -->
+        </div>
+    </div>
+
+</body>
+</html>
 
         header {
             text-align: center;
