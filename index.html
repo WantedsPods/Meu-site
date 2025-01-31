@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produtos</title>
+    
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,6 +12,23 @@
             color: #fff;
             margin: 0;
             padding: 0;
+            /* Estilo para os botões flutuantes */
+.floating-buttons {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    right: 20px;
+}
+
+.floating-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background-color 0.3s
         }
 
         header {
