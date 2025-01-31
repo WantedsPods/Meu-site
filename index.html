@@ -230,17 +230,41 @@
   </div>
 
   <script>
-        let cartTotal = 0;
+        <script>
+    // Inicializa o carrinho no localStorage para manter os itens durante a navegação
+    if (!localStorage.getItem('cart')) {
+        localStorage.setItem('cart', JSON.stringify([])); // Se não houver carrinho no localStorage, cria um
+    }
 
-        // Função para atualizar o contador de itens no carrinho
-        function updateCartCounter(count) {
-            cartTotal += count;
-            document.getElementById('cartTotal').textContent = cartTotal;
-        }
+    let cart = JSON.parse(localStorage.getItem('cart')); // Carrega o carrinho do localStorage
 
-        // Essa função será chamada quando adicionar ao carrinho nas páginas dos produtos
-        function addItemToCart(count) {
-            updateCartCounter(count);
+    // Função para atualizar o contador de itens no carrinho
+    function updateCart() {
+        const cartCount = document.getElementById('cart-count');
+        cartCount.textContent = cart.length; // Atualiza o contador com o número de itens no carrinho
+    }
+
+    // Função para adicionar um item ao carrinho
+    function addToCart(product) {
+        cart.push(product); // Adiciona o produto ao carrinho
+        localStorage.setItem('cart', JSON.stringify(cart)); // Salva o carrinho atualizado no localStorage
+        updateCart(); // Atualiza o contador do carrinho
+    }
+
+    // Função para adicionar o produto aos botões
+    function setupAddToCartButtons() {
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                const productName = button.getAttribute('data-product'); // Pega o nome do produto do atributo 'data-product'
+                addToCart(productName); // Adiciona o produto ao carrinho
+            });
+        });
+    }
+
+    // Atualiza o carrinho no início da página
+    updateCart();
+    setupAddToCartButtons(); // Configura os botões "Adicionar ao Carrinho" para funcionar em ambas as páginas
+</script>
         }
     document.addEventListener('DOMContentLoaded', function() {
         // Pega todas as imagens com a classe 'produto-imagem'
