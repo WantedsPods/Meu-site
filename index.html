@@ -1,154 +1,153 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Pathway+Gothic+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <title>Produtos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+        }
+
+        .product-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            justify-items: center;
+        }
+
+        .product {
+            background-color: #222;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+        }
+
+        .product img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .product h3 {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+
+        .product p {
+            font-size: 18px;
+            color: #ccc;
+        }
+
+        .price {
+            font-size: 24px;
+            color: #FFD700;
+            margin-top: 10px;
+        }
+    </style>
 </head>
-
 <body>
-    <!-- Logo and Main Text -->
-    <section class="hero">
-        <div class="hero-content">
-            <img src="logo.png" alt="Logo" class="logo">
-            <div class="overlay">
-                
-            </div>
+    <header>
+        <h1>Produtos</h1>
+    </header>
+
+    <div class="product-container">
+        <!-- Produto 1 -->
+        <div class="product">
+            <img src="link-da-imagem.jpg" alt="Produto V150">
+            <h3>Promoção V150</h3>
+            <p>Sabores: Strawberry Ice, Icy Mint, Watermelon Ice, Cherry Watermelon Ice, Watermelon Dragon Fruit</p>
+            <div class="price">De 150$ por 125$</div>
         </div>
-    </section>
 
-    <!-- Cart Icon at the top right corner -->
-<button id="toggle-cart" class="toggle-cart">
-    🛒 Cart (<span class="cart-count">0</span>)
-</button>
+        <!-- Produto 2 -->
+        <div class="product">
+            <img src="link-da-imagem.jpg" alt="ELFBAR BC 10K">
+            <h3>ELFBAR BC 10K (Edição Especial)</h3>
+            <p>Sabores: Blue Razz Ice, Admiration Blue</p>
+            <div class="price">115$</div>
+        </div>
 
-<!-- Cart (initially hidden) -->
-<div id="cart-container" class="cart-container">
-    <p><strong>Items in Cart:</strong></p>
-    <ul id="cart"></ul> <!-- Cart item list -->
-    
-    <!-- Checkout Button -->
-    <button id="checkout-button" class="checkout-button">Checkout</button>
-</div>
+        <!-- Produto 3 -->
+        <div class="product">
+            <img src="link-da-imagem.jpg" alt="Elfbar Ice King 40K">
+            <h3>Elfbar Ice King 40K</h3>
+            <p>Sabores: Cherry Fuse, Blue Razz Ice</p>
+            <div class="price">165$</div>
+        </div>
 
-<!-- Products -->
-<div class="product" data-price="125">
-    <h3 class="product-name">Product 1</h3>
-    <div class="product-details" style="display:none;"></div>
-    <button class="product-name" data-flavors="Strawberry Ice, Icy Mint, Watermelon Ice">See Flavors</button>
-</div>
+        <!-- Produto 4 -->
+        <div class="product">
+            <img src="link-da-imagem.jpg" alt="ELFBAR GH 23K">
+            <h3>ELFBAR GH 23K</h3>
+            <p>Sabores: Miami Mint</p>
+            <div class="price">150$</div>
+        </div>
 
-<!-- More products here -->
+        <!-- Produto 5 -->
+        <div class="product">
+            <img src="link-da-imagem.jpg" alt="LOST MARY 5K">
+            <h3>LOST MARY 5K</h3>
+            <p>Sabores: Yummy, Ginger Beer</p>
+            <div class="price">90$</div>
+        </div>
+
+        <!-- Produto 6 -->
+        <div class="product">
+            <img src="link-da-imagem.jpg" alt="LOST MARY 20K">
+            <h3>LOST MARY 20K</h3>
+            <p>Sabores: Miami Mint, Peach+, Pure Ice</p>
+            <div class="price">130$</div>
+        </div>
+
+        <!-- Produto 7 -->
+        <div class="product">
+            <img src="link-da-imagem.jpg" alt="IGNITE V50 BLACK">
+            <h3>IGNITE V50 BLACK</h3>
+            <p>Sabores: Blue Dream, Peach Mango Watermelon, Strawberry Kiwi, Aloe Grape, Watermelon Mix, Peach Raspberry, Strawberry Banana</p>
+            <div class="price">95$</div>
+        </div>
+
+        <!-- Produto 8 -->
+        <div class="product">
+            <img src="link-da-imagem.jpg" alt="IGNITE V80">
+            <h3>IGNITE V80</h3>
+            <p>Sabores: Strawberry Kiwi (Silver), Blueberry Ice (Silver), Banana Ice (Silver), Banana Cherry (Silver), Strawberry Ice (Silver), Cactus (Silver)</p>
+            <div class="price">120$</div>
+        </div>
+
+        <!-- Produto 9 -->
+        <div class="product">
+            <img src="link-da-imagem.jpg" alt="RABBEATS 10K">
+            <h3>RABBEATS 10K</h3>
+            <p>Sabores: Clear, Cherry Lemon, Strawberry Kiwi Ice</p>
+            <div class="price">95$</div>
+        </div>
+
+        <!-- Produto 10 -->
+        <div class="product">
+            <img src="link-da-imagem.jpg" alt="OXBAR 30K">
+            <h3>OXBAR 30K</h3>
+            <p>Sabores: Mr Bull</p>
+            <div class="price">130$</div>
+        </div>
     </div>
-
-    <footer>
-        <!-- Removed copyright text -->
-    </footer>
-
-    <script src="script.js"></script>
 </body>
-
 </html>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wanteds Pods</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Pathway+Gothic+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wanteds Pods</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Pathway+Gothic+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wanteds Pods</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Pathway+Gothic+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <section class="products">
-        <!-- Product 1: PROMOÇÃO V150 -->
-        <div class="product" data-name="PROMOÇÃO V150" data-price="125">
-            <img src="v150.jpg" alt="PROMOÇÃO V150">
-            <h2 class="product-name" onclick="toggleFlavors('promoV150')">PROMOÇÃO V150 - $125</h2>
-            <div id="promoV150" class="flavors" style="display: none;">
-                <button class="flavor-btn" onclick="addToCart('PROMOÇÃO V150', 'Strawberry Ice', 125)">Strawberry Ice</button>
-                <button class="flavor-btn" onclick="addToCart('PROMOÇÃO V150', 'Icy Mint', 125)">Icy Mint</button>
-                <button class="flavor-btn" onclick="addToCart('PROMOÇÃO V150', 'Watermelon Ice', 125)">Watermelon Ice</button>
-                <button class="flavor-btn" onclick="addToCart('PROMOÇÃO V150', 'Cherry Watermelon Ice', 125)">Cherry Watermelon Ice</button>
-                <button class="flavor-btn" onclick="addToCart('PROMOÇÃO V150', 'Watermelon Dragon Fruit', 125)">Watermelon Dragon Fruit</button>
-            </div>
-        </div>
-
-        <!-- Product 2: ELFBAR BC 10K -->
-        <div class="product" data-name="ELFBAR BC 10K (special edition)" data-price="115">
-            <img src="elfbar-bc10k.jpg" alt="ELFBAR BC 10K">
-            <h2 class="product-name" onclick="toggleFlavors('elfbarBC10K')">ELFBAR BC 10K - $115</h2>
-            <div id="elfbarBC10K" class="flavors" style="display: none;">
-                <button class="flavor-btn" onclick="addToCart('ELFBAR BC 10K', 'Blue Razz Ice', 115)">Blue Razz Ice</button>
-                <button class="flavor-btn" onclick="addToCart('ELFBAR BC 10K', 'Admiration Blue', 115)">Admiration Blue</button>
-            </div>
-        </div>
-
-        <!-- Product 3: Elfbar Ice King 40K -->
-        <div class="product" data-name="Elfbar Ice King 40K" data-price="165">
-            <img src="elfbar-iceking-40k.jpg" alt="Elfbar Ice King 40K">
-            <h2 class="product-name" onclick="toggleFlavors('elfbarIceKing40K')">Elfbar Ice King 40K - $165</h2>
-            <div id="elfbarIceKing40K" class="flavors" style="display: none;">
-                <button class="flavor-btn" onclick="addToCart('Elfbar Ice King 40K', 'Cherry Fuse', 165)">Cherry Fuse</button>
-                <button class="flavor-btn" onclick="addToCart('Elfbar Ice King 40K', 'Blue Razz Ice', 165)">Blue Razz Ice</button>
-            </div>
-        </div>
-
-        <!-- Product 4: ELFBAR GH 23K -->
-        <div class="product" data-name="ELFBAR GH 23K" data-price="150">
-            <img src="elfbar-gh23k.jpg" alt="ELFBAR GH 23K">
-            <h2 class="product-name" onclick="toggleFlavors('elfbarGH23K')">ELFBAR GH 23K - $150</h2>
-            <div id="elfbarGH23K" class="flavors" style="display: none;">
-                <button class="flavor-btn" onclick="addToCart('ELFBAR GH 23K', 'Miami Mint', 150)">Miami Mint</button>
-            </div>
-        </div>
-
-        <!-- Product 5: LOST MARY 5K -->
-        <div class="product" data-name="LOST MARY 5K" data-price="90">
-            <img src="lost-mary-5k.jpg" alt="LOST MARY 5K">
-            <h2 class="product-name" onclick="toggleFlavors('lostMary5K')">LOST MARY 5K - $90</h2>
-            <div id="lostMary5K" class="flavors" style="display: none;">
-                <button class="flavor-btn" onclick="addToCart('LOST MARY 5K', 'Yummy', 90)">Yummy</button>
-                <button class="flavor-btn" onclick="addToCart('LOST MARY 5K', 'Ginger Beer', 90)">Ginger Beer</button>
-            </div>
-        </div>
-
-        <!-- Product 6: LOST MARY 20K -->
-        <div class="product" data-name="LOST MARY 20K" data-price="130">
-            <img src="lost-mary-20k.jpg" alt="LOST MARY 20K">
-            <h2 class="product-name" onclick="toggleFlavors('lostMary20K')">LOST MARY 20K - $130</h2>
-            <div id="lostMary20K" class="flavors" style="display: none;">
-                <button class="flavor-btn" onclick="addToCart('LOST MARY 20K', 'Miami Mint', 130)">Miami Mint</button>
-                <button class="flavor-btn" onclick="addToCart('LOST MARY 20K', 'Peach+', 130)">Peach+</button>
-                <button class="flavor-btn" onclick="addToCart('LOST MARY 20K', 'Pure Ice', 130)">Pure Ice</button>
-            </div>
-        </div>
-
-        <!-- Product 7: IGNITE V50 BLACK -->
-        <div class="product" data-name="IGNITE V50 BLACK" data-price="95">
-            <img src="ignite-v50-black.jpg" alt="IGNITE V50 BLACK">
-            <h2 class="product-name" onclick="toggleFlavors('igniteV50Black')
