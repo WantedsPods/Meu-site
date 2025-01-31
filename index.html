@@ -154,6 +154,34 @@
             <p>Sabores: Mr Bull</p>
             <div class="price">130$</div>
         </div>
+<div class="product-container" id="product-container">
+        <!-- Os produtos serão gerados aqui pelo JavaScript -->
+    </div>
+
+    <script>
+        // Função para carregar os dados do arquivo JSON e gerar os produtos
+        fetch('produtos.json')
+            .then(response => response.json())
+            .then(produtos => {
+                const container = document.getElementById('product-container');
+
+                produtos.forEach(produto => {
+                    const productElement = document.createElement('div');
+                    productElement.classList.add('product');
+
+                    productElement.innerHTML = `
+                        <a href="produto_${produto.nome.toLowerCase().replace(/ /g, '_')}.html">
+                            <img src="${produto.imagem}" alt="${produto.nome}">
+                        </a>
+                        <h3>${produto.nome}</h3>
+                        <p>${produto.sabores.join(', ')}</p>
+                        <div class="price">${produto.preco}</div>
+                    `;
+
+                    container.appendChild(productElement);
+                });
+            });
+    </script>
     </div>
 </body>
 </html>
