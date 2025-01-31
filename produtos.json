@@ -1,104 +1,95 @@
 [
-    {
-        "nome": "Promoção V150",
-        "preco": "125$",
-        "imagem": "img1.png",
-        "sabores": [
-            "Strawberry Ice",
-            "Icy Mint",
-            "Watermelon Ice",
-            "Cherry Watermelon Ice",
-            "Watermelon Dragon Fruit"
-        ]
-    },
-    {
-        "nome": "ELFBAR BC 10K (especial edition)",
-        "preco": "115$",
-        "imagem": "link-da-imagem-elfbar-bc10k.jpg",
-        "sabores": [
-            "Blue Razz Ice",
-            "Admiration Blue"
-        ]
-    },
-    {
-        "nome": "Elfbar Ice King 40K",
-        "preco": "165$",
-        "imagem": "link-da-imagem-elfbar-iceking.jpg",
-        "sabores": [
-            "Cherry Fuse",
-            "Blue Razz Ice"
-        ]
-    },
-    {
-        "nome": "ELFBAR GH 23K",
-        "preco": "150$",
-        "imagem": "link-da-imagem-elfbar-gh23k.jpg",
-        "sabores": [
-            "Miami Mint"
-        ]
-    },
-    {
-        "nome": "LOST MARY 5K",
-        "preco": "90$",
-        "imagem": "link-da-imagem-lostmary-5k.jpg",
-        "sabores": [
-            "Yummy",
-            "Ginger Beer"
-        ]
-    },
-    {
-        "nome": "LOST MARY 20K",
-        "preco": "130$",
-        "imagem": "link-da-imagem-lostmary-20k.jpg",
-        "sabores": [
-            "Miami Mint",
-            "Peach+",
-            "Pure Ice"
-        ]
-    },
-    {
-        "nome": "IGNITE V50 BLACK",
-        "preco": "95$",
-        "imagem": "link-da-imagem-ignite-v50.jpg",
-        "sabores": [
-            "Blue Dream",
-            "Peach Mango Watermelon",
-            "Strawberry Kiwi",
-            "Aloe Grape",
-            "Watermelon Mix",
-            "Peach Raspberry",
-            "Strawberry Banana"
-        ]
-    },
-    {
-        "nome": "IGNITE V80",
-        "preco": "120$",
-        "imagem": "link-da-imagem-ignite-v80.jpg",
-        "sabores": [
-            "Strawberry Kiwi (Silver)",
-            "Blueberry Ice (Silver)",
-            "Banana Ice (Silver)",
-            "Banana Cherry (Silver)",
-            "Strawberry Ice (Silver)",
-            "Cactus (Silver)"
-        ]
-    },
-    {
-        "nome": "RABBEATS 10K",
-        "preco": "95$",
-        "imagem": "link-da-imagem-rabbeats-10k.jpg",
-        "sabores": [
-            "Clear",
-            "Cherry Lemon",
-            "Strawberry Kiwi Ice"
-        ]
-    },
-    {
-        "nome": "OXBAR 30K",
-        "preco": "130$",
-        "imagem": "link-da-imagem-oxbar-30k.jpg",
-        "sabores": [
-            "Mr Bull"
-        ]
-    }
+  {
+    "id": "img1.png",
+    "nome": "PROMOÇÃO V150",
+    "sabores": [
+      "Strawberry Ice",
+      "Icy Mint",
+      "Watermelon Ice",
+      "Cherry Watermelon Ice",
+      "Watermelon Dragon Fruit"
+    ]
+  },
+  {
+    "id": "img2.png",
+    "nome": "ELFBAR BC 10K (especial edition)",
+    "sabores": [
+      "Blue Razz Ice",
+      "Admiration Blue"
+    ]
+  },
+  {
+    "id": "iceking40k",
+    "nome": "Elfbar Ice King 40K",
+    "sabores": [
+      "Cherry Fuse",
+      "Blue Razz Ice"
+    ]
+  },
+  {
+    "id": "gh23k",
+    "nome": "ELFBAR GH 23K",
+    "sabores": [
+      "Miami Mint"
+    ]
+  },
+  {
+    "id": "lostmary5k",
+    "nome": "LOST MARY 5K",
+    "sabores": [
+      "Yummy",
+      "Ginger Beer"
+    ]
+  },
+  {
+    "id": "lostmary20k",
+    "nome": "LOST MARY 20K",
+    "sabores": [
+      "Miami Mint",
+      "Peach+",
+      "Pure Ice"
+    ]
+  },
+  {
+    "id": "ignitev50black",
+    "nome": "IGNITE V50 BLACK",
+    "sabores": [
+      "Blue Dream",
+      "Peach Mango Watermelon",
+      "Strawberry Kiwi",
+      "Aloe Grape",
+      "Watermelon Mix",
+      "Peach Raspberry",
+      "Strawberry Banana"
+    ]
+  },
+  {
+    "id": "ignitev80",
+    "nome": "IGNITE V80",
+    "sabores": [
+      "Strawberry Kiwi (Silver)",
+      "Blueberry Ice (Silver)",
+      "Banana Ice (Silver)",
+      "Banana Cherry (Silver)",
+      "Strawberry Ice (Silver)",
+      "Cactus (Silver)"
+    ]
+  },
+  {
+    "id": "rabbeats10k",
+    "nome": "RABBEATS 10K",
+    "sabores": [
+      "Clear",
+      "Cherry Lemon",
+      "Strawberry Kiwi Ice"
+    ]
+  },
+  {
+    "id": "oxbar30k",
+    "nome": "OXBAR 30K",
+    "sabores": [
+      "Mr Bull"
+    ]
+  }
 ]
+     
