@@ -97,3 +97,16 @@ footer {
     width: 60px;
     height: 60px;
 }
+
+header img {
+    display: block;
+    margin: 0 auto;
+}
+
+.product p {
+    font-size: 16px;  /* Altere o tamanho conforme desejado */
+    font-family: Arial, sans-serif;  /* Fonte simples */
+    color: #ccc;  /* Cor mais suave */
+    margin: 0;
+    padding: 10px 0;
+}
