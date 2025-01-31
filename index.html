@@ -63,92 +63,30 @@
             font-size: 24px;
             color: #FFFFFF;
             margin-top: 10px;
+
+            /* Estilo do carrinho no canto superior direito */
+        .cart-icon {
+            position: flexible;
+            top: 20px;
+            right: 200px;
+            background-color: #ff5722;
+            color: white;
+            border-radius: 50%;
+            padding: 15px;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-<!-- Carrinho no topo da página -->
-<div id="cart">
-    <img src="carrinho-icon.png" alt="Carrinho">
-    <span id="cart-count">0</span>
-</div>
-
-<!-- Produtos com botão de adicionar ao carrinho -->
-<div class="container">
-    <div class="product" data-id="1">
-        <img src="ignite-v80.jpg" alt="Ignite V80">
-        <h3>Ignite V80</h3>
-        <p>120$</p>
-        <button class="add-to-cart">Adicionar ao Carrinho</button>
+        .cart-icon span {
+            font-size: 16px;
+        
+    <!-- Carrinho no canto superior direito -->
+    <div class="cart-icon" id="cartIcon">
+        <span id="cartTotal">0</span>
     </div>
-    <!-- Repita esse bloco para cada produto -->
-</div>
-
-<!-- Modal do carrinho -->
-<div id="cart-modal" style="display:none;">
-    <div class="cart-content">
-        <h2>Carrinho</h2>
-        <ul id="cart-items"></ul>
-        <p>Total: <span id="cart-total">0</span></p>
-        <button id="checkout">Finalizar Compra</button>
-        <button id="close-cart">Fechar Carrinho</button>
-    </div>
-</div>
-
-<script>
-    // Script para manipular o carrinho
-    let cart = [];
-
-    // Atualiza o número de itens no carrinho
-    function updateCart() {
-        let cartCount = document.getElementById('cart-count');
-        cartCount.textContent = cart.length;
-    }
-
-    // Função para adicionar itens ao carrinho
-    function addToCart(productId, productName, productPrice) {
-        cart.push({ id: productId, name: productName, price: productPrice });
-        updateCart();
-    }
-
-    // Exibe os itens no modal do carrinho
-    function showCart() {
-        let cartItems = document.getElementById('cart-items');
-        cartItems.innerHTML = '';
-        let total = 0;
-
-        cart.forEach(item => {
-            let li = document.createElement('li');
-            li.textContent = `${item.name} - ${item.price}$`;
-            cartItems.appendChild(li);
-            total += item.price;
-        });
-
-        document.getElementById('cart-total').textContent = total;
-        document.getElementById('cart-modal').style.display = 'block';
-    }
-
-    // Fecha o carrinho
-    function closeCart() {
-        document.getElementById('cart-modal').style.display = 'none';
-    }
-
-    // Ação para adicionar ao carrinho nos botões
-    document.querySelectorAll('.add-to-cart').forEach(button => {
-        button.addEventListener('click', () => {
-            const product = button.closest('.product');
-            const productId = product.dataset.id;
-            const productName = product.querySelector('h3').textContent;
-            const productPrice = parseFloat(product.querySelector('p').textContent.replace('$', ''));
-            
-            addToCart(productId, productName, productPrice);
-        });
-    });
-
-    // Ação para abrir o carrinho ao clicar no carrinho no topo
-    document.getElementById('cart').addEventListener('click', showCart);
-
-    // Ação para fechar o carrinho
-    document.getElementById('close-cart').addEventListener('click', closeCart);
-</script>
         }
         
     </style>
@@ -292,8 +230,27 @@
   </div>
 
   <script>
-          document.addEventListener('DOMContentLoaded', function() {
-        // Pega todas as imagens com a classe 'produto-imagem'
+        <script>
+    // Inicializa o carrinho no localStorage para manter os itens durante a navegação
+    if (!localStorage.getItem('cart')) {
+        localStorage.setItem('cart', JSON.stringify([])); // Se não houver carrinho no localStorage, cria um
+    }
+
+    let cart = JSON.parse(localStorage.getItem('cart')); // Carrega o carrinho do localStorage
+
+    // Função para atualizar o contador de itens no carrinho
+    function updateCart() {
+        const cartCount = document.getElementById('cart-count');
+        cartCount.textContent = cart.length; // Atualiza o contador com o número de itens no carrinho
+    }
+
+    // Função para adicionar um item ao carrinho
+    function addToCart(product) {
+        cart.push(product); // Adiciona o produto ao carrinho
+        localStorage.setItem('cart', JSON.stringify(cart)); // Salva o carrinho atualizado no localStorage
+        updateCart(); // Atualiza o contador do carrinho
+    }
+
     // Função para adicionar o produto aos botões
     function setupAddToCartButtons() {
         document.querySelectorAll('.add-to-cart').forEach(button => {
