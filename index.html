@@ -220,39 +220,18 @@
         });
     });
   
-    <h1 id="product-name"></h1>
-<ul id="flavors-list"></ul>
-      
-  document.addEventListener('DOMContentLoaded', function() {
-    // Carregar o JSON de produtos
-    fetch('produtos.json')  // Usando fetch para carregar o JSON
-      .then(response => response.json())  // Transformar a resposta em JSON
-      .then(data => {
-        // Pega o id do produto da URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const productId = urlParams.get('product');  // Obtém o parâmetro 'product' da URL
-        
-        // Encontra o produto correspondente no JSON
-        const product = data.produtos.find(p => p.id === productId);  // Procura o produto pelo id
-        
-        if (product) {
-          // Exibe o nome do produto
-          document.getElementById('product-name').textContent = product.nome;
-          const flavorsList = document.getElementById('flavors-list');
-          flavorsList.innerHTML = ''; // Limpar a lista de sabores antes de adicionar os novos sabores
-          
-          // Adiciona os sabores ao HTML
-          product.sabores.forEach(flavor => {
-            const flavorItem = document.createElement('li');
-            flavorItem.textContent = flavor;  // Cria um item de lista com o sabor
-            flavorsList.appendChild(flavorItem);  // Adiciona o sabor à lista
-          });
-        } else {
-          console.log("Produto não encontrado.");
-        }
-      })
-      .catch(error => console.log(error));  // Se ocorrer erro, será mostrado no console
+    document.querySelectorAll('.product img').forEach(item => {
+  item.addEventListener('click', event => {
+    // Pega o id do produto a partir do data-id
+    const produtoId = event.target.getAttribute('data-id');
+    
+    // Cria a URL da página do produto com base no id
+    const url = `${produtoId}.html`; 
+
+    // Redireciona para a página do produto
+    window.location.href = url;
   });
-</script>
+});
+  </script>
 </body>
 </html>
