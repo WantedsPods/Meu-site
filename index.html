@@ -3,197 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produtos</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #111;
-            color: #fff;
-            margin: 0;
-            padding: 0;
-            position: relative;
-        }
-
-        header {
-            text-align: center;
-            padding: 20px;
-            background-color: #333;
-        }
-
-        header h1 {
-            display: inline-block;
-            background-image: url('logo.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            height: 80px;
-            width: 200px;
-            margin: 0 auto;
-        }
-
-        .product-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            padding: 20px;
-            justify-items: center;
-        }
-
-        .product {
-            background-color: #222;
-            border-radius: 8px;
-            padding: 15px;
-            text-align: center;
-            width: 100%;
-            transition: transform 0.3s ease;
-        }
-
-        .product:hover {
-            transform: scale(1.05);
-        }
-
-        .product img {
-            width: 100%;
-            border-radius: 8px;
-            margin-bottom: 10px;
-        }
-
-        .product h3, .product p, .price {
-            font-family: 'Bungee', cursive;
-            color: #fff;
-        }
-
-        .price {
-            font-size: 24px;
-            color: #fff;
-            margin-top: 10px;
-        }
-
-        .whatsapp-icon, .cart-icon {
-            position: fixed;
-            background-color: #25D366;
-            color: white;
-            border-radius: 50%;
-            padding: 15px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            font-size: 30px;
-            cursor: pointer;
-        }
-
-        .whatsapp-icon {
-            bottom: 20px;
-            right: 20px;
-        }
-
-        .cart-icon {
-            top: 20px;
-            right: 20px;
-            background-color: #ff6f61;
-        }
-
-        .cart-icon a, .whatsapp-icon a {
-            color: white;
-            text-decoration: none;
-        }
-
-        .cart-icon::after {
-            content: '3'; /* Substitua pelo contador real */
-            position: absolute;
-            top: -5px;
-            right: -10px;
-            background-color: red;
-            color: white;
-            font-size: 12px;
-            padding: 2px 5px;
-            border-radius: 50%;
-        }
-    </style>
+    <title>Produtos - Wanteds Pods</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1></h1> <!-- Logo será exibida aqui -->
-    </header>
 
-    <div class="product-container">
-        <!-- Produtos com sabores -->
-        <div class="product">
-            <img src="link-da-imagem.jpg" alt="Promoção V150">
-            <h3>Promoção V150</h3>
-            <p>Sabores: Strawberry Ice, Icy Mint, Watermelon Ice, Cherry Watermelon Ice, Watermelon Dragon Fruit</p>
-            <div class="price">De 150$ por 125$</div>
-        </div>
-
-        <div class="product">
-            <img src="link-da-imagem.jpg" alt="ELFBAR BC 10K">
-            <h3>ELFBAR BC 10K (especial edition)</h3>
-            <p>Sabores: Blue Razz Ice, Admiration Blue</p>
-            <div class="price">115$</div>
-        </div>
-
-        <div class="product">
-            <img src="link-da-imagem.jpg" alt="Elfbar Ice King 40K">
-            <h3>Elfbar Ice King 40K</h3>
-            <p>Sabores: Cherry Fuse, Blue Razz Ice</p>
-            <div class="price">165$</div>
-        </div>
-
-        <div class="product">
-            <img src="link-da-imagem.jpg" alt="ELFBAR GH 23K">
-            <h3>ELFBAR GH 23K</h3>
-            <p>Sabores: Miami Mint</p>
-            <div class="price">150$</div>
-        </div>
-
-        <div class="product">
-            <img src="link-da-imagem.jpg" alt="LOST MARY 5K">
-            <h3>LOST MARY 5K</h3>
-            <p>Sabores: Yummy, Ginger Beer</p>
-            <div class="price">90$</div>
-        </div>
-
-        <div class="product">
-            <img src="link-da-imagem.jpg" alt="LOST MARY 20K">
-            <h3>LOST MARY 20K</h3>
-            <p>Sabores: Miami Mint, Peach+, Pure Ice</p>
-            <div class="price">130$</div>
-        </div>
-
-        <div class="product">
-            <img src="link-da-imagem.jpg" alt="IGNITE V50 BLACK">
-            <h3>IGNITE V50 BLACK</h3>
-            <p>Sabores: Blue Dream, Peach Mango Watermelon, Strawberry Kiwi, Aloe Grape, Watermelon Mix, Peach Raspberry, Strawberry Banana</p>
-            <div class="price">95$</div>
-        </div>
-
-        <div class="product">
-            <img src="link-da-imagem.jpg" alt="IGNITE V80">
-            <h3>IGNITE V80</h3>
-            <p>Sabores: Strawberry Kiwi (Silver), Blueberry Ice (Silver), Banana Ice (Silver), Banana Cherry (Silver), Strawberry Ice (Silver), Cactus (Silver)</p>
-            <div class="price">120$</div>
-        </div>
-
-        <div class="product">
-            <img src="link-da-imagem.jpg" alt="RABBEATS 10K">
-            <h3>RABBEATS 10K</h3>
-            <p>Sabores: Clear, Cherry Lemon, Strawberry Kiwi Ice</p>
-            <div class="price">95$</div>
-        </div>
-
-        <div class="product">
-            <img src="link-da-imagem.jpg" alt="OXBAR 30K">
-            <h3>OXBAR 30K</h3>
-            <p>Sabores: Mr Bull</p>
-            <div class="price">130$</div>
+<header>
+    <div class="header-content">
+        <img src="logo.png" alt="Logo" class="logo">
+        <div class="cart">
+            <button id="cart-icon"><img src="cart-icon.png" alt="Carrinho"></button>
+            <span id="cart-count">0</span>
         </div>
     </div>
+</header>
 
-    <!-- Ícone do WhatsApp -->
-    <div class="whatsapp-icon">
-        <a href="https://wa.me/55XXXXXXXXX" target="_blank">💬</a>
-    </div>
+<main>
+    <section class="product-section">
+        <h1>Promoções</h1>
 
-    <!-- Ícone do Carrinho -->
-    <div class="cart-icon">
-        <a href="/carrinho" target="_blank">🛒</a>
+        <div class="product">
+            <h2>PROMOÇÃO V150</h2>
+            <p class="price">125$</p>
+            <ul>
+                <li>Strawberry Ice</li>
+                <li>Icy Mint</li>
+                <li>Watermelon Ice</li>
+                <li>Cherry Watermelon Ice</li>
+                <li>Watermelon Dragon Fruit</li>
+            </ul>
+        </div>
+
+        <div class="product">
+            <h2>ELFBAR BC 10K (especial edition)</h2>
+            <p class="price">115$</p>
+            <ul>
+                <li>Blue Razz Ice</li>
+                <li>Admiration Blue</li>
+            </ul>
+        </div>
+
+        <div class="product">
+            <h2>Elfbar Ice King 40K</h2>
+            <p class="price">165$</p>
+            <ul>
+                <li>Cherry Fuse</li>
+                <li>Blue Razz Ice</li>
+            </ul>
+        </div>
+
+        <div class="product">
+            <h2>ELFBAR GH 23K</h2>
+            <p class="price">150$</p>
+            <ul>
+                <li>Miami Mint</li>
+            </ul>
+        </div>
+
+        <div class="product">
+            <h2>LOST MARY 5K</h2>
+            <p class="price">90$</p>
+            <ul>
+                <li>Yummy</li>
+                <li>Ginger Beer</li>
+            </ul>
+        </div>
+
+        <div class="product">
+            <h2>LOST MARY 20K</h2>
+            <p class="price">130$</p>
+            <ul>
+                <li>Miami Mint</li>
+                <li>Peach+</li>
+                <li>Pure Ice</li>
+            </ul>
+        </div>
+
+        <div class="product">
+            <h2>IGNITE V50 BLACK</h2>
+            <p class="price">95$</p>
+            <ul>
+                <li>Blue Dream</li>
+                <li>Peach Mango Watermelon</li>
+                <li>Strawberry Kiwi</li>
+                <li>Aloe Grape</li>
+                <li>Watermelon Mix</li>
+                <li>Peach Raspberry</li>
+                <li>Strawberry Banana</li>
+            </ul>
+        </div>
+
+        <div class="product">
+            <h2>IGNITE V80</h2>
+            <p class="price">120$</p>
+            <ul>
+                <li>Strawberry Kiwi (Silver)</li>
+                <li>Blueberry Ice (Silver)</li>
+                <li>Banana Ice (Silver)</li>
+                <li>Banana Cherry (Silver)</li>
+                <li>Strawberry Ice (Silver)</li>
+                <li>Cactus (Silver)</li>
+            </ul>
+        </div>
+
+        <div class="product">
+            <h2>RABBEATS 10K</h2>
+            <p class="price">95$</p>
+            <ul>
+                <li>Clear</li>
+                <li>Cherry Lemon</li>
+                <li>Strawberry Kiwi Ice</li>
+            </ul>
+        </div>
+
+        <div class="product">
+            <h2>OXBAR 30K</h2>
+            <p class="price">130$</p>
+            <ul>
+                <li>Mr Bull</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="whatsapp">
+        <button id="whatsapp-icon">
+            <img src="whatsapp-icon.png" alt="WhatsApp">
+        </button>
     </div>
+</footer>
+
 </body>
 </html>
