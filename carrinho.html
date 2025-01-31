@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        #logo {
+            display: block;
+            width: 80px;
+            margin: 20px auto;
+        }
+        .cart-page {
+            padding: 20px;
+            text-align: center;
+        }
+        .cart-item {
+            background-color: #1c1c1c;
+            margin: 10px auto;
+            padding: 15px;
+            border-radius: 8px;
+            width: 80%;
+        }
+        .cart-item p {
+            margin: 5px 0;
+            font-size: 18px;
+        }
+        .cart-item button {
+            background-color: #e74c3c;
+            color: white;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .checkout-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            width: 80%;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Logo no topo -->
+<img src="caminho/para/sua/logo.png" alt="Logo" id="logo">
+
+<!-- Página de Carrinho -->
+<div class="cart-page">
+    <h1>Carrinho de Compras</h1>
+
+    <!-- Exemplo de Itens no Carrinho -->
+    <div class="cart-item">
+        <p>Elfbar Ice King 40K - Cherry Fuse</p>
+        <p>Preço: 165$</p>
+        <button class="remove-item">Remover</button>
+    </div>
+    <div class="cart-item">
+        <p>Elfbar BC 10K - Blue Razz Ice</p>
+        <p>Preço: 115$</p>
+        <button class="remove-item">Remover</button>
+    </div>
+
+    <!-- Total -->
+    <div class="total">
+        <p><strong>Total: 280$</strong></p>
+    </div>
+
+    <!-- Botão para Finalizar Compra -->
+    <button class="checkout-btn">Finalizar Compra</button>
+</div>
+
+<script>
+    // Função para remover itens do carrinho
+    document.querySelectorAll('.remove-item').forEach(button => {
+        button.addEventListener('click', function() {
+            this.parentElement.remove();
+            updateTotal();
+        });
+    });
+
+    // Função para atualizar o total
+    function updateTotal() {
+        const items = document.querySelectorAll('.cart-item');
+        let total = 0;
+        items.forEach(item => {
+            const price = parseFloat(item.querySelector('p:nth-child(2)').textContent.replace('Preço: ', '').replace('$', ''));
+            total += price;
+        });
+        document.querySelector('.total p').textContent = `Total: ${total}$`;
+    }
+
+    // Função de Finalizar Compra (exemplo simples)
+    document.querySelector('.checkout-btn').addEventListener('click', function() {
+        alert('Compra finalizada! Em breve você será redirecionado para o pagamento.');
+        // Aqui você pode redirecionar para a página de pagamento real, se necessário:
+        // window.location.href = "pagina_de_pagamento.html";
+    });
+</script>
+
+</body>
+</html>
