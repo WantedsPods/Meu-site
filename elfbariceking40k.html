@@ -142,53 +142,7 @@
             flavor.classList.add('selected');
         });
     });
-    <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrinho de Compras</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-    <h1>Seu Carrinho</h1>
-
-    <!-- Aqui vamos exibir os itens -->
-    <div id="cart-items"></div>
-
-    <!-- Total do carrinho -->
-    <div id="total-amount">Total: $0.00</div>
-
-    <!-- Quantidade de itens no carrinho -->
-    <div id="cart-count">Itens no carrinho: 0</div>
-
-    <script>
-    document.querySelectorAll('.add-to-cart').forEach(button => {
-        button.addEventListener('click', function() {
-            const id = this.getAttribute('data-id');
-            const flavor = this.getAttribute('data-flavor');
-            const price = parseFloat(this.getAttribute('data-price'));
-            const name = this.getAttribute('data-name');
-            const image = this.getAttribute('data-image');
-
-            // Cria o objeto do produto
-            const product = {
-                id,
-                flavor,
-                price,
-                name,
-                image
-            };
-
-            // Adiciona o produto ao carrinho
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            cart.push(product);
-            localStorage.setItem('cart', JSON.stringify(cart));
-
-            alert('Produto adicionado ao carrinho!');
-        });
-    });
 </script>
+
 </body>
 </html>
