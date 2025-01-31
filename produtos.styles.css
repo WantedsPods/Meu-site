@@ -1,0 +1,91 @@
+/* Resetando margens e preenchimento */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corpo da página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    color: #333;
+}
+
+/* Cabeçalho */
+header {
+    width: 100%;
+    background-color: #333; /* Cor de fundo do cabeçalho */
+    padding: 10px 0;
+    text-align: center;
+}
+
+header img {
+    width: 150px; /* Logo com 150px de largura */
+    height: auto;
+}
+
+/* Estilizando a imagem central do produto */
+.product-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 20px auto; /* Centraliza a imagem */
+}
+
+/* Contêiner de sabores */
+.product-flavors {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.product-flavor {
+    background-color: #ddd; /* Cor de fundo dos botões de sabores */
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 25px; /* Bordas arredondadas */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+    user-select: none;
+}
+
+/* Efeito de botão clicado */
+.product-flavor.active {
+    background-color: #007bff; /* Cor de fundo quando o sabor é selecionado */
+    color: #fff;
+    transform: scale(1.1); /* Efeito de aumentar o botão ao ser clicado */
+}
+
+/* Marca o botão como selecionado com um ✅ */
+.product-flavor.active::after {
+    content: " ✅";
+    margin-left: 10px;
+}
+
+/* Estilo para links de navegação */
+a {
+    text-decoration: none;
+}
+
+/* Estilo para o rodapé */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .product-flavors {
+        flex-direction: column;
+    }
+
+    .product-flavor {
+        width: 80%;
+        margin: 10px auto;
+    }
+}
