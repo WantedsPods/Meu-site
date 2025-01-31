@@ -1,178 +1,55 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IGNITE V150</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #111;
-            color: #fff;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            text-align: center;
-            padding: 20px;
-            background-color: #333;
-        }
-
-        .product-container {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-            padding: 20px;
-            justify-items: center;
-        }
-
-        .product {
-            background-color: #222;
-            border-radius: 8px;
-            padding: 15px;
-            text-align: center;
-            width: 100%;
-        }
-
-        .product img {
-            width: 100%;
-            border-radius: 8px;
-            margin-bottom: 10px;
-        }
-
-        .product h3 {
-            font-family: 'Bungee', sans-serif;
-            font-size: 24px;
-            margin: 10px 0;
-        }
-
-        .product p {
-            font-size: 18px;
-            color: #FFFFFF;
-        }
-
-        .flavors-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin: 20px 0;
-        }
-
-        .flavor {
-            background-color: #333;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            text-align: center;
-            color: white;
-            transition: background-color 0.3s ease;
-        }
-
-        .flavor:hover {
-            background-color: #555;
-        }
-
-        .selected {
-            background-color: #28a745; /* Cor verde quando selecionado */
-        }
-
-        .add-to-cart {
-            margin-top: 20px;
-            background-color: #ff5722;
-            padding: 10px 20px;
-            color: white;
-            border: none;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        .add-to-cart:hover {
-            background-color: #006400;
-        }
-
-        .cart-container {
-            margin-top: 30px;
-            font-size: 18px;
-            color: white;
-        }
-
-        .cart-counter {
-            font-size: 24px;
-            color: #fff;
-        }
-
-    </style>
+    <title>Ignite V150</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Header with Logo -->
     <header>
-        <h1>
-    <img src="logo.png" alt="Logo da loja" style="max-width: 200px; height: auto;">
-</h1>
+        <img src="logo.png" alt="Logo" style="width: 100px; height: auto;">
     </header>
 
-    <div class="product-container">
-        <div class="product">
-            <img src="ignitev150.png" alt="IGNITE V150">
-            <h3>IGNITE V150</h3>
-            <p>Preço: PROMOÇÃO 125$</p>
+    <!-- Product Details -->
+    <div class="product-page">
+        <h1>Ignite V150 - 125$</h1>
+        <img src="ignitev150.png" alt="Ignite V150" style="width: 300px; height: auto;">
 
-            <div class="flavors-container">
-                <div class="flavor" id="flavor_1">Strawberry Ice</div>
-                <div class="flavor" id="flavor_2">Icy Mint</div>
-                <div class="flavor" id="flavor_3">Watermelon Ice</div>
-                <div class="flavor" id="flavor_4">Cherry Watermelon Ice</div>
-                <div class="flavor" id="flavor_5">Watermelon Dragon Fruit</div>
-            </div>
-
-            <button class="add-to-cart" id="addToCartBtn">Adicionar ao carrinho</button>
-
-            <div class="cart-container">
-                <p>Total de itens no carrinho: <span class="cart-counter" id="cartCounter">0</span></p>
-            </div>
+        <div class="flavors">
+            <button class="flavor-btn">Strawberry Ice</button>
+            <button class="flavor-btn">Icy Mint</button>
+            <button class="flavor-btn">Watermelon Ice</button>
+            <button class="flavor-btn">Cherry Watermelon Ice</button>
+            <button class="flavor-btn">Watermelon Dragon Fruit</button>
         </div>
+
+        <button class="add-to-cart" onclick="addToCart('Ignite V150', 125)">Adicionar ao Carrinho</button>
+    </div>
+
+    <!-- Cart Icon -->
+    <div class="cart-icon" onclick="window.location.href='cart.html'">
+        <img src="cart.png" alt="Carrinho" style="width: 40px; height: auto;">
+        <span id="cart-count">0</span>
     </div>
 
     <script>
-        let selectedFlavors = []; // Array para armazenar sabores selecionados
-        let cartCounter = 0; // Contador do carrinho
-
-        // Função para adicionar sabores ao carrinho
-        document.querySelectorAll('.flavor').forEach(function(flavor) {
-            flavor.addEventListener('click', function() {
-                if (flavor.classList.contains('selected')) {
-                    // Se o sabor já foi selecionado, remove a seleção
-                    flavor.classList.remove('selected');
-                    selectedFlavors = selectedFlavors.filter(function(f) {
-                        return f !== flavor.textContent;
-                    });
-                } else {
-                    // Se não foi selecionado, adiciona a seleção
-                    flavor.classList.add('selected');
-                    selectedFlavors.push(flavor.textContent);
-                }
-            });
-        });
+        let cart = [];
 
         // Função para adicionar ao carrinho
-        document.getElementById('addToCartBtn').addEventListener('click', function() {
-            if (selectedFlavors.length > 0) {
-                // Atualizando o contador com a quantidade de sabores selecionados
-                cartCounter += selectedFlavors.length;
-                document.getElementById('cartCounter').textContent = cartCounter;
-                alert('Itens adicionados ao carrinho: ' + selectedFlavors.join(', '));
-                
-                // Resetando a seleção dos sabores após adicionar ao carrinho
-                selectedFlavors = [];
-                document.querySelectorAll('.flavor').forEach(function(flavor) {
-                    flavor.classList.remove('selected');
-                });
-            } else {
-                alert('Selecione pelo menos um sabor.');
-            }
-        });
+        function addToCart(productName, price) {
+            cart.push({ name: productName, price: price });
+            updateCartCount();
+        }
+
+        // Função para atualizar a quantidade de itens no carrinho
+        function updateCartCount() {
+            document.getElementById('cart-count').textContent = cart.length;
+        }
+
+        // Atualizar o contador de carrinho na página de carregamento
+        updateCartCount();
     </script>
 </body>
 </html>
