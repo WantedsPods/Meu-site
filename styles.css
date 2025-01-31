@@ -88,3 +88,10 @@ footer {
     width: 100%;
     color: #ccc;
 }
+
+.price {
+    font-family: 'Bungee', sans-serif;
+    font-size: 24px;
+    color: #FFFFFF;  /* Ou a cor que você preferir */
+    margin-top: 10px;
+}
