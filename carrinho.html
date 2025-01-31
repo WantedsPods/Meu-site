@@ -1,31 +1,27 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrinho de Compras</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #111;
-            color: #fff;
-            margin: 0;
-            padding: 0;
-        }
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-        .cart-container {
-            padding: 20px;
-        }
+    <h1>Seu Carrinho</h1>
 
-        .cart-item {
-            background-color: #222;
-            padding: 10px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-        }
+    <!-- Mostra os itens do carrinho -->
+    <div id="cart-items"></div>
 
+    <!-- Total do carrinho -->
+    <div id="total-amount">Total: $0.00</div>
+
+    <!-- Quantidade de itens no carrinho -->
+    <div id="cart-count">Itens no carrinho: 0</div>
+
+    <script src="carrinho.js"></script>
+</body>
+</html>
         .cart-item span {
             font-size: 18px;
         }
