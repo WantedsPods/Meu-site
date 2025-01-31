@@ -80,6 +80,15 @@ header img {
     font-family: 'Bungee', sans-serif; /* Fonte Bungee no preço */
 }
 
+/* Estilo para o body - a tag <body> do HTML */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #111;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
 /* Botão WhatsApp */
 .whatsapp-button {
     position: fixed;
@@ -88,7 +97,7 @@ header img {
     width: 60px;   /* Largura do botão */
     height: 60px;  /* Altura do botão */
     border-radius: 50%;  /* Tornar o botão redondo */
-    background-color: transparent;  /* Fundo transparente */
+    background-color: #25d366;  /* Cor do WhatsApp */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -106,9 +115,9 @@ header img {
     position: fixed;
     top: 20px;     /* Posição de 20px do topo */
     right: 20px;   /* Posição de 20px da direita */
-    width: 60px;   /* Largura do botão */
-    height: 60px;  /* Altura do botão */
-    background-color: transparent;  /* Fundo transparente */
+    width: 50px;   /* Largura do botão */
+    height: 50px;  /* Altura do botão */
+    background-color: #f0f0f0;  /* Cor de fundo do carrinho */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -117,6 +126,6 @@ header img {
 }
 
 .cart-button img {
-    width: 35px;   /* Tamanho da imagem */
-    height: 35px;  /* Tamanho da imagem */
+    width: 30px;   /* Tamanho da imagem */
+    height: 30px;  /* Tamanho da imagem */
 }
