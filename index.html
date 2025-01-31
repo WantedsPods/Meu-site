@@ -231,7 +231,7 @@
           });
         });
       });
-  document.querySelectorAll('.product-img').forEach(img => {
+  document.querySelectorAll('.product').forEach(img => {
     img.addEventListener('click', function() {
       const productId = this.getAttribute('data-id'); // Pega o data-id
       window.location.href = `produtos.html?product=${productId}`; // Redireciona para a página de sabores
