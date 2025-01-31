@@ -5,52 +5,150 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ignite V150</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+        }
+
+        header img {
+            width: 150px;
+            height: auto;
+        }
+
+        .product-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            justify-items: center;
+        }
+
+        .product {
+            background-color: #222;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+        }
+
+        .product img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border: 5px solid #fff;
+        }
+
+        .product h3 {
+            font-size: 20px;
+            color: #fff;
+        }
+
+        .product p {
+            font-size: 18px;
+            color: #FF0000;
+        }
+
+        .price {
+            font-size: 24px;
+            color: #fff;
+            margin-top: 10px;
+        }
+
+        .button {
+            background-color: #ff7f00;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .button:hover {
+            background-color: #e67e00;
+        }
+
+        .cart-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <!-- Header with Logo -->
-    <header>
-        <img src="logo.png" alt="Logo" style="width: 100px; height: auto;">
-    </header>
 
-    <!-- Product Section -->
-    <div class="product-container">
-        <div class="product-item">
-            <img src="ignitev150.png" alt="Ignite V150" class="product-image">
-            <h2>Ignite V150</h2>
-            <p class="price">125$</p>
-            <div class="flavor-buttons">
-                <button class="flavor-btn">Strawberry Ice</button>
-                <button class="flavor-btn">Icy Mint</button>
-                <button class="flavor-btn">Watermelon Ice</button>
-                <button class="flavor-btn">Cherry Watermelon Ice</button>
-                <button class="flavor-btn">Watermelon Dragon Fruit</button>
-            </div>
-            <button class="add-to-cart" onclick="addToCart('Ignite V150', 125)">Adicionar ao Carrinho</button>
+<header>
+    <img src="logo.png" alt="Logo" />
+</header>
+
+<div class="product-container">
+    <div class="product">
+        <img src="ignitev150.png" alt="Ignite V150">
+        <h3>Ignite V150</h3>
+        <p>Preço: <span class="price">125$</span></p>
+
+        <div class="flavor-buttons">
+            <button class="flavor-button">Strawberry Ice</button>
+            <button class="flavor-button">Icy Mint</button>
+            <button class="flavor-button">Watermelon Ice</button>
+            <button class="flavor-button">Cherry Watermelon Ice</button>
+            <button class="flavor-button">Watermelon Dragon Fruit</button>
         </div>
+
+        <button class="button" onclick="addToCart('Ignite V150', 125)">Adicionar ao Carrinho</button>
     </div>
+</div>
 
-    <!-- Cart Icon -->
-    <div class="cart-icon" onclick="window.location.href='cart.html'">
-        <img src="cart.png" alt="Carrinho">
-        <span id="cart-count">0</span>
-    </div>
+<!-- Carrinho no topo direito -->
+<img src="cart.png" alt="Carrinho" class="cart-icon" onclick="window.location.href='cart.html'">
 
-    <script>
-        let cart = [];
+<script>
+    let cart = [];
 
-        // Função para adicionar ao carrinho
-        function addToCart(productName, price) {
-            cart.push({ name: productName, price: price });
-            updateCartCount();
+    function addToCart(productName, productPrice) {
+        const product = {
+            name: productName,
+            price: productPrice
+        };
+        cart.push(product);
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        // Update cart icon with item count
+        updateCartIcon();
+    }
+
+    function updateCartIcon() {
+        const cartCount = cart.length;
+        document.getElementById('cart-count').innerText = cartCount;
+    }
+
+    // Load cart from localStorage
+    window.onload = function() {
+        if (localStorage.getItem('cart')) {
+            cart = JSON.parse(localStorage.getItem('cart'));
+            updateCartIcon();
         }
+    };
+</script>
 
-        // Função para atualizar a quantidade de itens no carrinho
-        function updateCartCount() {
-            document.getElementById('cart-count').textContent = cart.length;
-        }
-
-        // Atualizar o contador de carrinho na página de carregamento
-        updateCartCount();
-    </script>
 </body>
 </html>
