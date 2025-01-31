@@ -7,108 +7,89 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #000;
+            background-color: #111;
             color: #fff;
             margin: 0;
             padding: 0;
         }
-        #logo {
-            display: block;
-            width: 80px;
-            margin: 20px auto;
-        }
-        .cart-page {
+
+        .cart-container {
             padding: 20px;
-            text-align: center;
         }
+
         .cart-item {
-            background-color: #1c1c1c;
-            margin: 10px auto;
-            padding: 15px;
+            background-color: #222;
+            padding: 10px;
             border-radius: 8px;
-            width: 80%;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
         }
-        .cart-item p {
-            margin: 5px 0;
+
+        .cart-item span {
             font-size: 18px;
         }
-        .cart-item button {
-            background-color: #e74c3c;
-            color: white;
-            padding: 8px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+
+        .cart-item .item-price {
+            color: #FF0000;
         }
-        .checkout-btn {
-            background-color: #4CAF50;
-            color: white;
-            padding: 15px;
-            width: 80%;
+
+        .checkout-button {
+            background-color: #ff7f00;
             border: none;
-            border-radius: 5px;
-            margin-top: 20px;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
             cursor: pointer;
+            border-radius: 5px;
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .checkout-button:hover {
+            background-color: #e67e00;
         }
     </style>
 </head>
 <body>
 
-<!-- Logo no topo -->
-<img src="caminho/para/sua/logo.png" alt="Logo" id="logo">
-
-<!-- Página de Carrinho -->
-<div class="cart-page">
+<div class="cart-container">
     <h1>Carrinho de Compras</h1>
 
-    <!-- Exemplo de Itens no Carrinho -->
-    <div class="cart-item">
-        <p>Elfbar Ice King 40K - Cherry Fuse</p>
-        <p>Preço: 165$</p>
-        <button class="remove-item">Remover</button>
-    </div>
-    <div class="cart-item">
-        <p>Elfbar BC 10K - Blue Razz Ice</p>
-        <p>Preço: 115$</p>
-        <button class="remove-item">Remover</button>
-    </div>
+    <div id="cart-items"></div>
 
-    <!-- Total -->
-    <div class="total">
-        <p><strong>Total: 280$</strong></p>
-    </div>
-
-    <!-- Botão para Finalizar Compra -->
-    <button class="checkout-btn">Finalizar Compra</button>
+    <button class="checkout-button" onclick="finalizePurchase()">Finalizar Compra</button>
 </div>
 
 <script>
-    // Função para remover itens do carrinho
-    document.querySelectorAll('.remove-item').forEach(button => {
-        button.addEventListener('click', function() {
-            this.parentElement.remove();
-            updateTotal();
-        });
-    });
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-    // Função para atualizar o total
-    function updateTotal() {
-        const items = document.querySelectorAll('.cart-item');
+    function displayCart() {
+        const cartItemsContainer = document.getElementById('cart-items');
+        cartItemsContainer.innerHTML = '';
+
         let total = 0;
-        items.forEach(item => {
-            const price = parseFloat(item.querySelector('p:nth-child(2)').textContent.replace('Preço: ', '').replace('$', ''));
-            total += price;
+        cart.forEach(item => {
+            const cartItem = document.createElement('div');
+            cartItem.classList.add('cart-item');
+
+            cartItem.innerHTML = `
+                <span>${item.name} - ${item.flavor}</span>
+                <span class="item-price">${item.price}$</span>
+            `;
+
+            cartItemsContainer.appendChild(cartItem);
+            total += item.price;
         });
-        document.querySelector('.total p').textContent = `Total: ${total}$`;
+
+        const totalPrice = document.createElement('div');
+        totalPrice.innerHTML = `<h3>Total: ${total}$</h3>`;
+        cartItemsContainer.appendChild(totalPrice);
     }
 
-    // Função de Finalizar Compra (exemplo simples)
-    document.querySelector('.checkout-btn').addEventListener('click', function() {
-        alert('Compra finalizada! Em breve você será redirecionado para o pagamento.');
-        // Aqui você pode redirecionar para a página de pagamento real, se necessário:
-        // window.location.href = "pagina_de_pagamento.html";
-    });
-</script>
-
-</body>
-</html>
+    function finalizePurchase() {
+        alert
