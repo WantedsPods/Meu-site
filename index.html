@@ -219,20 +219,39 @@
             imagem.setAttribute('data-id', nomeArquivo);
         });
     });
+  
+    <h1 id="product-name"></h1>
+<ul id="flavors-list"></ul>
+      
   document.addEventListener('DOMContentLoaded', function() {
-    // Seletor ajustado para a classe 'product'
-    document.querySelectorAll('.product').forEach(img => {
-      img.addEventListener('click', function() {
-        const productId = this.getAttribute('data-id'); // Obtém o data-id da imagem clicada
-        window.location.href = `produtos.html?product=${productId}`; // Redireciona para a página de sabores com o ID
-      });
-    });
-  });
-  document.querySelectorAll('.product').forEach(img => {
-    img.addEventListener('click', function() {
-      const productId = this.getAttribute('data-id'); // Pega o data-id
-      window.location.href = `produtos.html?product=${productId}`; // Redireciona para a página de sabores
-    });
+    // Carregar o JSON de produtos
+    fetch('produtos.json')  // Usando fetch para carregar o JSON
+      .then(response => response.json())  // Transformar a resposta em JSON
+      .then(data => {
+        // Pega o id do produto da URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('product');  // Obtém o parâmetro 'product' da URL
+        
+        // Encontra o produto correspondente no JSON
+        const product = data.produtos.find(p => p.id === productId);  // Procura o produto pelo id
+        
+        if (product) {
+          // Exibe o nome do produto
+          document.getElementById('product-name').textContent = product.nome;
+          const flavorsList = document.getElementById('flavors-list');
+          flavorsList.innerHTML = ''; // Limpar a lista de sabores antes de adicionar os novos sabores
+          
+          // Adiciona os sabores ao HTML
+          product.sabores.forEach(flavor => {
+            const flavorItem = document.createElement('li');
+            flavorItem.textContent = flavor;  // Cria um item de lista com o sabor
+            flavorsList.appendChild(flavorItem);  // Adiciona o sabor à lista
+          });
+        } else {
+          console.log("Produto não encontrado.");
+        }
+      })
+      .catch(error => console.log(error));  // Se ocorrer erro, será mostrado no console
   });
 </script>
 </body>
