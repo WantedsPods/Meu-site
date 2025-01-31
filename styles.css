@@ -199,9 +199,19 @@ header {
 }
 
 .logo-text {
-    font-size: 17px; /* Tamanho pequeno para o texto */
-    color: #FFFFFF; /* Cor do texto (pode ser alterado para qualquer cor) */
-    margin-top: 8px; /* Espaço entre a logo e o texto */
-    font-family: 'Bungee', sans-serif;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: #fff;
+    text-align: center; /* Centraliza o texto */
+    display: inline-block;
+    position: relative;
+    transform: rotate(10deg); /* Aqui você ajusta a curvatura */
 }
 
+.curved-text {
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    transform: rotate(30deg); /* Define o ângulo da curvatura */
+}
