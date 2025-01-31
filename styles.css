@@ -43,7 +43,7 @@ body {
 }
 
 /* Ícones fixos do WhatsApp e Carrinho */
-.whatsapp-icon, .cart-icon {
+.whatsapp-icon {
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -58,7 +58,17 @@ body {
 }
 
 .cart-icon {
+    position: fixed;
+    top: 20px;
+    right: 20px;
     background-color: #ff6f61;
+    color: white;
+    border-radius: 50%;
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    font-size: 30px;
+    cursor: pointer;
+    text-align: center;
 }
 
 .cart-icon a, .whatsapp-icon a {
