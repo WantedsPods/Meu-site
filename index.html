@@ -63,35 +63,9 @@
             font-size: 24px;
             color: #FFFFFF;
             margin-top: 10px;
+
+        
         }
-
-<!-- Carrinho no topo da página -->
-<div id="cart">
-    <img src="carrinho-icon.png" alt="Carrinho">
-    <span id="cart-count">0</span>
-</div>
-
-<!-- Produtos com botão de adicionar ao carrinho -->
-<div class="container">
-    <div class="product" data-id="1">
-        <img src="ignite-v80.jpg" alt="Ignite V80">
-        <h3>Ignite V80</h3>
-        <p>120$</p>
-        <button class="add-to-cart">Adicionar ao Carrinho</button>
-    </div>
-    <!-- Repita esse bloco para cada produto -->
-</div>
-
-<!-- Modal do carrinho -->
-<div id="cart-modal" style="display:none;">
-    <div class="cart-content">
-        <h2>Carrinho</h2>
-        <ul id="cart-items"></ul>
-        <p>Total: <span id="cart-total">0</span></p>
-        <button id="checkout">Finalizar Compra</button>
-        <button id="close-cart">Fechar Carrinho</button>
-    </div>
-</div>
     </style>
 </head>
 <body>
@@ -231,8 +205,8 @@
     <img src="img10.png" alt="OXBAR 30K" />
     <p>OXBAR 30K</p>
   </div>
-</script>
-        }
+
+  <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Pega todas as imagens com a classe 'produto-imagem'
         var imagens = document.querySelectorAll('product');
@@ -291,16 +265,6 @@
     // Redireciona para a página do produto
     window.location.href = url;
   });
-});
-        // Faz com que a imagem do produto leve para a página correta
-document.querySelectorAll('.product img').forEach(img => {
-    img.addEventListener('click', (event) => {
-        const product = event.target.closest('.product');
-        if (product) {
-            const productId = product.dataset.id; 
-            window.location.href = `produto-${productId}.html`; // Ajuste conforme seu padrão de URL
-        }
-    });
 });
   </script>
 </body>
