@@ -64,6 +64,39 @@
             color: #FFFFFF;
             margin-top: 10px;
 
+            /* Estilo do carrinho no canto superior direito */
+        .cart-icon {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #ff5722;
+            color: white;
+            border-radius: 50%;
+            padding: 15px;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cart-icon span {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Carrinho no canto superior direito -->
+    <div class="cart-icon" id="cartIcon">
+        <span id="cartTotal">0</span>
+    </div>
+
+    <!-- Outros conteúdos da sua página principal -->
+    <h1>Bem-vindo à minha loja!</h1>
+    <!-- Abaixo, seus produtos ou conteúdo da página principal -->
+
+            
+
         
         }
     </style>
@@ -207,6 +240,18 @@
   </div>
 
   <script>
+        let cartTotal = 0;
+
+        // Função para atualizar o contador de itens no carrinho
+        function updateCartCounter(count) {
+            cartTotal += count;
+            document.getElementById('cartTotal').textContent = cartTotal;
+        }
+
+        // Essa função será chamada quando adicionar ao carrinho nas páginas dos produtos
+        function addItemToCart(count) {
+            updateCartCounter(count);
+        }
     document.addEventListener('DOMContentLoaded', function() {
         // Pega todas as imagens com a classe 'produto-imagem'
         var imagens = document.querySelectorAll('product');
