@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <!-- Logo e Texto Principal -->
+    <!-- Logo and Main Text -->
     <section class="hero">
         <div class="hero-content">
             <img src="logo.png" alt="Logo" class="logo">
@@ -19,32 +19,32 @@
         </div>
     </section>
 
-    <!-- Ícone do carrinho no canto superior direito -->
+    <!-- Cart Icon at the top right corner -->
 <button id="toggle-cart" class="toggle-cart">
-    🛒 Carrinho (<span class="cart-count">0</span>)
+    🛒 Cart (<span class="cart-count">0</span>)
 </button>
 
-<!-- Carrinho (inicialmente escondido) -->
+<!-- Cart (initially hidden) -->
 <div id="cart-container" class="cart-container">
-    <p><strong>Itens no Carrinho:</strong></p>
-    <ul id="cart"></ul> <!-- Lista de itens do carrinho -->
+    <p><strong>Items in Cart:</strong></p>
+    <ul id="cart"></ul> <!-- Cart item list -->
     
-    <!-- Botão para finalizar compra -->
-    <button id="checkout-button" class="checkout-button">Finalizar Compra</button>
+    <!-- Checkout Button -->
+    <button id="checkout-button" class="checkout-button">Checkout</button>
 </div>
 
-<!-- Produtos -->
+<!-- Products -->
 <div class="product" data-price="125">
-    <h3 class="product-name">Produto 1</h3>
+    <h3 class="product-name">Product 1</h3>
     <div class="product-details" style="display:none;"></div>
-    <button class="product-name" data-flavors="Strawberry Ice, Icy Mint, Watermelon Ice">Ver Sabores</button>
+    <button class="product-name" data-flavors="Strawberry Ice, Icy Mint, Watermelon Ice">See Flavors</button>
 </div>
 
-<!-- Outros produtos aqui -->
+<!-- More products here -->
     </div>
 
     <footer>
-        <!-- Removido o texto de direitos autorais -->
+        <!-- Removed copyright text -->
     </footer>
 
     <script src="script.js"></script>
@@ -53,7 +53,7 @@
 </html>
 
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -64,7 +64,7 @@
 <body>
 
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -75,7 +75,7 @@
 <body>
 
     <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -85,7 +85,7 @@
 </head>
 <body>
     <section class="products">
-        <!-- Produto 1: PROMOÇÃO V150 -->
+        <!-- Product 1: PROMOÇÃO V150 -->
         <div class="product" data-name="PROMOÇÃO V150" data-price="125">
             <img src="v150.jpg" alt="PROMOÇÃO V150">
             <h2 class="product-name" onclick="toggleFlavors('promoV150')">PROMOÇÃO V150 - $125</h2>
@@ -98,8 +98,8 @@
             </div>
         </div>
 
-        <!-- Produto 2: ELFBAR BC 10K -->
-        <div class="product" data-name="ELFBAR BC 10K (especial edition)" data-price="115">
+        <!-- Product 2: ELFBAR BC 10K -->
+        <div class="product" data-name="ELFBAR BC 10K (special edition)" data-price="115">
             <img src="elfbar-bc10k.jpg" alt="ELFBAR BC 10K">
             <h2 class="product-name" onclick="toggleFlavors('elfbarBC10K')">ELFBAR BC 10K - $115</h2>
             <div id="elfbarBC10K" class="flavors" style="display: none;">
@@ -108,7 +108,7 @@
             </div>
         </div>
 
-        <!-- Produto 3: Elfbar Ice King 40K -->
+        <!-- Product 3: Elfbar Ice King 40K -->
         <div class="product" data-name="Elfbar Ice King 40K" data-price="165">
             <img src="elfbar-iceking-40k.jpg" alt="Elfbar Ice King 40K">
             <h2 class="product-name" onclick="toggleFlavors('elfbarIceKing40K')">Elfbar Ice King 40K - $165</h2>
@@ -118,7 +118,7 @@
             </div>
         </div>
 
-        <!-- Produto 4: ELFBAR GH 23K -->
+        <!-- Product 4: ELFBAR GH 23K -->
         <div class="product" data-name="ELFBAR GH 23K" data-price="150">
             <img src="elfbar-gh23k.jpg" alt="ELFBAR GH 23K">
             <h2 class="product-name" onclick="toggleFlavors('elfbarGH23K')">ELFBAR GH 23K - $150</h2>
@@ -127,7 +127,7 @@
             </div>
         </div>
 
-        <!-- Produto 5: LOST MARY 5K -->
+        <!-- Product 5: LOST MARY 5K -->
         <div class="product" data-name="LOST MARY 5K" data-price="90">
             <img src="lost-mary-5k.jpg" alt="LOST MARY 5K">
             <h2 class="product-name" onclick="toggleFlavors('lostMary5K')">LOST MARY 5K - $90</h2>
@@ -137,7 +137,7 @@
             </div>
         </div>
 
-        <!-- Produto 6: LOST MARY 20K -->
+        <!-- Product 6: LOST MARY 20K -->
         <div class="product" data-name="LOST MARY 20K" data-price="130">
             <img src="lost-mary-20k.jpg" alt="LOST MARY 20K">
             <h2 class="product-name" onclick="toggleFlavors('lostMary20K')">LOST MARY 20K - $130</h2>
@@ -148,114 +148,7 @@
             </div>
         </div>
 
-        <!-- Produto 7: IGNITE V50 BLACK -->
+        <!-- Product 7: IGNITE V50 BLACK -->
         <div class="product" data-name="IGNITE V50 BLACK" data-price="95">
             <img src="ignite-v50-black.jpg" alt="IGNITE V50 BLACK">
-            <h2 class="product-name" onclick="toggleFlavors('igniteV50Black')">IGNITE V50 BLACK - $95</h2>
-            <div id="igniteV50Black" class="flavors" style="display: none;">
-                <button class="flavor-btn" onclick="addToCart('IGNITE V50 BLACK', 'Blue Dream', 95)">Blue Dream</button>
-                <button class="flavor-btn" onclick="addToCart('IGNITE V50 BLACK', 'Peach Mango Watermelon', 95)">Peach Mango Watermelon</button>
-                <button class="flavor-btn" onclick="addToCart('IGNITE V50 BLACK', 'Strawberry Kiwi', 95)">Strawberry Kiwi</button>
-                <button class="flavor-btn" onclick="addToCart('IGNITE V50 BLACK', 'Aloe Grape', 95)">Aloe Grape</button>
-                <button class="flavor-btn" onclick="addToCart('IGNITE V50 BLACK', 'Watermelon Mix', 95)">Watermelon Mix</button>
-                <button class="flavor-btn" onclick="addToCart('IGNITE V50 BLACK', 'Peach Raspberry', 95)">Peach Raspberry</button>
-                <button class="flavor-btn" onclick="addToCart('IGNITE V50 BLACK', 'Strawberry Banana', 95)">Strawberry Banana</button>
-            </div>
-        </div>
-
-        <!-- Produto 8: IGNITE V80 -->
-        <div class="product" data-name="IGNITE V80" data-price="120">
-            <img src="imagem8.zip" alt="IGNITE V80">
-            <h2 class="product-name" onclick="toggleFlavors('igniteV80')">IGNITE V80 - $120</h2>
-            <div id="igniteV80" class="flavors" style="display: none;">
-                <button class="flavor-btn" onclick="addToCart('IGNITE V80', 'Strawberry Kiwi (Silver)', 120)">Strawberry Kiwi (Silver)</button>
-                <button class="flavor-btn" onclick="addToCart('IGNITE V80', 'Blueberry Ice (Silver)', 120)">Blueberry Ice (Silver)</button>
-                <button class="flavor-btn" onclick="addToCart('IGNITE V80', 'Banana Ice (Silver)', 120)">Banana Ice (Silver)</button>
-                                <button class="flavor-btn" onclick="addToCart('IGNITE V80', 'Banana Cherry (Silver)', 120)">Banana Cherry (Silver)</button>
-                <button class="flavor-btn" onclick="addToCart('IGNITE V80', 'Strawberry Ice (Silver)', 120)">Strawberry Ice (Silver)</button>
-                <button class="flavor-btn" onclick="addToCart('IGNITE V80', 'Cactus (Silver)', 120)">Cactus (Silver)</button>
-            </div>
-        </div>
-
-        <!-- Produto 9: RABBEATS 10K -->
-        <div class="product" data-name="RABBEATS 10K" data-price="95">
-            <img src="rabbeats-10k.jpg" alt="RABBEATS 10K">
-            <h2 class="product-name" onclick="toggleFlavors('rabbeats10K')">RABBEATS 10K - $95</h2>
-            <div id="rabbeats10K" class="flavors" style="display: none;">
-                <button class="flavor-btn" onclick="addToCart('RABBEATS 10K', 'Clear', 95)">Clear</button>
-                <button class="flavor-btn" onclick="addToCart('RABBEATS 10K', 'Cherry Lemon', 95)">Cherry Lemon</button>
-                <button class="flavor-btn" onclick="addToCart('RABBEATS 10K', 'Strawberry Kiwi Ice', 95)">Strawberry Kiwi Ice</button>
-            </div>
-        </div>
-
-        <!-- Produto 10: OXBAR 30K -->
-        <div class="product" data-name="OXBAR 30K" data-price="130">
-            <img src="oxbar-30k.jpg" alt="OXBAR 30K">
-            <h2 class="product-name" onclick="toggleFlavors('oxbar30K')">OXBAR 30K - $130</h2>
-            <div id="oxbar30K" class="flavors" style="display: none;">
-                <button class="flavor-btn" onclick="addToCart('OXBAR 30K', 'Mr Bull', 130)">Mr Bull</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Carrinho de compras -->
-    <div class="cart">
-        <h3>Carrinho de Compras</h3>
-        <ul id="cart-items"></ul>
-        <p id="cart-total">Total: $0</p>
-        <button onclick="clearCart()">Limpar Carrinho</button>
-    </div>
-
-    <script>
-        let cart = [];
-
-        function toggleFlavors(productId) {
-            const flavorDiv = document.getElementById(productId);
-            flavorDiv.style.display = (flavorDiv.style.display === 'none' ? 'block' : 'none');
-        }
-
-        function addToCart(productName, flavor, price) {
-            const existingProduct = cart.find(item => item.productName === productName && item.flavor === flavor);
-
-            if (existingProduct) {
-                existingProduct.quantity++;
-            } else {
-                cart.push({ productName, flavor, price, quantity: 1 });
-            }
-            updateCart();
-        }
-
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCart();
-        }
-
-        function updateCart() {
-            const cartItems = document.getElementById('cart-items');
-            const cartTotal = document.getElementById('cart-total');
-            cartItems.innerHTML = '';
-
-            let total = 0;
-
-            cart.forEach((item, index) => {
-                const li = document.createElement('li');
-                li.textContent = `${item.productName} - ${item.flavor} x${item.quantity} - $${item.price * item.quantity}`;
-                const removeButton = document.createElement('button');
-                removeButton.textContent = 'Remover';
-                removeButton.onclick = () => removeFromCart(index);
-                li.appendChild(removeButton);
-                cartItems.appendChild(li);
-                total += item.price * item.quantity;
-            });
-
-            cartTotal.textContent = `Total: $${total}`;
-        }
-
-        function clearCart() {
-            cart = [];
-            updateCart();
-        }
-    </script>
-</body>
-</html>
-
+            <h2 class="product-name" onclick="toggleFlavors('igniteV50Black')
