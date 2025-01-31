@@ -74,6 +74,59 @@
     <img src="logo.png" alt="Logo da loja" style="max-width: 200px; height: auto;">
 </h1>
  </header>
+    <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos - Wanteds Pods</title>
+    <link rel="stylesheet" href="produtos-style.css">
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Logo" class="logo">
+    </header>
+
+    <div class="product-list" id="product-list">
+        <!-- Aqui os produtos serão inseridos dinamicamente -->
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Wanteds Pods. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // JSON com os produtos
+        const produtos = [
+            { "nome": "PROMOÇÃO V150", "imagem": "img1.png", "link": "produto-v150.html" },
+            { "nome": "ELFBAR BC 10K", "imagem": "img2.png", "link": "produto-elfbar_bc10k.html" },
+            { "nome": "ELFBAR Ice King", "imagem": "img3.png", "link": "produto-elfbar_iceking.html" },
+            { "nome": "ELFBAR GH 23K", "imagem": "img4.png", "link": "produto-elfbar_gh23k.html" },
+            { "nome": "LOST MARY 5K", "imagem": "img5.png", "link": "produto-lostmary_5k.html" },
+            { "nome": "LOST MARY 20K", "imagem": "img6.png", "link": "produto-lostmary_20k.html" },
+            { "nome": "IGNITE V50 BLACK", "imagem": "img7.png", "link": "produto-ignite_v50_black.html" },
+            { "nome": "IGNITE V80", "imagem": "img8.png", "link": "produto-ignite_v80.html" },
+            { "nome": "RABBEATS 10K", "imagem": "img9.png", "link": "produto-rabbeats_10k.html" },
+            { "nome": "OXBAR 30K", "imagem": "img10.png", "link": "produto-oxbar_30k.html" }
+        ];
+
+        // Função para adicionar os produtos dinamicamente ao HTML
+        const productList = document.getElementById("product-list");
+
+        produtos.forEach(produto => {
+            const aTag = document.createElement("a");
+            aTag.href = produto.link;
+            
+            const imgTag = document.createElement("img");
+            imgTag.src = produto.imagem;
+            imgTag.alt = produto.nome;
+
+            aTag.appendChild(imgTag);
+            productList.appendChild(aTag);
+        });
+    </script>
+</body>
+</html>
     <div class="product-container">
         <!-- Produto 1 -->
         <div class="product">
