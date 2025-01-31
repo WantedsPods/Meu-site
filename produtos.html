@@ -4,99 +4,96 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produtos - Wanteds Pods</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="produtos-style.css">
 </head>
 <body>
     <header>
-        <h1>Wanteds Pods</h1>
-        <div>
-            <a href="carrinho.html">Carrinho (<span id="cart-count">0</span>)</a>
-        </div>
+        <img src="logo.png" alt="Logo" class="logo">
     </header>
 
-    <section class="product-list">
-        <!-- PRODUTOS -->
-        <div class="product" data-id="produto1">
-            <img src="produto1.jpg" alt="PROMOÇÃO V150">
-            <p class="product-name">PROMOÇÃO V150</p>
-            <p class="product-price">125$</p>
-            <button onclick="showProductDetails('produto1')">Ver sabores</button>
+    <div class="product-list">
+        <!-- Produto 1: PROMOÇÃO V150 -->
+        <div class="product">
+            <a href="produto-v150.html">
+                <img src="img1.png" alt="Promoção V150" class="product-img">
+                <h2>PROMOÇÃO V150</h2>
+            </a>
         </div>
 
-        <div class="product" data-id="produto2">
-            <img src="produto2.jpg" alt="ELFBAR BC 10K">
-            <p class="product-name">ELFBAR BC 10K</p>
-            <p class="product-price">115$</p>
-            <button onclick="showProductDetails('produto2')">Ver sabores</button>
+        <!-- Produto 2: ELFBAR BC 10K -->
+        <div class="product">
+            <a href="produto-elfbar-bc10k.html">
+                <img src="img2.png" alt="ELFBAR BC 10K" class="product-img">
+                <h2>ELFBAR BC 10K (especial edition)</h2>
+            </a>
         </div>
 
-        <div class="product" data-id="produto3">
-            <img src="produto3.jpg" alt="Elfbar Ice King 40K">
-            <p class="product-name">Elfbar Ice King 40K</p>
-            <p class="product-price">165$</p>
-            <button onclick="showProductDetails('produto3')">Ver sabores</button>
+        <!-- Produto 3: Elfbar Ice King 40K -->
+        <div class="product">
+            <a href="produto-elfbar-ice-king.html">
+                <img src="img3.png" alt="Elfbar Ice King 40K" class="product-img">
+                <h2>Elfbar Ice King 40K</h2>
+            </a>
         </div>
 
-        <div class="product" data-id="produto4">
-            <img src="produto4.jpg" alt="ELFBAR GH 23K">
-            <p class="product-name">ELFBAR GH 23K</p>
-            <p class="product-price">150$</p>
-            <button onclick="showProductDetails('produto4')">Ver sabores</button>
+        <!-- Produto 4: ELFBAR GH 23K -->
+        <div class="product">
+            <a href="produto-elfbar-gh23k.html">
+                <img src="img4.png" alt="ELFBAR GH 23K" class="product-img">
+                <h2>ELFBAR GH 23K</h2>
+            </a>
         </div>
 
-        <div class="product" data-id="produto5">
-            <img src="produto5.jpg" alt="LOST MARY 5K">
-            <p class="product-name">LOST MARY 5K</p>
-            <p class="product-price">90$</p>
-            <button onclick="showProductDetails('produto5')">Ver sabores</button>
+        <!-- Produto 5: LOST MARY 5K -->
+        <div class="product">
+            <a href="produto-lost-mary-5k.html">
+                <img src="img5.png" alt="LOST MARY 5K" class="product-img">
+                <h2>LOST MARY 5K</h2>
+            </a>
         </div>
 
-        <div class="product" data-id="produto6">
-            <img src="produto6.jpg" alt="LOST MARY 20K">
-            <p class="product-name">LOST MARY 20K</p>
-            <p class="product-price">130$</p>
-            <button onclick="showProductDetails('produto6')">Ver sabores</button>
+        <!-- Produto 6: LOST MARY 20K -->
+        <div class="product">
+            <a href="produto-lost-mary-20k.html">
+                <img src="img6.png" alt="LOST MARY 20K" class="product-img">
+                <h2>LOST MARY 20K</h2>
+            </a>
         </div>
 
-        <div class="product" data-id="produto7">
-            <img src="produto7.jpg" alt="IGNITE V50 BLACK">
-            <p class="product-name">IGNITE V50 BLACK</p>
-            <p class="product-price">95$</p>
-            <button onclick="showProductDetails('produto7')">Ver sabores</button>
+        <!-- Produto 7: IGNITE V50 BLACK -->
+        <div class="product">
+            <a href="produto-ignite-v50-black.html">
+                <img src="img7.png" alt="IGNITE V50 BLACK" class="product-img">
+                <h2>IGNITE V50 BLACK</h2>
+            </a>
         </div>
 
-        <div class="product" data-id="produto8">
-            <img src="produto8.jpg" alt="IGNITE V80">
-            <p class="product-name">IGNITE V80</p>
-            <p class="product-price">120$</p>
-            <button onclick="showProductDetails('produto8')">Ver sabores</button>
+        <!-- Produto 8: IGNITE V80 -->
+        <div class="product">
+            <a href="produto-ignite-v80.html">
+                <img src="img8.png" alt="IGNITE V80" class="product-img">
+                <h2>IGNITE V80</h2>
+            </a>
         </div>
 
-        <div class="product" data-id="produto9">
-            <img src="produto9.jpg" alt="RABBEATS 10K">
-            <p class="product-name">RABBEATS 10K</p>
-            <p class="product-price">95$</p>
-            <button onclick="showProductDetails('produto9')">Ver sabores</button>
+        <!-- Produto 9: RABBEATS 10K -->
+        <div class="product">
+            <a href="produto-rabbeats-10k.html">
+                <img src="img9.png" alt="RABBEATS 10K" class="product-img">
+                <h2>RABBEATS 10K</h2>
+            </a>
         </div>
 
-        <div class="product" data-id="produto10">
-            <img src="produto10.jpg" alt="OXBAR 30K">
-            <p class="product-name">OXBAR 30K</p>
-            <p class="product-price">130$</p>
-            <button onclick="showProductDetails('produto10')">Ver sabores</button>
-        </div>
-    </section>
-
-    <!-- Detalhes do Produto -->
-    <div id="product-popup" class="product-popup">
-        <div class="popup-content">
-            <span class="close" onclick="closeProductDetails()">&times;</span>
-            <h2 id="product-title"></h2>
-            <div id="flavors-list"></div>
-            <button id="add-to-cart" onclick="addToCart()">Adicionar ao Carrinho</button>
+        <!-- Produto 10: OXBAR 30K -->
+        <div class="product">
+            <a href="produto-oxbar-30k.html">
+                <img src="img10.png" alt="OXBAR 30K" class="product-img">
+                <h2>OXBAR 30K</h2>
+            </a>
         </div>
     </div>
 
-    <script src="script.js"></script>
 </body>
 </html>
+        
+        
