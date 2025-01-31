@@ -219,18 +219,15 @@
             imagem.setAttribute('data-id', nomeArquivo);
         });
     });
-    // Função para carregar os dados do JSON
-    fetch('produtos.json')
-      .then(response => response.json())
-      .then(data => {
-        // Para cada produto, cria um evento de click
-        data.forEach(produto => {
-          const produtoElement = document.getElementById(produto.id);
-          produtoElement.querySelector('img').addEventListener('click', () => {
-            window.location.href = `produto.html?id=${produto.id}`;
-          });
-        });
+  document.addEventListener('DOMContentLoaded', function() {
+    // Seletor ajustado para a classe 'product'
+    document.querySelectorAll('.product').forEach(img => {
+      img.addEventListener('click', function() {
+        const productId = this.getAttribute('data-id'); // Obtém o data-id da imagem clicada
+        window.location.href = `produtos.html?product=${productId}`; // Redireciona para a página de sabores com o ID
       });
+    });
+  });
   document.querySelectorAll('.product').forEach(img => {
     img.addEventListener('click', function() {
       const productId = this.getAttribute('data-id'); // Pega o data-id
