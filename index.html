@@ -368,6 +368,16 @@
     window.location.href = url;
   });
 });
+        // Faz com que a imagem do produto leve para a página correta
+document.querySelectorAll('.product img').forEach(img => {
+    img.addEventListener('click', (event) => {
+        const product = event.target.closest('.product');
+        if (product) {
+            const productId = product.dataset.id; 
+            window.location.href = `produto-${productId}.html`; // Ajuste conforme seu padrão de URL
+        }
+    });
+});
   </script>
 </body>
 </html>
