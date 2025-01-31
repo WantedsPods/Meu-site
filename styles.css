@@ -58,6 +58,7 @@ header img {
     width: 100%;
     border-radius: 8px;
     margin-bottom: 10px;
+    border: 5px solid #fff; /* Adiciona a borda 
 }
 
 .product h3 {
