@@ -40,3 +40,17 @@
     element.classList.toggle("active");
   }
 </script>
+
+    /* Centraliza o container que envolve os itens */
+.container-produtos {
+  display: flex;
+  flex-direction: column; /* Ou row, dependendo do seu layout */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Se for uma lista ou títulos de produtos */
+.produto-nome {
+  text-align: center;
+}
