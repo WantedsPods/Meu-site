@@ -7,9 +7,15 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            background-color: #000; /* Fundo preto */
+            color: #fff; /* Texto branco */
             margin: 0;
             padding: 0;
+        }
+        #logo {
+            display: block;
+            width: 80px;
+            margin: 20px auto;
         }
         .product-page {
             display: flex;
@@ -18,20 +24,20 @@
             margin-top: 50px;
         }
         .product-info {
-            background-color: white;
+            background-color: #1c1c1c; /* Fundo escuro para a caixa */
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             width: 300px;
         }
         .product-info h1 {
             text-align: center;
-            color: #333;
+            color: #fff;
         }
         .product-info p {
             text-align: center;
             font-size: 18px;
-            color: #555;
+            color: #bbb;
         }
         .product-info img {
             width: 100%;
@@ -44,8 +50,8 @@
             margin-top: 10px;
         }
         .flavor {
-            background-color: #f1f1f1;
-            border: 1px solid #ccc;
+            background-color: #333;
+            border: 1px solid #444;
             padding: 10px;
             border-radius: 4px;
             margin: 5px;
@@ -79,6 +85,9 @@
 </head>
 <body>
 
+<!-- Logo no topo -->
+<img src="elfbariceking40k" alt="Logo" id="logo">
+
 <!-- Carrinho -->
 <div id="cart-icon">
     <img src="cart.png" alt="Carrinho">
@@ -89,7 +98,7 @@
 <div class="product-page">
     <div class="product-info">
         <h1>Elfbar Ice King 40K</h1>
-        <img src="elfbariceking40k" alt="Elfbar Ice King 40K">
+        <img src="caminho/para/imagem/elfbar-ice-king.jpg" alt="Elfbar Ice King 40K">
         <p>Preço: 165$</p>
         <div class="flavors">
             <div class="flavor" data-name="Cherry Fuse" data-price="165">Cherry Fuse</div>
