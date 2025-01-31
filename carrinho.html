@@ -93,3 +93,103 @@
 
     function finalizePurchase() {
         alert
+        // Carrinho global
+let cart = [];
+
+// Função para adicionar o produto ao carrinho
+function addToCart(productId, flavor) {
+    // Verifica se o produto já está no carrinho
+    const existingProduct = cart.find(item => item.id === productId && item.flavor === flavor);
+    
+    if (existingProduct) {
+        // Se o produto já está no carrinho, aumenta a quantidade
+        existingProduct.quantity++;
+    } else {
+        // Se o produto não está no carrinho, adiciona o produto com a quantidade 1
+        cart.push({ id: productId, flavor: flavor, quantity: 1 });
+    }
+
+    // Atualiza o carrinho
+    updateCart();
+}
+
+// Função para atualizar o carrinho na página
+function updateCart() {
+    const cartItemsContainer = document.getElementById('cart-items');
+    cartItemsContainer.innerHTML = ""; // Limpa o carrinho antes de atualizar
+
+    let cartCount = 0;
+    let totalAmount = 0;
+
+    // Preenche o carrinho com os itens atualizados
+    cart.forEach(item => {
+        cartCount += item.quantity;
+
+        // Para cada item, exibe a imagem e a quantidade
+        const cartItem = document.createElement('div');
+        cartItem.classList.add('cart-item');
+        cartItem.innerHTML = `
+            <img src="${getProductImage(item.id)}" alt="Produto">
+            <p>Produto: ${getProductName(item.id)} - Sabor: ${item.flavor}</p>
+            <p>Quantidade: ${item.quantity}</p>
+            <button class="remove-item" data-id="${item.id}" data-flavor="${item.flavor}">Remover</button>
+        `;
+        cartItemsContainer.appendChild(cartItem);
+
+        totalAmount += getProductPrice(item.id) * item.quantity; // Calcula o valor total
+
+        // Adiciona evento para remover o item
+        const removeButton = cartItem.querySelector('.remove-item');
+        removeButton.addEventListener('click', () => removeFromCart(item.id, item.flavor));
+    });
+
+    // Atualiza a quantidade total no ícone do carrinho
+    document.getElementById('cart-count').innerText = cartCount;
+    document.getElementById('total-amount').innerText = `Total: $${totalAmount.toFixed(2)}`;
+}
+
+// Função para remover um item do carrinho
+function removeFromCart(productId, flavor) {
+    cart = cart.filter(item => !(item.id === productId && item.flavor === flavor));
+    updateCart();
+}
+
+// Funções auxiliares para retornar o nome, preço e imagem do produto
+function getProductName(productId) {
+    switch (productId) {
+        case "iceKing":
+            return "Elfbar Ice King 40K";
+        // Adicione mais produtos aqui conforme necessário
+        default:
+            return "Produto desconhecido";
+    }
+}
+
+function getProductPrice(productId) {
+    switch (productId) {
+        case "iceKing":
+            return 165;
+        // Adicione mais preços de produtos aqui conforme necessário
+        default:
+            return 0;
+    }
+}
+
+function getProductImage(productId) {
+    switch (productId) {
+        case "iceKing":
+            return "elfbar-ice-king.png";
+        // Adicione mais imagens de produtos aqui conforme necessário
+        default:
+            return "default-product.png";
+    }
+}
+
+// Escutador de eventos para os botões de "Adicionar ao carrinho"
+document.querySelectorAll('.add-to-cart').forEach(button => {
+    button.addEventListener('click', function() {
+        const productId = this.getAttribute('data-id');
+        const flavor = this.getAttribute('data-flavor');
+        addToCart(productId, flavor); // Adiciona ao carrinho
+    });
+});
