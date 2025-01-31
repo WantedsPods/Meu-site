@@ -20,6 +20,15 @@
             background-color: #333;
         }
 
+        header h1 {
+            display: inline-block;
+            background-image: url('logo.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            height: 80px;
+            width: 200px;
+        }
+
         .product-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -47,24 +56,18 @@
             margin-bottom: 10px;
         }
 
-        .product h3 {
-            font-size: 20px;
-            margin: 10px 0;
-        }
-
-        .product p {
-            font-size: 18px;
-            color: #ccc;
+        .product h3, .product p, .price {
+            font-family: 'Bungee', cursive;
+            color: #fff;
         }
 
         .price {
             font-size: 24px;
-            color: #FFD700;
+            color: #fff;
             margin-top: 10px;
         }
 
-        /* WhatsApp e carrinho de compras */
-        .whatsapp-icon,
+        .whatsapp-icon, .cart-icon {
             position: fixed;
             bottom: 20px;
             right: 20px;
@@ -85,23 +88,96 @@
             color: white;
             text-decoration: none;
         }
+
+        .cart-icon::after {
+            content: '3'; /* Substitua pelo contador real */
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            background-color: red;
+            color: white;
+            font-size: 12px;
+            padding: 2px 5px;
+            border-radius: 50%;
+        }
     </style>
 </head>
 <body>
-    <header
-    <img src="logo.png" alt="Logo" style="max-width: 200px; height: auto;">
+    <header>
+        <h1></h1> <!-- Logo será exibida aqui -->
     </header>
 
     <div class="product-container">
-        <!-- Produtos aqui -->
-        <!-- Exemplo do produto -->
+        <!-- Produtos com sabores -->
         <div class="product">
-            <img src="link-da-imagem.jpg" alt="Produto">
+            <img src="link-da-imagem.jpg" alt="Promoção V150">
             <h3>Promoção V150</h3>
             <p>Sabores: Strawberry Ice, Icy Mint, Watermelon Ice, Cherry Watermelon Ice, Watermelon Dragon Fruit</p>
             <div class="price">De 150$ por 125$</div>
         </div>
-        <!-- Adicione mais produtos conforme necessário -->
+
+        <div class="product">
+            <img src="link-da-imagem.jpg" alt="ELFBAR BC 10K">
+            <h3>ELFBAR BC 10K (especial edition)</h3>
+            <p>Sabores: Blue Razz Ice, Admiration Blue</p>
+            <div class="price">115$</div>
+        </div>
+
+        <div class="product">
+            <img src="link-da-imagem.jpg" alt="Elfbar Ice King 40K">
+            <h3>Elfbar Ice King 40K</h3>
+            <p>Sabores: Cherry Fuse, Blue Razz Ice</p>
+            <div class="price">165$</div>
+        </div>
+
+        <div class="product">
+            <img src="link-da-imagem.jpg" alt="ELFBAR GH 23K">
+            <h3>ELFBAR GH 23K</h3>
+            <p>Sabores: Miami Mint</p>
+            <div class="price">150$</div>
+        </div>
+
+        <div class="product">
+            <img src="link-da-imagem.jpg" alt="LOST MARY 5K">
+            <h3>LOST MARY 5K</h3>
+            <p>Sabores: Yummy, Ginger Beer</p>
+            <div class="price">90$</div>
+        </div>
+
+        <div class="product">
+            <img src="link-da-imagem.jpg" alt="LOST MARY 20K">
+            <h3>LOST MARY 20K</h3>
+            <p>Sabores: Miami Mint, Peach+, Pure Ice</p>
+            <div class="price">130$</div>
+        </div>
+
+        <div class="product">
+            <img src="link-da-imagem.jpg" alt="IGNITE V50 BLACK">
+            <h3>IGNITE V50 BLACK</h3>
+            <p>Sabores: Blue Dream, Peach Mango Watermelon, Strawberry Kiwi, Aloe Grape, Watermelon Mix, Peach Raspberry, Strawberry Banana</p>
+            <div class="price">95$</div>
+        </div>
+
+        <div class="product">
+            <img src="link-da-imagem.jpg" alt="IGNITE V80">
+            <h3>IGNITE V80</h3>
+            <p>Sabores: Strawberry Kiwi (Silver), Blueberry Ice (Silver), Banana Ice (Silver), Banana Cherry (Silver), Strawberry Ice (Silver), Cactus (Silver)</p>
+            <div class="price">120$</div>
+        </div>
+
+        <div class="product">
+            <img src="link-da-imagem.jpg" alt="RABBEATS 10K">
+            <h3>RABBEATS 10K</h3>
+            <p>Sabores: Clear, Cherry Lemon, Strawberry Kiwi Ice</p>
+            <div class="price">95$</div>
+        </div>
+
+        <div class="product">
+            <img src="link-da-imagem.jpg" alt="OXBAR 30K">
+            <h3>OXBAR 30K</h3>
+            <p>Sabores: Mr Bull</p>
+            <div class="price">130$</div>
+        </div>
     </div>
 
     <!-- Ícone do WhatsApp -->
