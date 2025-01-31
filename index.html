@@ -207,6 +207,18 @@
   </div>
 
   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Pega todas as imagens com a classe 'produto-imagem'
+        var imagens = document.querySelectorAll('img.produto-imagem');
+        
+        imagens.forEach(function(imagem) {
+            // Pega o nome do arquivo da imagem
+            var nomeArquivo = imagem.src.split('/').pop().split('.')[0];
+
+            // Define o 'data-id' como o nome do arquivo (sem a extensão)
+            imagem.setAttribute('data-id', nomeArquivo);
+        });
+    });
     // Função para carregar os dados do JSON
     fetch('produtos.json')
       .then(response => response.json())
