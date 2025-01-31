@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elfbar BC 10K</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .product-page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+        }
+        .product-info {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        .product-info h1 {
+            text-align: center;
+            color: #333;
+        }
+        .product-info p {
+            text-align: center;
+            font-size: 18px;
+            color: #555;
+        }
+        .product-info img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .flavors {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .flavor {
+            background-color: #f1f1f1;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        .flavor.selected {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .add-to-cart {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        #cart-icon {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+        }
+        #cart-icon img {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Carrinho -->
+<div id="cart-icon">
+    <img src="cart.png" alt="Carrinho">
+    <span id="cart-count">0</span>
+</div>
+
+<!-- Página do Produto Elfbar BC 10K -->
+<div class="product-page">
+    <div class="product-info">
+        <h1>Elfbar BC 10K</h1>
+        <img src="elfbarbc10k" alt="Elfbar BC 10K">
+        <p>Preço: 115$</p>
+        <div class="flavors">
+            <div class="flavor" data-name="Blue Razz Ice" data-price="115">Blue Razz Ice</div>
+            <div class="flavor" data-name="Admiration Blue" data-price="115">Admiration Blue</div>
+        </div>
+        <button class="add-to-cart">Adicionar ao Carrinho</button>
+    </div>
+</div>
+
+<script>
+    let cart = [];
+    let cartCount = 0;
+
+    // Função para atualizar o carrinho
+    function updateCart() {
+        const cartCountElement = document.getElementById('cart-count');
+        cartCountElement.textContent = cartCount;
+    }
+
+    // Função para adicionar item ao carrinho
+    document.querySelector('.add-to-cart').addEventListener('click', function() {
+        const selectedFlavor = document.querySelector('.flavor.selected');
+        if (selectedFlavor) {
+            const productName = "Elfbar BC 10K - " + selectedFlavor.getAttribute('data-name');
+            const productPrice = parseFloat(selectedFlavor.getAttribute('data-price'));
+            cart.push({ name: productName, price: productPrice });
+            cartCount++;
+            updateCart();
+        } else {
+            alert('Por favor, selecione um sabor!');
+        }
+    });
+
+    // Função para selecionar sabor
+    document.querySelectorAll('.flavor').forEach(flavor => {
+        flavor.addEventListener('click', function() {
+            document.querySelectorAll('.flavor').forEach(f => f.classList.remove('selected'));
+            flavor.classList.add('selected');
+        });
+    });
+</script>
+
+</body>
+</html>
