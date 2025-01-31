@@ -63,14 +63,14 @@ header img {
 .product h3 {
     font-family: 'Bungee', sans-serif;
     font-size: 20px;
-    color: #FF0000; /* Cor vermelha para o nome do produto */
+    color: #FFFFFF; /* Cor vermelha para o nome do produto */
     margin: 10px 0;
     margin: 10px 0;
 }
 
 .product p {
     font-size: 18px;
-    color: #ccc;
+    color: #FF0000;
 }
 
 .price {
