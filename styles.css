@@ -198,3 +198,9 @@ header {
     
 }
 
+.logo-text {
+    font-size: 12px; /* Tamanho pequeno para o texto */
+    color: #FFFFFF; /* Cor do texto (pode ser alterado para qualquer cor) */
+    margin-top: 15px; /* Espaço entre a logo e o texto */
+}
+
