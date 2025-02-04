@@ -17,192 +17,187 @@
             width: 80px;
             margin: 20px auto;
         }
-        .cart-container {
-            max-width: 600px;
-            margin: 30px auto;
+        .cart-page {
             padding: 20px;
-            background-color: #1c1c1c;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        }
-        .cart-container h1 {
-            text-align: center;
         }
         .cart-item {
-            background-color: #333;
+            display: flex;
+            justify-content: space-between;
             padding: 10px;
-            border-radius: 5px;
+            background-color: #1c1c1c;
             margin-bottom: 10px;
+            border-radius: 5px;
         }
         .cart-item p {
             margin: 0;
-            font-size: 16px;
-            color: #bbb;
         }
-        .cart-item .item-name {
-            font-size: 18px;
-            font-weight: bold;
-            color: #fff;
-        }
-        .cart-item .item-price {
-            font-size: 16px;
-            color: #4CAF50;
-        }
-        .cart-total {
-            background-color: #444;
-            padding: 10px;
+        .total-price {
+            background-color: #1c1c1c;
+            padding: 15px;
             margin-top: 20px;
-            border-radius: 5px;
             font-size: 18px;
+            display: flex;
+            justify-content: space-between;
+            border-radius: 5px;
         }
-        .checkout-btn {
+        .checkout {
             background-color: #4CAF50;
             color: white;
-            padding: 10px 20px;
+            padding: 10px;
             width: 100%;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             margin-top: 20px;
-            text-align: center;
         }
         .payment-methods {
+            background-color: #1c1c1c;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        .payment-method {
             background-color: #333;
-            padding: 15px;
-            border-radius: 5px;
-            margin-top: 20px;
-        }
-        .payment-methods label {
-            display: block;
-            margin: 10px 0;
-        }
-        .payment-methods input[type="radio"] {
-            margin-right: 10px;
-        }
-        .address-inputs {
-            margin-top: 20px;
-        }
-        .address-inputs input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 5px;
             border: 1px solid #444;
-            background-color: #333;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        .payment-method.selected {
+            background-color: #4CAF50;
             color: white;
         }
-        .payment-info {
-            margin-top: 10px;
-            font-size: 14px;
-            color: #bbb;
+        .form-field {
+            margin-bottom: 10px;
+        }
+        .form-field input {
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background-color: #333;
+            color: white;
         }
     </style>
 </head>
 <body>
+    <h1>Carrinho de Compras</h1>
     <img src="logo.png" alt="Logo" id="logo">
-    
-    <div class="cart-container">
-        <h1>Carrinho de Compras</h1>
 
-        <!-- Itens do Carrinho -->
+    <!-- Página do Carrinho -->
+    <div class="cart-page">
         <div id="cart-items">
-            <!-- Itens serão inseridos aqui via JavaScript -->
+            <!-- Itens do carrinho serão exibidos aqui -->
         </div>
 
-        <!-- Total -->
-        <div class="cart-total">
-            <p id="total-price">Total: R$ 0,00</p>
+        <div class="total-price">
+            <p>Total:</p>
+            <p id="total-price">R$ 0,00</p>
         </div>
 
-        <!-- Formulário de Finalização de Compra -->
-        <div class="address-inputs">
-            <h2>Informações de Entrega</h2>
-            <input type="text" id="name" placeholder="Nome Completo" required>
-            <input type="text" id="address" placeholder="Endereço Completo" required>
-            <input type="text" id="phone" placeholder="Número de Contato" required>
-        </div>
-
-        <!-- Métodos de Pagamento -->
+        <!-- Formulário de Pagamento -->
         <div class="payment-methods">
-            <h2>Escolha a Forma de Pagamento</h2>
-            <label>
-                <input type="radio" name="payment-method" value="pix"> Pix (Sem Taxa)
-            </label>
-            <label>
-                <input type="radio" name="payment-method" value="cash"> Dinheiro (Taxa de R$10)
-            </label>
-            <label>
-                <input type="radio" name="payment-method" value="card"> Cartão Débito/Crédito (Taxa de R$10)
-            </label>
+            <h2>Escolha a forma de pagamento:</h2>
+            <div class="payment-method" data-method="pix">Pix</div>
+            <div class="payment-method" data-method="money">Dinheiro</div>
+            <div class="payment-method" data-method="card">Cartão Débito/Crédito</div>
+            <p id="payment-note" style="color: #bbb; text-align: center; margin-top: 10px;">Taxa de entrega: 10 reais para dinheiro ou cartão. Pix sem taxa.</p>
         </div>
 
-        <div class="payment-info">
-            <p>Observação: A entrega custa R$10 para pagamentos em Dinheiro ou Cartão. Pagamento via Pix não tem taxa.</p>
+        <div class="delivery-info">
+            <h2>Informações de Entrega</h2>
+            <div class="form-field">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" placeholder="Digite seu nome">
+            </div>
+            <div class="form-field">
+                <label for="address">Endereço:</label>
+                <input type="text" id="address" placeholder="Digite seu endereço">
+            </div>
+            <div class="form-field">
+                <label for="phone">Número:</label>
+                <input type="text" id="phone" placeholder="Digite seu número">
+            </div>
         </div>
 
-        <!-- Botão de Finalizar Compra -->
-        <button class="checkout-btn" onclick="finalizarCompra()">Finalizar Compra</button>
+        <button class="checkout" id="checkout-btn">Finalizar Compra</button>
     </div>
 
     <script>
-        // Carrinho de compras armazenado no localStorage
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-        // Função para atualizar o carrinho
-        function updateCart() {
-            const cartItemsContainer = document.getElementById('cart-items');
-            const totalPriceElement = document.getElementById('total-price');
+        // Função para carregar os itens do carrinho e calcular o total
+        function loadCart() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let cartItemsContainer = document.getElementById('cart-items');
             let totalPrice = 0;
 
-            // Limpar itens atuais do carrinho
+            // Limpar itens existentes no carrinho
             cartItemsContainer.innerHTML = '';
 
-            // Inserir itens no carrinho
             cart.forEach(item => {
-                const itemElement = document.createElement('div');
+                // Criar cada item no carrinho
+                let itemElement = document.createElement('div');
                 itemElement.classList.add('cart-item');
                 itemElement.innerHTML = `
-                    <p class="item-name">${item.name}</p>
-                    <p class="item-price">R$ ${item.price}</p>
+                    <p>${item.name}</p>
+                    <p>R$ ${item.price.toFixed(2)}</p>
                 `;
                 cartItemsContainer.appendChild(itemElement);
 
+                // Somar preço total
                 totalPrice += item.price;
             });
 
-            // Atualizar o total
-            totalPriceElement.textContent = `Total: R$ ${totalPrice.toFixed(2)}`;
+            // Atualizar o preço total
+            document.getElementById('total-price').textContent = `R$ ${totalPrice.toFixed(2)}`;
         }
 
-        // Função para finalizar a compra
-        function finalizarCompra() {
-            const name = document.getElementById('name').value;
-            const address = document.getElementById('address').value;
-            const phone = document.getElementById('phone').value;
-            const paymentMethod = document.querySelector('input[name="payment-method"]:checked');
+        // Função para lidar com a escolha de forma de pagamento
+        document.querySelectorAll('.payment-method').forEach(method => {
+            method.addEventListener('click', function() {
+                document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('selected'));
+                method.classList.add('selected');
+            });
+        });
 
-            if (!name || !address || !phone || !paymentMethod) {
-                alert('Por favor, preencha todos os campos e escolha uma forma de pagamento!');
+        // Função para finalizar compra
+        document.getElementById('checkout-btn').addEventListener('click', function() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let selectedPayment = document.querySelector('.payment-method.selected');
+            let name = document.getElementById('name').value;
+            let address = document.getElementById('address').value;
+            let phone = document.getElementById('phone').value;
+
+            if (cart.length === 0) {
+                alert('Seu carrinho está vazio!');
                 return;
             }
 
-            const paymentMethodValue = paymentMethod.value;
-            let deliveryFee = 0;
-
-            if (paymentMethodValue === 'cash' || paymentMethodValue === 'card') {
-                deliveryFee = 10; // Taxa para dinheiro ou cartão
+            if (!selectedPayment) {
+                alert('Por favor, selecione uma forma de pagamento!');
+                return;
             }
 
-            // Exibir informações de pagamento
-            alert(`Compra Finalizada!\nNome: ${name}\nEndereço: ${address}\nForma de Pagamento: ${paymentMethodValue}\nTaxa de Entrega: R$ ${deliveryFee.toFixed(2)}`);
-            
-            // Limpar o carrinho após a compra
-            localStorage.removeItem('cart');
-            updateCart();
-        }
+            if (!name || !address || !phone) {
+                alert('Por favor, preencha todos os campos de entrega!');
+                return;
+            }
 
-        // Atualizar o carrinho ao carregar a página
-        updateCart();
+            // Calcular taxa de entrega
+            let deliveryFee = 0;
+            if (selectedPayment.dataset.method === 'money' || selectedPayment.dataset.method === 'card') {
+                deliveryFee = 10;
+            }
+
+            let totalPrice = cart.reduce((total, item) => total + item.price, 0) + deliveryFee;
+
+            alert(`Compra finalizada!\nTotal: R$ ${totalPrice.toFixed(2)}\nForma de pagamento: ${selectedPayment.textContent}`);
+            localStorage.removeItem('cart'); // Limpar o carrinho após a finalização
+            loadCart(); // Atualizar a página
+        });
+
+        // Carregar o carrinho quando a página for carregada
+        loadCart();
     </script>
 </body>
 </html>
