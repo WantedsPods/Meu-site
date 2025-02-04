@@ -130,103 +130,69 @@
     </div>
 
     <script>
-        // Exibe o campo "Precisa de troco?" quando escolher "Dinheiro"
+        // Função para carregar os itens do carrinho e calcular o total
+        function loadCart() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || []; // Carrega o carrinho do localStorage
+            let cartItemsContainer = document.getElementById('cart-items');
+            let totalPrice = 0;
+            let itemCount = 0;
+
+            // Limpar itens existentes no carrinho
+            cartItemsContainer.innerHTML = '';
+
+            // Verifica se o carrinho está vazio
+            if (cart.length === 0) {
+                document.getElementById('total-price').textContent = 'R$ 0,00'; // Total vazio
+                document.getElementById('item-count').textContent = '0'; // Contador vazio
+            }
+
+            // Exibe os itens no carrinho
+            cart.forEach(item => {
+                // Criar cada item no carrinho
+                let itemElement = document.createElement('div');
+                itemElement.classList.add('cart-item');
+                itemElement.innerHTML = `
+                    <p>${item.name}</p>
+                    <p>R$ ${item.price.toFixed(2)}</p>
+                `;
+                cartItemsContainer.appendChild(itemElement);
+
+                // Somar preço total e contador de itens
+                totalPrice += item.price;
+                itemCount += 1; // Contabilizando o item
+            });
+
+            // Atualizar o preço total e o contador de itens
+            document.getElementById('total-price').textContent = `R$ ${totalPrice.toFixed(2)}`;
+            document.getElementById('item-count').textContent = itemCount; // Atualiza o contador
+        }
+
+        // Função para adicionar um item ao carrinho
+        function addToCart(item) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            
+            // Verifica se o item já está no carrinho
+            let existingItem = cart.find(cartItem => cartItem.name === item.name);
+            if (existingItem) {
+                existingItem.quantity += 1; // Se já existir, só aumenta a quantidade
+            } else {
+                cart.push(item); // Caso contrário, adiciona o item
+            }
+            
+            // Atualiza o carrinho no localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+            loadCart(); // Atualiza a exibição do carrinho
+        }
+
+        // Função para lidar com a escolha de forma de pagamento
         document.querySelectorAll('.payment-method').forEach(method => {
             method.addEventListener('click', function() {
                 document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('selected'));
                 method.classList.add('selected');
-                
-                if (method.dataset.method === 'money') {
-                    document.getElementById('troco-field').style.display = 'block';
-                } else {
-                    document.getElementById('troco-field').style.display = 'none';
-                }
             });
         });
 
-    // Função para carregar os itens do carrinho e calcular o total
-    function loadCart() {
-        let cart = JSON.parse(localStorage.getItem('cart')) || []; // Carrega o carrinho do localStorage
-        let cartItemsContainer = document.getElementById('cart-items');
-        let totalPrice = 0;
-        let itemCount = 0;
-
-        // Limpar itens existentes no carrinho
-        cartItemsContainer.innerHTML = '';
-
-        // Verifica se o carrinho está vazio
-        if (cart.length === 0) {
-            document.getElementById('total-price').textContent = 'R$ 0,00'; // Total vazio
-            document.getElementById('item-count').textContent = '0'; // Contador vazio
-        }
-
-        // Exibe os itens no carrinho
-        cart.forEach(item => {
-            // Criar cada item no carrinho
-            let itemElement = document.createElement('div');
-            itemElement.classList.add('cart-item');
-            itemElement.innerHTML = `
-                <p>${item.name}</p>
-                <p>R$ ${item.price.toFixed(2)}</p>
-            `;
-            cartItemsContainer.appendChild(itemElement);
-
-            // Somar preço total e contador de itens
-            totalPrice += item.price;
-            itemCount += 1; // Contabilizando o item
-        });
-
-        // Atualizar o preço total e o contador de itens
-        document.getElementById('total-price').textContent = `R$ ${totalPrice.toFixed(2)}`;
-        document.getElementById('item-count').textContent = itemCount; // Atualiza o contador
-    }
-
-    // Função para adicionar um item ao carrinho
-    function addToCart(item) {
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        
-        // Verifica se o item já está no carrinho
-        let existingItem = cart.find(cartItem => cartItem.name === item.name);
-        if (existingItem) {
-            existingItem.quantity += 1; // Se já existir, só aumenta a quantidade
-        } else {
-            cart.push(item); // Caso contrário, adiciona o item
-        }
-        
-        // Atualiza o carrinho no localStorage
-        localStorage.setItem('cart', JSON.stringify(cart));
-        loadCart(); // Atualiza a exibição do carrinho
-    }
-
-    // Chama a função para carregar o carrinho ao abrir a página
-    loadCart();
-
-            // Somar preço total e contador de itens
-            totalPrice += item.price;
-            itemCount += 1; // Contabilizando o item
-        });
-
-        // Atualizar o preço total e o contador de itens
-        document.getElementById('total-price').textContent = `R$ ${totalPrice.toFixed(2)}`;
-        document.getElementById('item-count').textContent = itemCount; // Atualiza o contador
-    }
-
-    // Função para adicionar um item ao carrinho
-    function addToCart(item) {
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        cart.push(item);
-        localStorage.setItem('cart', JSON.stringify(cart));
-        loadCart(); // Atualiza o carrinho
-    }
-
-    // Chama a função para carregar o carrinho ao abrir a página
-    loadCart();
-
-            // Atualizar o preço total
-            document.getElementById('total-price').textContent = `R$ ${totalPrice.toFixed(2)}`;
-        }
-
-        // Função para finalizar a compra
+        // Função para finalizar compra
         document.getElementById('checkout-btn').addEventListener('click', function() {
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
             let selectedPayment = document.querySelector('.payment-method.selected');
@@ -257,36 +223,9 @@
 
             let totalPrice = cart.reduce((total, item) => total + item.price, 0) + deliveryFee;
 
-            // Redirecionamento para PIX
-            if (selectedPayment.dataset.method === 'pix') {
-                window.location.href = 'pagina_pix.html'; // Aqui você vai redirecionar para a página de pagamento PIX
-            } else {
-                let troco = document.getElementById('troco').value;
-
-                let mensagem = `*Pedido de: ${name}*\n`;
-                mensagem += `Telefone: ${phone}\n`;
-                mensagem += `Endereço: ${address}\n`;
-                mensagem += `Forma de pagamento: ${selectedPayment.textContent}\n`;
-                mensagem += `Total: R$ ${totalPrice.toFixed(2)}\n`;
-
-                if (troco) {
-                    mensagem += `Troco: R$ ${troco}\n`;
-                }
-
-                mensagem += `Itens: \n`;
-
-                cart.forEach(item => {
-                    mensagem += `- ${item.name} (R$ ${item.price.toFixed(2)})\n`;
-                });
-
-                // Enviar para o WhatsApp
-                const whatsappLink = `https://wa.me/5516997434084?text=${encodeURIComponent(mensagem)}`;
-                window.open(whatsappLink, '_blank');
-            }
-
-            // Limpar o carrinho após a compra
-            localStorage.removeItem('cart');
-            loadCart();
+            alert(`Compra finalizada!\nTotal: R$ ${totalPrice.toFixed(2)}\nForma de pagamento: ${selectedPayment.textContent}`);
+            localStorage.removeItem('cart'); // Limpar o carrinho após a finalização
+            loadCart(); // Atualizar a página
         });
 
         // Carregar o carrinho quando a página for carregada
