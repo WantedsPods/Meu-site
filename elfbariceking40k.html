@@ -117,20 +117,33 @@
         const cartCountElement = document.getElementById('cart-count');
         cartCountElement.textContent = cartCount;
     }
+// Função para atualizar o carrinho e salvar no localStorage
+document.querySelector('.add-to-cart').addEventListener('click', function() {
+    const selectedFlavor = document.querySelector('.flavor.selected');
+    if (selectedFlavor) {
+        const productName = "Elfbar Ice King 40K - " + selectedFlavor.getAttribute('data-name');
+        const productPrice = parseFloat(selectedFlavor.getAttribute('data-price'));
 
-    // Função para adicionar item ao carrinho
-    document.querySelector('.add-to-cart').addEventListener('click', function() {
-        const selectedFlavor = document.querySelector('.flavor.selected');
-        if (selectedFlavor) {
-            const productName = "Elfbar Ice King 40K - " + selectedFlavor.getAttribute('data-name');
-            const productPrice = parseFloat(selectedFlavor.getAttribute('data-price'));
-            cart.push({ name: productName, price: productPrice });
-            cartCount++;
-            updateCart();
-        } else {
-            alert('Por favor, selecione um sabor!');
-        }
-    });
+        // Criar o item do carrinho
+        const item = { name: productName, price: productPrice };
+
+        // Obter o carrinho atual do localStorage (se existir) ou criar um novo array
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Adicionar o item ao carrinho
+        cart.push(item);
+
+        // Salvar o carrinho atualizado no localStorage
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        // Atualizar o contador de itens no carrinho
+        cartCount++;
+        updateCart();
+    } else {
+        alert('Por favor, selecione um sabor!');
+    }
+});
+  
 
     // Função para selecionar sabor
     document.querySelectorAll('.flavor').forEach(flavor => {
