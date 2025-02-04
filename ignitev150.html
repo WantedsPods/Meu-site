@@ -3,152 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ignite V150</title>
-    <link rel="stylesheet" href="style.css">
+    <title>PROMOÇÃO V150</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #111;
-            color: #fff;
+            background-color: #000; /* Fundo preto */
+            color: #fff; /* Texto branco */
             margin: 0;
             padding: 0;
         }
-        
-        header {
-            text-align: center;
+        #logo {
+            display: block;
+            width: 80px;
+            margin: 20px auto;
+        }
+        .product-page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+        }
+        .product-info {
+            background-color: #1c1c1c; /* Fundo escuro para a caixa */
             padding: 20px;
-            background-color: #333;
-        }
-
-        header img {
-            width: 150px;
-            height: auto;
-        }
-
-        .product-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            padding: 20px;
-            justify-items: center;
-        }
-
-        .product {
-            background-color: #222;
             border-radius: 8px;
-            padding: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            width: 300px;
+        }
+        .product-info h1 {
             text-align: center;
-            width: 100%;
-            transition: transform 0.3s ease;
-        }
-
-        .product:hover {
-            transform: scale(1.05);
-        }
-
-        .product img {
-            width: 100%;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            border: 5px solid #fff;
-        }
-
-        .product h3 {
-            font-size: 20px;
             color: #fff;
         }
-
-        .product p {
+        .product-info p {
+            text-align: center;
             font-size: 18px;
-            color: #FF0000;
+            color: #bbb;
         }
-
-        .price {
-            font-size: 24px;
-            color: #fff;
+        .product-info img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .flavors {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
             margin-top: 10px;
         }
-
-        .button {
-            background-color: #ff7f00;
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            font-size: 16px;
+        .flavor {
+            background-color: #333;
+            border: 1px solid #444;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 5px;
             cursor: pointer;
+        }
+        .flavor.selected {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .add-to-cart {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            border: none;
             border-radius: 5px;
-            margin-top: 10px;
+            cursor: pointer;
+            margin-top: 20px;
         }
-
-        .button:hover {
-            background-color: #e67e00;
-        }
-
-        .cart-icon {
-            position: absolute;
+        #cart-icon {
+            position: fixed;
             top: 20px;
             right: 20px;
             cursor: pointer;
         }
+        #cart-icon img {
+            width: 50px;
+            height: 50px;
+        }
     </style>
 </head>
 <body>
+    <h1>PROMOÇÃO V150</h1>
+    <img src="logo.png" alt="Logo" id="logo">
 
-<header>
-    <img src="logo.png" alt="Logo" />
-</header>
-
-<div class="product-container">
-    <div class="product">
-        <img src="ignitev150.png" alt="Ignite V150">
-        <h3>Ignite V150</h3>
-        <p>Preço: <span class="price">125$</span></p>
-
-        <div class="flavor-buttons">
-            <button class="flavor-button">Strawberry Ice</button>
-            <button class="flavor-button">Icy Mint</button>
-            <button class="flavor-button">Watermelon Ice</button>
-            <button class="flavor-button">Cherry Watermelon Ice</button>
-            <button class="flavor-button">Watermelon Dragon Fruit</button>
-        </div>
-
-        <button class="button" onclick="addToCart('Ignite V150', 125)">Adicionar ao Carrinho</button>
+    <!-- Carrinho -->
+    <div id="cart-icon">
+        <a href="carrinho.html">
+            <img src="cart.png" alt="Carrinho">
+            <span id="cart-count">0</span>
+        </a>
     </div>
-</div>
 
-<!-- Carrinho no topo direito -->
-<img src="cart.png" alt="Carrinho" class="cart-icon" onclick="window.location.href='cart.html'">
+    <!-- Página do Produto PROMOÇÃO V150 -->
+    <div class="product-page">
+        <div class="product-info">
+            <img src="ignitev150.png" alt="PROMOÇÃO V150">
+            <p>Preço: 125$</p>
+            <div class="flavors">
+                <div class="flavor" data-name="Strawberry Ice" data-price="125">Strawberry Ice</div>
+                <div class="flavor" data-name="Icy Mint" data-price="125">Icy Mint</div>
+                <div class="flavor" data-name="Watermelon Ice" data-price="125">Watermelon Ice</div>
+                <div class="flavor" data-name="Cherry Watermelon Ice" data-price="125">Cherry Watermelon Ice</div>
+                <div class="flavor" data-name="Watermelon Dragon Fruit" data-price="125">Watermelon Dragon Fruit</div>
+            </div>
+            <button class="add-to-cart">Adicionar ao Carrinho</button>
+        </div>
+    </div>
 
-<script>
-    let cart = [];
+    <script>
+        let cartCount = 0;
 
-    function addToCart(productName, productPrice) {
-        const product = {
-            name: productName,
-            price: productPrice
-        };
-        cart.push(product);
-        localStorage.setItem('cart', JSON.stringify(cart));
-
-        // Update cart icon with item count
-        updateCartIcon();
-    }
-
-    function updateCartIcon() {
-        const cartCount = cart.length;
-        document.getElementById('cart-count').innerText = cartCount;
-    }
-
-    // Load cart from localStorage
-    window.onload = function() {
-        if (localStorage.getItem('cart')) {
-            cart = JSON.parse(localStorage.getItem('cart'));
-            updateCartIcon();
+        // Função para atualizar o carrinho
+        function updateCart() {
+            const cartCountElement = document.getElementById('cart-count');
+            cartCountElement.textContent = cartCount;
         }
-    };
-</script>
+
+        // Carregar o carrinho do localStorage ao carregar a página
+        function loadCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cartCount = cart.length;
+            updateCart();
+        }
+
+        // Carregar o carrinho ao iniciar
+        loadCart();
+
+        // Função para adicionar item ao carrinho
+        document.querySelector('.add-to-cart').addEventListener('click', function() {
+            const selectedFlavor = document.querySelector('.flavor.selected');
+            if (selectedFlavor) {
+                const productName = "PROMOÇÃO V150 - " + selectedFlavor.getAttribute('data-name');
+                const productPrice = parseFloat(selectedFlavor.getAttribute('data-price'));
+
+                // Criar o item do carrinho
+                const item = { name: productName, price: productPrice };
+
+                // Obter o carrinho atual do localStorage (se existir) ou criar um novo array
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+                // Adicionar o item ao carrinho
+                cart.push(item);
+
+                // Salvar o carrinho atualizado no localStorage
+                localStorage.setItem('cart', JSON.stringify(cart));
+
+                // Atualizar o contador de itens no carrinho
+                cartCount++;
+                updateCart();
+            } else {
+                alert('Por favor, selecione um sabor!');
+            }
+        });
+
+        // Função para selecionar sabor
+        document.querySelectorAll('.flavor').forEach(flavor => {
+            flavor.addEventListener('click', function() {
+                document.querySelectorAll('.flavor').forEach(f => f.classList.remove('selected'));
+                flavor.classList.add('selected');
+            });
+        });
+    </script>
 
 </body>
 </html>
