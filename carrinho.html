@@ -7,228 +7,167 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #000;
-            color: #fff;
+            background-color: #000; /* Fundo preto */
+            color: #fff; /* Texto branco */
             margin: 0;
             padding: 0;
         }
-        #logo {
-            display: block;
-            width: 80px;
-            margin: 20px auto;
-        }
-        .cart-page {
-            padding: 20px;
+        #cart-items {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
         }
         .cart-item {
+            background-color: #1c1c1c;
+            padding: 15px;
+            margin: 10px;
+            width: 80%;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             display: flex;
             justify-content: space-between;
-            padding: 10px;
-            background-color: #1c1c1c;
-            margin-bottom: 10px;
-            border-radius: 5px;
+            align-items: center;
         }
         .cart-item p {
             margin: 0;
-        }
-        .total-price {
-            background-color: #1c1c1c;
-            padding: 15px;
-            margin-top: 20px;
             font-size: 18px;
-            display: flex;
-            justify-content: space-between;
-            border-radius: 5px;
+            color: #bbb;
         }
-        .checkout {
+        .remove-item {
+            background-color: #e74c3c;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #total {
+            background-color: #333;
+            padding: 15px;
+            margin-top: 30px;
+            width: 80%;
+            border-radius: 8px;
+            text-align: center;
+            color: #fff;
+            font-size: 20px;
+        }
+        #checkout {
             background-color: #4CAF50;
             color: white;
             padding: 10px;
-            width: 100%;
+            width: 80%;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             margin-top: 20px;
+            text-align: center;
         }
-        .payment-methods {
-            background-color: #1c1c1c;
-            padding: 20px;
-            margin-top: 20px;
-            border-radius: 5px;
+        #payment-info {
+            background-color: #222;
+            padding: 15px;
+            margin-top: 30px;
+            width: 80%;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 16px;
         }
-        .payment-method {
-            background-color: #333;
-            border: 1px solid #444;
-            padding: 10px;
-            border-radius: 4px;
-            margin: 5px;
-            cursor: pointer;
-        }
-        .payment-method.selected {
-            background-color: #4CAF50;
-            color: white;
-        }
-        .form-field {
-            margin-bottom: 10px;
-        }
-        .form-field input {
-            padding: 10px;
-            width: 100%;
-            border: 1px solid #444;
-            border-radius: 5px;
-            background-color: #333;
-            color: white;
+        #whatsapp-info {
+            color: #25D366; /* Cor do WhatsApp */
+            font-size: 18px;
+            text-align: center;
+            margin-top: 30px;
         }
     </style>
 </head>
 <body>
-    <h1>Carrinho de Compras</h1>
-    <img src="logo.png" alt="Logo" id="logo">
 
-    <!-- Página do Carrinho -->
-    <div class="cart-page">
-        <div id="cart-items">
-            <!-- Itens do carrinho serão exibidos aqui -->
-        </div>
+    <h1 style="text-align: center;">Carrinho de Compras</h1>
 
-        <div class="total-price">
-            <p>Total:</p>
-            <p id="total-price">R$ 0,00</p>
-        </div>
+    <div id="cart-items">
+        <!-- Itens do carrinho serão carregados aqui -->
+    </div>
 
-        <!-- Formulário de Pagamento -->
-        <div class="payment-methods">
-            <h2>Escolha a forma de pagamento:</h2>
-            <div class="payment-method" data-method="pix">Pix</div>
-            <div class="payment-method" data-method="money">Dinheiro</div>
-            <div class="payment-method" data-method="card">Cartão Débito/Crédito</div>
-            <p id="payment-note" style="color: #bbb; text-align: center; margin-top: 10px;">Taxa de entrega: 10 reais para dinheiro ou cartão. Pix sem taxa.</p>
-        </div>
+    <div id="total">
+        Total: <span id="total-price">R$ 0.00</span>
+    </div>
 
-        <div id="troco-field" style="display:none;">
-            <label for="troco">Precisa de troco? (em Reais):</label>
-            <input type="number" id="troco" name="troco" placeholder="Valor do troco">
-        </div>
+    <!-- Forma de pagamento e instruções -->
+    <div id="payment-info">
+        <p><strong>Forma de pagamento:</strong> Pix</p>
+        <p>Para finalizar sua compra, faça o pagamento via Pix para a chave: <strong>seu@email.com</strong></p>
+        <p>Após o pagamento, envie o comprovante pelo WhatsApp ou clique no link abaixo.</p>
+        <a href="https://wa.me/5581999999999" target="_blank" style="color: #25D366;">Clique aqui para enviar seu comprovante no WhatsApp</a>
+    </div>
 
-        <div class="delivery-info">
-            <h2>Informações de Entrega</h2>
-            <div class="form-field">
-                <label for="name">Nome:</label>
-                <input type="text" id="name" placeholder="Digite seu nome">
-            </div>
-            <div class="form-field">
-                <label for="address">Endereço:</label>
-                <input type="text" id="address" placeholder="Digite seu endereço">
-            </div>
-            <div class="form-field">
-                <label for="phone">Número:</label>
-                <input type="text" id="phone" placeholder="Digite seu número">
-            </div>
-        </div>
+    <!-- Necessidade de troco -->
+    <div style="margin-top: 20px; text-align: center; color: #bbb;">
+        <label for="change-needed"><strong>Precisa de troco?</strong></label>
+        <select id="change-needed">
+            <option value="não">Não</option>
+            <option value="sim">Sim</option>
+        </select>
+    </div>
 
-        <button class="checkout" id="checkout-btn">Finalizar Compra</button>
+    <button id="checkout">Finalizar Compra</button>
+
+    <div id="whatsapp-info">
+        <p>Para mais informações, entre em contato conosco pelo WhatsApp.</p>
     </div>
 
     <script>
-        // Função para carregar os itens do carrinho e calcular o total
+        // Função para carregar o carrinho
         function loadCart() {
-            let cart = JSON.parse(localStorage.getItem('cart')) || []; // Carrega o carrinho do localStorage
-            let cartItemsContainer = document.getElementById('cart-items');
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartItemsContainer = document.getElementById('cart-items');
+            const totalPriceElement = document.getElementById('total-price');
             let totalPrice = 0;
-            let itemCount = 0;
-
-            // Limpar itens existentes no carrinho
             cartItemsContainer.innerHTML = '';
 
-            // Verifica se o carrinho está vazio
+            // Verifica se o carrinho não está vazio
             if (cart.length === 0) {
-                document.getElementById('total-price').textContent = 'R$ 0,00'; // Total vazio
-                document.getElementById('item-count').textContent = '0'; // Contador vazio
-            }
-
-            // Exibe os itens no carrinho
-            cart.forEach(item => {
-                // Criar cada item no carrinho
-                let itemElement = document.createElement('div');
-                itemElement.classList.add('cart-item');
-                itemElement.innerHTML = `
-                    <p>${item.name}</p>
-                    <p>R$ ${item.price.toFixed(2)}</p>
-                `;
-                cartItemsContainer.appendChild(itemElement);
-
-                // Somar preço total e contador de itens
-                totalPrice += item.price;
-                itemCount += 1; // Contabilizando o item
-            });
-
-            // Atualizar o preço total e o contador de itens
-            document.getElementById('total-price').textContent = `R$ ${totalPrice.toFixed(2)}`;
-            document.getElementById('item-count').textContent = itemCount; // Atualiza o contador
-        }
-
-        // Função para adicionar um item ao carrinho
-        function addToCart(item) {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-            // Verifica se o item já existe no carrinho
-            let existingItem = cart.find(cartItem => cartItem.name === item.name);
-            if (existingItem) {
-                existingItem.quantity += 1; // Se já existir, aumenta a quantidade
+                cartItemsContainer.innerHTML = '<p style="color: #bbb;">Carrinho vazio.</p>';
+                totalPriceElement.textContent = 'R$ 0.00';
             } else {
-                cart.push(item); // Caso contrário, adiciona o item com quantidade 1
-            }
+                cart.forEach(item => {
+                    const cartItemElement = document.createElement('div');
+                    cartItemElement.classList.add('cart-item');
+                    
+                    const productInfo = `
+                        <p>${item.name} - R$ ${item.price.toFixed(2)} x ${item.quantity}</p>
+                    `;
 
-            // Atualiza o carrinho no localStorage
-            localStorage.setItem('cart', JSON.stringify(cart));
-            loadCart(); // Atualiza a exibição do carrinho
+                    const removeButton = `
+                        <button class="remove-item" data-name="${item.name}">Remover</button>
+                    `;
+
+                    cartItemElement.innerHTML = productInfo + removeButton;
+                    cartItemsContainer.appendChild(cartItemElement);
+
+                    totalPrice += item.price * item.quantity;
+                });
+
+                totalPriceElement.textContent = `R$ ${totalPrice.toFixed(2)}`;
+            }
         }
 
-        // Função para lidar com a escolha de forma de pagamento
-        document.querySelectorAll('.payment-method').forEach(method => {
-            method.addEventListener('click', function() {
-                document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('selected'));
-                method.classList.add('selected');
-            });
-        });
-
-        // Função para finalizar compra
-        document.getElementById('checkout-btn').addEventListener('click', function() {
+        // Função para remover um item do carrinho
+        function removeItem(itemName) {
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            let selectedPayment = document.querySelector('.payment-method.selected');
-            let name = document.getElementById('name').value;
-            let address = document.getElementById('address').value;
-            let phone = document.getElementById('phone').value;
+            cart = cart.filter(item => item.name !== itemName);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            loadCart();
+        }
 
-            if (cart.length === 0) {
-                alert('Seu carrinho está vazio!');
-                return;
+        // Função de evento de remover item
+        document.getElementById('cart-items').addEventListener('click', function(event) {
+            if (event.target.classList.contains('remove-item')) {
+                const itemName = event.target.getAttribute('data-name');
+                removeItem(itemName);
             }
-
-            if (!selectedPayment) {
-                alert('Por favor, selecione uma forma de pagamento!');
-                return;
-            }
-
-            if (!name || !address || !phone) {
-                alert('Por favor, preencha todos os campos de entrega!');
-                return;
-            }
-
-            // Calcular taxa de entrega
-            let deliveryFee = 0;
-            if (selectedPayment.dataset.method === 'money' || selectedPayment.dataset.method === 'card') {
-                deliveryFee = 10;
-            }
-
-            let totalPrice = cart.reduce((total, item) => total + item.price, 0) + deliveryFee;
-
-            alert(`Compra finalizada!\nTotal: R$ ${totalPrice.toFixed(2)}\nForma de pagamento: ${selectedPayment.textContent}`);
-            localStorage.removeItem('cart'); // Limpar o carrinho após a finalização
-            loadCart(); // Atualizar a página
         });
 
-        // Carregar o carrinho quando a página for carregada
+        // Carregar o carrinho ao abrir a página
         loadCart();
     </script>
 </body>
