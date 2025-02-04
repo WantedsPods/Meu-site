@@ -144,26 +144,47 @@
             });
         });
 
-        // Função para carregar os itens do carrinho e calcular o total
-        function loadCart() {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            let cartItemsContainer = document.getElementById('cart-items');
-            let totalPrice = 0;
+       <script>
+    // Função para carregar os itens do carrinho e calcular o total
+    function loadCart() {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let cartItemsContainer = document.getElementById('cart-items');
+        let totalPrice = 0;
+        let itemCount = 0;
 
-            // Limpar itens existentes no carrinho
-            cartItemsContainer.innerHTML = '';
+        // Limpar itens existentes no carrinho
+        cartItemsContainer.innerHTML = '';
 
-            cart.forEach(item => {
-                let itemElement = document.createElement('div');
-                itemElement.classList.add('cart-item');
-                itemElement.innerHTML = `
-                    <p>${item.name}</p>
-                    <p>R$ ${item.price.toFixed(2)}</p>
-                `;
-                cartItemsContainer.appendChild(itemElement);
+        cart.forEach(item => {
+            // Criar cada item no carrinho
+            let itemElement = document.createElement('div');
+            itemElement.classList.add('cart-item');
+            itemElement.innerHTML = `
+                <p>${item.name}</p>
+                <p>R$ ${item.price.toFixed(2)}</p>
+            `;
+            cartItemsContainer.appendChild(itemElement);
 
-                totalPrice += item.price;
-            });
+            // Somar preço total e contador de itens
+            totalPrice += item.price;
+            itemCount += 1; // Contabilizando o item
+        });
+
+        // Atualizar o preço total e o contador de itens
+        document.getElementById('total-price').textContent = `R$ ${totalPrice.toFixed(2)}`;
+        document.getElementById('item-count').textContent = itemCount; // Atualiza o contador
+    }
+
+    // Função para adicionar um item ao carrinho
+    function addToCart(item) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.push(item);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        loadCart(); // Atualiza o carrinho
+    }
+
+    // Chama a função para carregar o carrinho ao abrir a página
+    loadCart();
 
             // Atualizar o preço total
             document.getElementById('total-price').textContent = `R$ ${totalPrice.toFixed(2)}`;
