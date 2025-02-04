@@ -7,8 +7,8 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #000; /* Fundo preto */
-            color: #fff; /* Texto branco */
+            background-color: #000;
+            color: #fff;
             margin: 0;
             padding: 0;
         }
@@ -47,11 +47,11 @@
             cursor: pointer;
             margin-top: 20px;
         }
-        #payment-info {
+        #payment-info, #delivery-info, #change-info {
             margin-top: 40px;
             text-align: center;
         }
-        #payment-info p {
+        #payment-info p, #delivery-info p, #change-info p {
             font-size: 18px;
             color: #bbb;
         }
@@ -60,7 +60,7 @@
             text-align: center;
         }
         #whatsapp-info a {
-            color: #25D366; /* Cor do WhatsApp */
+            color: #25D366;
             font-size: 18px;
         }
     </style>
@@ -82,6 +82,18 @@
         <p>Escolha uma forma de pagamento: Pix ou Cartão de Crédito</p>
         <p>Valor Total: <span id="total-price">0</span> R$</p>
         <a href="https://www.paguefacil.com.br/pix" target="_blank">Clique aqui para pagar via Pix</a>
+    </div>
+
+    <!-- Informações de Entrega -->
+    <div id="delivery-info">
+        <h2>Informações de Entrega</h2>
+        <p>Escolha o método de entrega: Correios ou Retirada em Loja</p>
+    </div>
+
+    <!-- Informações de Troco -->
+    <div id="change-info">
+        <h2>Troco</h2>
+        <p>Precisa de troco? Se sim, nos avise!</p>
     </div>
 
     <!-- Informações de Contato via WhatsApp -->
