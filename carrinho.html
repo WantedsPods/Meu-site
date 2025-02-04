@@ -81,6 +81,8 @@
     </style>
 </head>
 <body>
+    <!-- Botão para esvaziar o carrinho -->
+<button id="clear-cart" class="clear-cart">Esvaziar Carrinho</button>
 
     <h1 style="text-align: center;">Carrinho de Compras</h1>
 
@@ -169,6 +171,19 @@
 
         // Carregar o carrinho ao abrir a página
         loadCart();
+        // Função para esvaziar o carrinho
+document.getElementById('clear-cart').addEventListener('click', function() {
+    // Limpar o carrinho do localStorage
+    localStorage.removeItem('cart');
+    
+    // Resetar o contador de itens no carrinho
+    cart = [];
+    cartCount = 0;
+    updateCart();
+    
+    // Atualizar a interface (exemplo: mostrar mensagem de carrinho vazio)
+    alert('Carrinho esvaziado!');
+});
     </script>
 </body>
 </html>
