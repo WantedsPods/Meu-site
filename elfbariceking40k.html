@@ -85,74 +85,83 @@
 </head>
 <body>
     <h1>ELFBAR ICE KING 40K</h1>
-<img src="logo.png" alt="Logo" id="logo">
+    <img src="logo.png" alt="Logo" id="logo">
 
-<!-- Carrinho -->
-<div id="cart-icon">
-    <a href="carrinho.html">
-        <img src="cart.png" alt="Carrinho">
-        <span id="cart-count">0</span>
-    </a>
-</div>
-
-<!-- Página do Produto Elfbar Ice King 40K -->
-<div class="product-page">
-    <div class="product-info">
-        <img src="img3.png" alt="Elfbar Ice King 40K">
-        <p>Preço: 165$</p>
-        <div class="flavors">
-            <div class="flavor" data-name="Cherry Fuse" data-price="165">Cherry Fuse</div>
-            <div class="flavor" data-name="Blue Razz Ice" data-price="165">Blue Razz Ice</div>
-        </div>
-        <button class="add-to-cart">Adicionar ao Carrinho</button>
+    <!-- Carrinho -->
+    <div id="cart-icon">
+        <a href="carrinho.html">
+            <img src="cart.png" alt="Carrinho">
+            <span id="cart-count">0</span>
+        </a>
     </div>
-</div>
 
-<script>
-    let cart = [];
-    let cartCount = 0;
+    <!-- Página do Produto Elfbar Ice King 40K -->
+    <div class="product-page">
+        <div class="product-info">
+            <img src="img3.png" alt="Elfbar Ice King 40K">
+            <p>Preço: 165$</p>
+            <div class="flavors">
+                <div class="flavor" data-name="Cherry Fuse" data-price="165">Cherry Fuse</div>
+                <div class="flavor" data-name="Blue Razz Ice" data-price="165">Blue Razz Ice</div>
+            </div>
+            <button class="add-to-cart">Adicionar ao Carrinho</button>
+        </div>
+    </div>
 
-    // Função para atualizar o carrinho
-    function updateCart() {
-        const cartCountElement = document.getElementById('cart-count');
-        cartCountElement.textContent = cartCount;
-    }
-// Função para atualizar o carrinho e salvar no localStorage
-document.querySelector('.add-to-cart').addEventListener('click', function() {
-    const selectedFlavor = document.querySelector('.flavor.selected');
-    if (selectedFlavor) {
-        const productName = "Elfbar Ice King 40K - " + selectedFlavor.getAttribute('data-name');
-        const productPrice = parseFloat(selectedFlavor.getAttribute('data-price'));
+    <script>
+        let cartCount = 0;
 
-        // Criar o item do carrinho
-        const item = { name: productName, price: productPrice };
+        // Função para atualizar o carrinho
+        function updateCart() {
+            const cartCountElement = document.getElementById('cart-count');
+            cartCountElement.textContent = cartCount;
+        }
 
-        // Obter o carrinho atual do localStorage (se existir) ou criar um novo array
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        // Carregar o carrinho do localStorage ao carregar a página
+        function loadCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cartCount = cart.length;
+            updateCart();
+        }
 
-        // Adicionar o item ao carrinho
-        cart.push(item);
+        // Carregar o carrinho ao iniciar
+        loadCart();
 
-        // Salvar o carrinho atualizado no localStorage
-        localStorage.setItem('cart', JSON.stringify(cart));
+        // Função para adicionar item ao carrinho
+        document.querySelector('.add-to-cart').addEventListener('click', function() {
+            const selectedFlavor = document.querySelector('.flavor.selected');
+            if (selectedFlavor) {
+                const productName = "Elfbar Ice King 40K - " + selectedFlavor.getAttribute('data-name');
+                const productPrice = parseFloat(selectedFlavor.getAttribute('data-price'));
 
-        // Atualizar o contador de itens no carrinho
-        cartCount++;
-        updateCart();
-    } else {
-        alert('Por favor, selecione um sabor!');
-    }
-});
-  
+                // Criar o item do carrinho
+                const item = { name: productName, price: productPrice };
 
-    // Função para selecionar sabor
-    document.querySelectorAll('.flavor').forEach(flavor => {
-        flavor.addEventListener('click', function() {
-            document.querySelectorAll('.flavor').forEach(f => f.classList.remove('selected'));
-            flavor.classList.add('selected');
+                // Obter o carrinho atual do localStorage (se existir) ou criar um novo array
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+                // Adicionar o item ao carrinho
+                cart.push(item);
+
+                // Salvar o carrinho atualizado no localStorage
+                localStorage.setItem('cart', JSON.stringify(cart));
+
+                // Atualizar o contador de itens no carrinho
+                cartCount++;
+                updateCart();
+            } else {
+                alert('Por favor, selecione um sabor!');
+            }
         });
-    });
-</script>
+
+        // Função para selecionar sabor
+        document.querySelectorAll('.flavor').forEach(flavor => {
+            flavor.addEventListener('click', function() {
+                document.querySelectorAll('.flavor').forEach(f => f.classList.remove('selected'));
+                flavor.classList.add('selected');
+            });
+        });
+    </script>
 
 </body>
 </html>
