@@ -126,6 +126,35 @@
 
     <script>
         // Função para carregar os itens do carrinho e calcular o total
+function loadCart() {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let cartItemsContainer = document.getElementById('cart-items');
+    let totalPrice = 0;
+
+    // Limpar itens existentes no carrinho
+    cartItemsContainer.innerHTML = '';
+
+    cart.forEach(item => {
+        // Criar cada item no carrinho
+        let itemElement = document.createElement('div');
+        itemElement.classList.add('cart-item');
+        itemElement.innerHTML = `
+            <p>${item.name}</p>
+            <p>R$ ${item.price.toFixed(2)}</p>
+        `;
+        cartItemsContainer.appendChild(itemElement);
+
+        // Somar preço total
+        totalPrice += item.price;
+    });
+
+    // Atualizar o preço total
+    document.getElementById('total-price').textContent = `R$ ${totalPrice.toFixed(2)}`;
+}
+
+// Chama a função para carregar o carrinho ao abrir a página
+loadCart();
+        // Função para carregar os itens do carrinho e calcular o total
         function loadCart() {
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
             let cartItemsContainer = document.getElementById('cart-items');
