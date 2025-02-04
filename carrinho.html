@@ -12,178 +12,137 @@
             margin: 0;
             padding: 0;
         }
-        #cart-items {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .cart-items {
             margin-top: 50px;
+            padding: 20px;
         }
         .cart-item {
-            background-color: #1c1c1c;
-            padding: 15px;
-            margin: 10px;
-            width: 80%;
+            background-color: #333;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            padding: 10px;
+            margin-bottom: 10px;
+            position: relative;
         }
         .cart-item p {
             margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+        .remove-item {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 20px;
+            color: #ff0000;
+        }
+        #cart-count {
+            font-size: 20px;
+        }
+        #clear-cart {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        #payment-info {
+            margin-top: 40px;
+            text-align: center;
+        }
+        #payment-info p {
             font-size: 18px;
             color: #bbb;
         }
-        .remove-item {
-            background-color: #e74c3c;
-            color: white;
-            padding: 5px 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        #total {
-            background-color: #333;
-            padding: 15px;
-            margin-top: 30px;
-            width: 80%;
-            border-radius: 8px;
-            text-align: center;
-            color: #fff;
-            font-size: 20px;
-        }
-        #checkout {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px;
-            width: 80%;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+        #whatsapp-info {
             margin-top: 20px;
             text-align: center;
         }
-        #payment-info {
-            background-color: #222;
-            padding: 15px;
-            margin-top: 30px;
-            width: 80%;
-            border-radius: 8px;
-            color: #fff;
-            font-size: 16px;
-        }
-        #whatsapp-info {
+        #whatsapp-info a {
             color: #25D366; /* Cor do WhatsApp */
             font-size: 18px;
-            text-align: center;
-            margin-top: 30px;
         }
     </style>
 </head>
 <body>
-    <!-- Botão para esvaziar o carrinho -->
-<button id="clear-cart" class="clear-cart">Esvaziar Carrinho</button>
 
-    <h1 style="text-align: center;">Carrinho de Compras</h1>
+    <h1>Carrinho de Compras</h1>
+    <div id="cart-count">Itens no Carrinho: 0</div>
 
-    <div id="cart-items">
+    <div class="cart-items" id="cart-items">
         <!-- Itens do carrinho serão carregados aqui -->
     </div>
 
-    <div id="total">
-        Total: <span id="total-price">R$ 0.00</span>
-    </div>
+    <button id="clear-cart">Esvaziar Carrinho</button>
 
-    <!-- Forma de pagamento e instruções -->
+    <!-- Informações de Pagamento -->
     <div id="payment-info">
-        <p><strong>Forma de pagamento:</strong> Pix</p>
-        <p>Para finalizar sua compra, faça o pagamento via Pix para a chave: <strong>seu@email.com</strong></p>
-        <p>Após o pagamento, envie o comprovante pelo WhatsApp ou clique no link abaixo.</p>
-        <a href="https://wa.me/5581999999999" target="_blank" style="color: #25D366;">Clique aqui para enviar seu comprovante no WhatsApp</a>
+        <h2>Forma de Pagamento</h2>
+        <p>Escolha uma forma de pagamento: Pix ou Cartão de Crédito</p>
+        <p>Valor Total: <span id="total-price">0</span> R$</p>
+        <a href="https://www.paguefacil.com.br/pix" target="_blank">Clique aqui para pagar via Pix</a>
     </div>
 
-    <!-- Necessidade de troco -->
-    <div style="margin-top: 20px; text-align: center; color: #bbb;">
-        <label for="change-needed"><strong>Precisa de troco?</strong></label>
-        <select id="change-needed">
-            <option value="não">Não</option>
-            <option value="sim">Sim</option>
-        </select>
-    </div>
-
-    <button id="checkout">Finalizar Compra</button>
-
+    <!-- Informações de Contato via WhatsApp -->
     <div id="whatsapp-info">
-        <p>Para mais informações, entre em contato conosco pelo WhatsApp.</p>
+        <h2>Precisa de ajuda?</h2>
+        <p>Fale comigo diretamente pelo <a href="https://wa.me/5521999999999" target="_blank">WhatsApp</a></p>
     </div>
 
     <script>
-        // Função para carregar o carrinho
+        // Função para carregar os itens do carrinho e exibi-los
         function loadCart() {
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
             const cartItemsContainer = document.getElementById('cart-items');
-            const totalPriceElement = document.getElementById('total-price');
+            cartItemsContainer.innerHTML = '';  // Limpar a lista de itens antes de adicionar os novos
+
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartCount = document.getElementById('cart-count');
+            cartCount.textContent = `Itens no Carrinho: ${cart.length}`;
+
             let totalPrice = 0;
-            cartItemsContainer.innerHTML = '';
 
-            // Verifica se o carrinho não está vazio
-            if (cart.length === 0) {
-                cartItemsContainer.innerHTML = '<p style="color: #bbb;">Carrinho vazio.</p>';
-                totalPriceElement.textContent = 'R$ 0.00';
-            } else {
-                cart.forEach(item => {
-                    const cartItemElement = document.createElement('div');
-                    cartItemElement.classList.add('cart-item');
-                    
-                    const productInfo = `
-                        <p>${item.name} - R$ ${item.price.toFixed(2)} x ${item.quantity}</p>
-                    `;
+            cart.forEach((item, index) => {
+                const cartItem = document.createElement('div');
+                cartItem.classList.add('cart-item');
+                cartItem.innerHTML = `
+                    <p>${item.name} - R$${item.price}</p>
+                    <span class="remove-item" data-index="${index}">X</span>
+                `;
+                cartItemsContainer.appendChild(cartItem);
 
-                    const removeButton = `
-                        <button class="remove-item" data-name="${item.name}">Remover</button>
-                    `;
+                totalPrice += item.price;
+            });
 
-                    cartItemElement.innerHTML = productInfo + removeButton;
-                    cartItemsContainer.appendChild(cartItemElement);
+            document.getElementById('total-price').textContent = totalPrice.toFixed(2);
 
-                    totalPrice += item.price * item.quantity;
+            // Adicionar evento de exclusão aos botões de remover
+            document.querySelectorAll('.remove-item').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    removeItemFromCart(index);
                 });
-
-                totalPriceElement.textContent = `R$ ${totalPrice.toFixed(2)}`;
-            }
+            });
         }
 
         // Função para remover um item do carrinho
-        function removeItem(itemName) {
+        function removeItemFromCart(index) {
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            cart = cart.filter(item => item.name !== itemName);
-            localStorage.setItem('cart', JSON.stringify(cart));
-            loadCart();
+            cart.splice(index, 1);  // Remover item pelo índice
+            localStorage.setItem('cart', JSON.stringify(cart));  // Salvar carrinho atualizado
+
+            loadCart();  // Atualizar a lista de itens no carrinho
         }
 
-        // Função de evento de remover item
-        document.getElementById('cart-items').addEventListener('click', function(event) {
-            if (event.target.classList.contains('remove-item')) {
-                const itemName = event.target.getAttribute('data-name');
-                removeItem(itemName);
-            }
+        // Função para esvaziar o carrinho
+        document.getElementById('clear-cart').addEventListener('click', function() {
+            localStorage.removeItem('cart');  // Limpar o carrinho do localStorage
+            loadCart();  // Atualizar a interface
         });
 
-        // Carregar o carrinho ao abrir a página
+        // Carregar os itens do carrinho ao carregar a página
         loadCart();
-        // Função para esvaziar o carrinho
-document.getElementById('clear-cart').addEventListener('click', function() {
-    // Limpar o carrinho do localStorage
-    localStorage.removeItem('cart');
-    
-    // Resetar o contador de itens no carrinho
-    cart = [];
-    cartCount = 0;
-    updateCart();
-    
-    // Atualizar a interface (exemplo: mostrar mensagem de carrinho vazio)
-    alert('Carrinho esvaziado!');
-});
     </script>
+
 </body>
 </html>
