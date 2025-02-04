@@ -58,6 +58,9 @@
         .payment-method:hover {
             background-color: #45a049;
         }
+        .payment-method.selected {
+            background-color: #28a745;
+        }
         .info-section {
             margin-top: 30px;
             display: flex;
@@ -68,7 +71,7 @@
             padding: 10px;
             border: 1px solid #333;
             border-radius: 5px;
-            background-color: #1c1c1c;
+            background-color: rgba(255, 255, 255, 0.2);
             color: #fff;
         }
         .delivery-info {
@@ -80,6 +83,15 @@
             font-size: 18px;
             font-weight: bold;
             margin-top: 20px;
+        }
+        .total-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #total {
+            font-size: 22px;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -100,8 +112,9 @@
     </div>
 
     <!-- Total -->
-    <div class="total-price">
-        Total: R$ <span id="total">0</span>
+    <div class="total-container">
+        <span>Total</span>
+        <span id="total">R$ 0,00</span>
     </div>
 
     <!-- Métodos de pagamento -->
@@ -113,7 +126,7 @@
 
     <!-- Informações de entrega -->
     <div class="delivery-info" id="delivery-info">
-        <p>A entrega é grátis para PIX, e R$10,00 para pagamentos via Dinheiro ou Cartão.</p>
+        <p>A entrega é gratuita para pagamentos via PIX, e a taxa de entrega para pagamentos via Dinheiro ou Cartão é de R$10,00.</p>
     </div>
 
     <!-- Campos de Informações -->
@@ -184,11 +197,16 @@
     function selectPaymentMethod(method) {
         paymentMethod = method;
         document.getElementById('finish-button').disabled = false;
-        
+
+        // Destaque o método selecionado
+        const methods = document.querySelectorAll('.payment-method');
+        methods.forEach(method => method.classList.remove('selected'));
+        document.getElementById(method).classList.add('selected');
+
         if (method === 'cash') {
-            document.getElementById('delivery-info').innerHTML = '<p>A entrega é grátis para PIX, e R$10,00 para pagamentos via Dinheiro ou Cartão.</p><input type="text" id="change" placeholder="Quanto de troco precisa?" required>';
+            document.getElementById('delivery-info').innerHTML = '<p>A entrega é gratuita para pagamentos via PIX, e a taxa de entrega para pagamentos via Dinheiro ou Cartão é de R$10,00.</p><input type="text" id="change" placeholder="Quanto de troco precisa?" required>';
         } else {
-            document.getElementById('delivery-info').innerHTML = '<p>A entrega é grátis para PIX, e R$10,00 para pagamentos via Dinheiro ou Cartão.</p>';
+            document.getElementById('delivery-info').innerHTML = '<p>A entrega é gratuita para pagamentos via PIX, e a taxa de entrega para pagamentos via Dinheiro ou Cartão é de R$10,00.</p>';
         }
     }
 
