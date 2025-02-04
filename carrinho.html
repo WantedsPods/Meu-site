@@ -1,66 +1,208 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrinho de Compras</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        #logo {
+            display: block;
+            width: 80px;
+            margin: 20px auto;
+        }
+        .cart-container {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #1c1c1c;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .cart-container h1 {
+            text-align: center;
+        }
+        .cart-item {
+            background-color: #333;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .cart-item p {
+            margin: 0;
+            font-size: 16px;
+            color: #bbb;
+        }
+        .cart-item .item-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+        }
+        .cart-item .item-price {
+            font-size: 16px;
+            color: #4CAF50;
+        }
+        .cart-total {
+            background-color: #444;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+        .checkout-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .payment-methods {
+            background-color: #333;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .payment-methods label {
+            display: block;
+            margin: 10px 0;
+        }
+        .payment-methods input[type="radio"] {
+            margin-right: 10px;
+        }
+        .address-inputs {
+            margin-top: 20px;
+        }
+        .address-inputs input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #444;
+            background-color: #333;
+            color: white;
+        }
+        .payment-info {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #bbb;
+        }
+    </style>
 </head>
 <body>
+    <img src="logo.png" alt="Logo" id="logo">
+    
+    <div class="cart-container">
+        <h1>Carrinho de Compras</h1>
 
-    <h1>Seu Carrinho</h1>
+        <!-- Itens do Carrinho -->
+        <div id="cart-items">
+            <!-- Itens serão inseridos aqui via JavaScript -->
+        </div>
 
-    <!-- Aqui vamos exibir os itens -->
-    <div id="cart-items"></div>
+        <!-- Total -->
+        <div class="cart-total">
+            <p id="total-price">Total: R$ 0,00</p>
+        </div>
 
-    <!-- Total do carrinho -->
-    <div id="total-amount">Total: $0.00</div>
+        <!-- Formulário de Finalização de Compra -->
+        <div class="address-inputs">
+            <h2>Informações de Entrega</h2>
+            <input type="text" id="name" placeholder="Nome Completo" required>
+            <input type="text" id="address" placeholder="Endereço Completo" required>
+            <input type="text" id="phone" placeholder="Número de Contato" required>
+        </div>
 
-    <!-- Quantidade de itens no carrinho -->
-    <div id="cart-count">Itens no carrinho: 0</div>
+        <!-- Métodos de Pagamento -->
+        <div class="payment-methods">
+            <h2>Escolha a Forma de Pagamento</h2>
+            <label>
+                <input type="radio" name="payment-method" value="pix"> Pix (Sem Taxa)
+            </label>
+            <label>
+                <input type="radio" name="payment-method" value="cash"> Dinheiro (Taxa de R$10)
+            </label>
+            <label>
+                <input type="radio" name="payment-method" value="card"> Cartão Débito/Crédito (Taxa de R$10)
+            </label>
+        </div>
 
-    <!-- Adicionar script -->
+        <div class="payment-info">
+            <p>Observação: A entrega custa R$10 para pagamentos em Dinheiro ou Cartão. Pagamento via Pix não tem taxa.</p>
+        </div>
+
+        <!-- Botão de Finalizar Compra -->
+        <button class="checkout-btn" onclick="finalizarCompra()">Finalizar Compra</button>
+    </div>
+
     <script>
-        // Função para exibir os itens no carrinho
+        // Carrinho de compras armazenado no localStorage
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Função para atualizar o carrinho
         function updateCart() {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartItemsContainer = document.getElementById('cart-items');
+            const totalPriceElement = document.getElementById('total-price');
+            let totalPrice = 0;
 
-            // Mostrar a quantidade de itens no carrinho
-            document.getElementById('cart-count').innerText = 'Itens no carrinho: ' + cart.length;
+            // Limpar itens atuais do carrinho
+            cartItemsContainer.innerHTML = '';
 
-            // Mostrar os itens no carrinho
-            let cartItemsContainer = document.getElementById('cart-items');
-            cartItemsContainer.innerHTML = ''; // Limpa os itens antes de atualizar
-
-            let total = 0;
+            // Inserir itens no carrinho
             cart.forEach(item => {
-                let itemDiv = document.createElement('div');
-                itemDiv.classList.add('cart-item');
-                itemDiv.innerHTML = `
-                    <img src="${item.image}" alt="${item.name}" class="cart-item-img">
-                    <span>${item.name} - ${item.flavor}</span>
-                    <span>$${item.price}</span>
-                    <button onclick="removeFromCart('${item.id}')">Remover</button>
+                const itemElement = document.createElement('div');
+                itemElement.classList.add('cart-item');
+                itemElement.innerHTML = `
+                    <p class="item-name">${item.name}</p>
+                    <p class="item-price">R$ ${item.price}</p>
                 `;
-                cartItemsContainer.appendChild(itemDiv);
-                total += item.price;
+                cartItemsContainer.appendChild(itemElement);
+
+                totalPrice += item.price;
             });
 
-            // Exibe o total
-            document.getElementById('total-amount').innerText = 'Total: $' + total.toFixed(2);
+            // Atualizar o total
+            totalPriceElement.textContent = `Total: R$ ${totalPrice.toFixed(2)}`;
         }
 
-        // Função para remover item do carrinho
-        function removeFromCart(id) {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            cart = cart.filter(item => item.id !== id);
-            localStorage.setItem('cart', JSON.stringify(cart));
+        // Função para finalizar a compra
+        function finalizarCompra() {
+            const name = document.getElementById('name').value;
+            const address = document.getElementById('address').value;
+            const phone = document.getElementById('phone').value;
+            const paymentMethod = document.querySelector('input[name="payment-method"]:checked');
+
+            if (!name || !address || !phone || !paymentMethod) {
+                alert('Por favor, preencha todos os campos e escolha uma forma de pagamento!');
+                return;
+            }
+
+            const paymentMethodValue = paymentMethod.value;
+            let deliveryFee = 0;
+
+            if (paymentMethodValue === 'cash' || paymentMethodValue === 'card') {
+                deliveryFee = 10; // Taxa para dinheiro ou cartão
+            }
+
+            // Exibir informações de pagamento
+            alert(`Compra Finalizada!\nNome: ${name}\nEndereço: ${address}\nForma de Pagamento: ${paymentMethodValue}\nTaxa de Entrega: R$ ${deliveryFee.toFixed(2)}`);
+            
+            // Limpar o carrinho após a compra
+            localStorage.removeItem('cart');
             updateCart();
         }
 
         // Atualizar o carrinho ao carregar a página
         updateCart();
     </script>
-
 </body>
 </html>
