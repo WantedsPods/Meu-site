@@ -12,248 +12,219 @@
             margin: 0;
             padding: 0;
         }
-
-        h1 {
-            text-align: center;
+        #logo {
+            display: block;
+            width: 80px;
+            margin: 20px auto;
+        }
+        #cart-icon {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+        }
+        #cart-icon img {
+            width: 50px;
+            height: 50px;
+        }
+        .cart-container {
+            margin-top: 80px;
+            padding: 20px;
+        }
+        .product-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .remove-item {
+            cursor: pointer;
+            color: red;
+        }
+        .payment-methods {
+            display: flex;
+            justify-content: space-between;
             margin-top: 20px;
         }
-
-        .logo {
-            display: block;
-            margin: 0 auto;
-            max-width: 200px;
-        }
-
-        .cart-items {
-            margin-top: 50px;
-            padding: 20px;
+        .payment-method {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            width: 30%;
             text-align: center;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
         }
-
-        .cart-item {
-            background-color: #333;
-            border-radius: 8px;
-            padding: 10px;
+        .payment-method:hover {
+            background-color: #45a049;
+        }
+        .info-section {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+        .info-section input {
             margin-bottom: 10px;
-            position: relative;
-        }
-
-        .cart-item p {
-            margin: 0;
-            padding: 0;
+            padding: 10px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            background-color: #1c1c1c;
             color: #fff;
         }
-
-        .remove-item {
-            position: absolute;
-            top: 5px;
-            right: 10px;
-            cursor: pointer;
-            font-size: 20px;
-            color: #ff0000;
-        }
-
-        #payment-info, #delivery-info, #change-info {
-            margin-top: 40px;
-            text-align: center;
-        }
-
-        #payment-info p, #delivery-info p, #change-info p {
-            font-size: 18px;
+        .delivery-info {
+            font-size: 14px;
             color: #bbb;
+            margin-top: 10px;
         }
-
-        .payment-option {
-            margin: 10px;
-            padding: 15px;
-            background-color: #333;
-            border-radius: 8px;
-            cursor: pointer;
+        .total-price {
             font-size: 18px;
-        }
-
-        .payment-option:hover {
-            background-color: #444;
-        }
-
-        #change-option {
-            display: none;
-        }
-
-        #finalizar-compra {
-            background-color: #28a745;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            font-size: 18px;
+            font-weight: bold;
             margin-top: 20px;
-            display: block;
-            margin: 30px auto;
-        }
-
-        .form-field {
-            margin: 10px 0;
-            text-align: center;
-        }
-
-        .form-field input {
-            padding: 10px;
-            font-size: 16px;
-            width: 80%;
-            max-width: 400px;
-        }
-
-        #cart-count {
-            font-size: 20px;
-            text-align: center;
         }
     </style>
 </head>
 <body>
 
-    <!-- Logo -->
-    <img src="logo.png" alt="Logo da Loja" class="logo">
+<!-- Carrinho -->
+<div id="cart-icon">
+    <img src="cart.png" alt="Carrinho">
+    <span id="cart-count">0</span>
+</div>
 
-    <h1>Carrinho de Compras</h1>
+<div class="cart-container">
+    <h1>CARRINHO DE COMPRAS</h1>
 
-    <div id="cart-count">Itens no Carrinho: 0</div>
-
-    <div class="cart-items" id="cart-items">
-        <!-- Itens do carrinho serão carregados aqui -->
+    <!-- Itens no carrinho -->
+    <div id="cart-items">
+        <!-- Exemplo de produto, será gerado dinamicamente -->
     </div>
 
-    <!-- Informações de Pagamento -->
-    <div id="payment-info">
-        <h2>Escolha a Forma de Pagamento</h2>
-        <div class="payment-option" id="pix">Pix</div>
-        <div class="payment-option" id="money">Dinheiro</div>
-        <div class="payment-option" id="card">Cartão de Crédito/Débito</div>
+    <!-- Total -->
+    <div class="total-price">
+        Total: R$ <span id="total">0</span>
     </div>
 
-    <!-- Informações de Troco -->
-    <div id="change-option">
-        <h2>Precisa de Troco?</h2>
-        <input type="number" id="troco-amount" placeholder="Valor pago" style="margin-top: 10px;">
+    <!-- Métodos de pagamento -->
+    <div class="payment-methods">
+        <div class="payment-method" id="pix" onclick="selectPaymentMethod('pix')">PIX</div>
+        <div class="payment-method" id="cash" onclick="selectPaymentMethod('cash')">DINHEIRO</div>
+        <div class="payment-method" id="card" onclick="selectPaymentMethod('card')">CARTÃO</div>
     </div>
 
-    <!-- Informações de Entrega -->
-    <div id="delivery-info">
-        <h2>Informações de Entrega</h2>
-        <div class="form-field">
-            <label for="name">Nome:</label>
-            <input type="text" id="name" placeholder="Seu nome">
-        </div>
-        <div class="form-field">
-            <label for="phone">Número:</label>
-            <input type="text" id="phone" placeholder="Seu número">
-        </div>
-        <div class="form-field">
-            <label for="address">Endereço Completo:</label>
-            <input type="text" id="address" placeholder="Seu endereço">
-        </div>
+    <!-- Informações de entrega -->
+    <div class="delivery-info" id="delivery-info">
+        <p>A entrega é grátis para PIX, e R$10,00 para pagamentos via Dinheiro ou Cartão.</p>
     </div>
 
-    <!-- Botão para Finalizar Compra -->
-    <button id="finalizar-compra" disabled>Finalizar Compra</button>
+    <!-- Campos de Informações -->
+    <div class="info-section">
+        <input type="text" id="name" placeholder="Nome completo" required>
+        <input type="text" id="phone" placeholder="Número de telefone" required>
+        <input type="text" id="address" placeholder="Endereço completo" required>
+    </div>
 
-    <script>
-        // Função para carregar os itens do carrinho e exibi-los
-        function loadCart() {
-            const cartItemsContainer = document.getElementById('cart-items');
-            cartItemsContainer.innerHTML = '';  // Limpar a lista de itens antes de adicionar os novos
+    <!-- Botão de Finalizar Compra -->
+    <button id="finish-button" onclick="finishPurchase()" disabled>FINALIZAR COMPRA</button>
+</div>
 
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
-            const cartCount = document.getElementById('cart-count');
-            cartCount.textContent = `Itens no Carrinho: ${cart.length}`;
+<!-- Logo -->
+<img src="logo.png" alt="Logo" id="logo">
 
-            let totalPrice = 0;
+<script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let cartCount = 0;
+    let paymentMethod = null;
+    let total = 0;
 
-            cart.forEach((item, index) => {
-                const cartItem = document.createElement('div');
-                cartItem.classList.add('cart-item');
-                cartItem.innerHTML = `
-                    <p>${item.name} - R$${item.price}</p>
-                    <span class="remove-item" data-index="${index}">X</span>
-                `;
-                cartItemsContainer.appendChild(cartItem);
+    // Atualiza o contador de itens no carrinho
+    function updateCartCount() {
+        cartCount = cart.length;
+        document.getElementById('cart-count').textContent = cartCount;
+    }
 
-                totalPrice += item.price;
-            });
-        }
+    // Atualiza a lista de produtos no carrinho
+    function updateCartItems() {
+        const cartItemsElement = document.getElementById('cart-items');
+        cartItemsElement.innerHTML = '';
+        total = 0;
 
-        // Função para remover um item do carrinho
-        function removeItemFromCart(index) {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            cart.splice(index, 1);  // Remover item pelo índice
-            localStorage.setItem('cart', JSON.stringify(cart));  // Salvar carrinho atualizado
-
-            loadCart();  // Atualizar a lista de itens no carrinho
-        }
-
-        // Função para mostrar a opção de troco
-        document.getElementById('money').addEventListener('click', function() {
-            document.getElementById('change-option').style.display = 'block';
+        cart.forEach((item, index) => {
+            const productDiv = document.createElement('div');
+            productDiv.classList.add('product-item');
+            productDiv.innerHTML = `
+                <span>${item.name}</span>
+                <span>R$ ${item.price}</span>
+                <span class="remove-item" onclick="removeItem(${index})">X</span>
+            `;
+            cartItemsElement.appendChild(productDiv);
+            total += item.price;
         });
 
-        document.getElementById('pix').addEventListener('click', function() {
-            document.getElementById('change-option').style.display = 'none';
-        });
+        // Atualiza o total no carrinho
+        document.getElementById('total').textContent = total.toFixed(2);
+    }
 
-        document.getElementById('card').addEventListener('click', function() {
-            document.getElementById('change-option').style.display = 'none';
-        });
+    // Adicionar item ao carrinho (exemplo)
+    function addItemToCart(name, price) {
+        cart.push({ name, price });
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCount();
+        updateCartItems();
+    }
 
-        // Habilitar o botão de finalizar compra
-        function checkRequiredFields() {
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const address = document.getElementById('address').value;
-            const paymentMethod = document.querySelector('div.selected');
+    // Remover item do carrinho
+    function removeItem(index) {
+        cart.splice(index, 1);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCount();
+        updateCartItems();
+    }
 
-            if (name && phone && address && paymentMethod) {
-                document.getElementById('finalizar-compra').disabled = false;
-            } else {
-                document.getElementById('finalizar-compra').disabled = true;
-            }
+    // Seleciona o método de pagamento
+    function selectPaymentMethod(method) {
+        paymentMethod = method;
+        document.getElementById('finish-button').disabled = false;
+        
+        if (method === 'cash') {
+            document.getElementById('delivery-info').innerHTML = '<p>A entrega é grátis para PIX, e R$10,00 para pagamentos via Dinheiro ou Cartão.</p><input type="text" id="change" placeholder="Quanto de troco precisa?" required>';
+        } else {
+            document.getElementById('delivery-info').innerHTML = '<p>A entrega é grátis para PIX, e R$10,00 para pagamentos via Dinheiro ou Cartão.</p>';
+        }
+    }
+
+    // Finalizar compra e redirecionar para o WhatsApp
+    function finishPurchase() {
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+        const address = document.getElementById('address').value;
+
+        if (!name || !phone || !address || !paymentMethod) {
+            alert('Preencha todos os campos antes de finalizar a compra.');
+            return;
         }
 
-        // Adicionar eventos aos campos obrigatórios
-        document.getElementById('name').addEventListener('input', checkRequiredFields);
-        document.getElementById('phone').addEventListener('input', checkRequiredFields);
-        document.getElementById('address').addEventListener('input', checkRequiredFields);
+        const change = paymentMethod === 'cash' ? document.getElementById('change').value : null;
 
-        // Função para enviar as informações para o WhatsApp
-        function sendWhatsAppInfo() {
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
-            const totalPrice = cart.reduce((total, item) => total + item.price, 0);
-            const paymentMethod = document.querySelector('div.selected').textContent || 'Não especificado';
-            const changeAmount = document.getElementById('troco-amount').value || 'Não aplicável';
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const address = document.getElementById('address').value;
+        const message = `
+            Pedido de: ${name}
+            Telefone: ${phone}
+            Endereço: ${address}
+            Forma de pagamento: ${paymentMethod}
+            ${change ? `Troco necessário: R$ ${change}` : ''}
+            Itens:
+            ${cart.map(item => `${item.name} - R$ ${item.price}`).join('\n')}
+            Total: R$ ${total.toFixed(2)}
+        `;
 
-            const message = `Novo pedido:
-Produto(s): ${cart.map(item => item.name).join(', ')}
-Total: R$${totalPrice.toFixed(2)}
-Forma de pagamento: ${paymentMethod}
-Troco: ${changeAmount}
-Nome: ${name}
-Número: ${phone}
-Endereço: ${address}
-`;
+        const whatsappUrl = `https://wa.me/55${phone}?text=${encodeURIComponent(message)}`;
+        window.location.href = whatsappUrl;
+    }
 
-            const phoneNumber = '5521999999999'; // Substitua pelo seu número de WhatsApp
-            const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-            window.location.href = url; // Redireciona para o WhatsApp
-        }
+    // Inicializa o carrinho
+    updateCartCount();
+    updateCartItems();
 
-        // Adicionar um evento ao finalizar a compra
-        document.getElementById('finalizar-compra').addEventListener('click', sendWhatsAppInfo);
-
-        // Carregar os itens do carrinho ao carregar a página
-        loadCart();
-    </script>
+</script>
 
 </body>
 </html>
