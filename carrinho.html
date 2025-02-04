@@ -144,10 +144,9 @@
             });
         });
 
-       <script>
     // Função para carregar os itens do carrinho e calcular o total
     function loadCart() {
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let cart = JSON.parse(localStorage.getItem('cart')) || []; // Carrega o carrinho do localStorage
         let cartItemsContainer = document.getElementById('cart-items');
         let totalPrice = 0;
         let itemCount = 0;
@@ -155,6 +154,13 @@
         // Limpar itens existentes no carrinho
         cartItemsContainer.innerHTML = '';
 
+        // Verifica se o carrinho está vazio
+        if (cart.length === 0) {
+            document.getElementById('total-price').textContent = 'R$ 0,00'; // Total vazio
+            document.getElementById('item-count').textContent = '0'; // Contador vazio
+        }
+
+        // Exibe os itens no carrinho
         cart.forEach(item => {
             // Criar cada item no carrinho
             let itemElement = document.createElement('div');
@@ -164,6 +170,36 @@
                 <p>R$ ${item.price.toFixed(2)}</p>
             `;
             cartItemsContainer.appendChild(itemElement);
+
+            // Somar preço total e contador de itens
+            totalPrice += item.price;
+            itemCount += 1; // Contabilizando o item
+        });
+
+        // Atualizar o preço total e o contador de itens
+        document.getElementById('total-price').textContent = `R$ ${totalPrice.toFixed(2)}`;
+        document.getElementById('item-count').textContent = itemCount; // Atualiza o contador
+    }
+
+    // Função para adicionar um item ao carrinho
+    function addToCart(item) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        // Verifica se o item já está no carrinho
+        let existingItem = cart.find(cartItem => cartItem.name === item.name);
+        if (existingItem) {
+            existingItem.quantity += 1; // Se já existir, só aumenta a quantidade
+        } else {
+            cart.push(item); // Caso contrário, adiciona o item
+        }
+        
+        // Atualiza o carrinho no localStorage
+        localStorage.setItem('cart', JSON.stringify(cart));
+        loadCart(); // Atualiza a exibição do carrinho
+    }
+
+    // Chama a função para carregar o carrinho ao abrir a página
+    loadCart();
 
             // Somar preço total e contador de itens
             totalPrice += item.price;
