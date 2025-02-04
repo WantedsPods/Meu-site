@@ -257,14 +257,10 @@
             Total: R$ ${total.toFixed(2)}
         `;
 
-        const whatsappUrl = `https://wa.me/5516997434084?text=${encodeURIComponent(message)}`;
+        const whatsappUrl = `https://wa.me/55${phone}?text=${encodeURIComponent(message)}`;
         window.location.href = whatsappUrl;
     }
 
     // Inicializa o carrinho
     updateCartCount();
-    updateCartItems();
-</script>
-
-</body>
-</html>
+    updateCart
