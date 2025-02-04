@@ -39,14 +39,6 @@
         #cart-count {
             font-size: 20px;
         }
-        #clear-cart {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            margin-top: 20px;
-        }
         #payment-info, #delivery-info, #change-info {
             margin-top: 40px;
             text-align: center;
@@ -55,13 +47,14 @@
             font-size: 18px;
             color: #bbb;
         }
-        #whatsapp-info {
-            margin-top: 20px;
-            text-align: center;
-        }
-        #whatsapp-info a {
-            color: #25D366;
+        #finalizar-compra {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
             font-size: 18px;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -74,14 +67,13 @@
         <!-- Itens do carrinho serão carregados aqui -->
     </div>
 
-    <button id="clear-cart">Esvaziar Carrinho</button>
-
     <!-- Informações de Pagamento -->
     <div id="payment-info">
         <h2>Forma de Pagamento</h2>
-        <p>Escolha uma forma de pagamento: Pix ou Cartão de Crédito</p>
-        <p>Valor Total: <span id="total-price">0</span> R$</p>
-        <a href="https://www.paguefacil.com.br/pix" target="_blank">Clique aqui para pagar via Pix</a>
+        <p><input type="radio" name="payment" value="pix"> Pix</p>
+        <p><input type="radio" name="payment" value="money"> Dinheiro</p>
+        <p><input type="radio" name="payment" value="card"> Cartão de Crédito</p>
+        <p id="change-option" style="display: none;">Você escolheu Dinheiro, precisa de troco?</p>
     </div>
 
     <!-- Informações de Entrega -->
@@ -91,16 +83,14 @@
     </div>
 
     <!-- Informações de Troco -->
-    <div id="change-info">
+    <div id="change-info" style="display: none;">
         <h2>Troco</h2>
-        <p>Precisa de troco? Se sim, nos avise!</p>
+        <p>Informe o valor que você pagou.</p>
+        <input type="number" id="troco-amount" placeholder="Valor pago" style="margin-top: 10px;">
     </div>
 
-    <!-- Informações de Contato via WhatsApp -->
-    <div id="whatsapp-info">
-        <h2>Precisa de ajuda?</h2>
-        <p>Fale comigo diretamente pelo <a href="https://wa.me/5521999999999" target="_blank">WhatsApp</a></p>
-    </div>
+    <!-- Botão para Finalizar Compra -->
+    <button id="finalizar-compra">Finalizar Compra</button>
 
     <script>
         // Função para carregar os itens do carrinho e exibi-los
@@ -126,8 +116,6 @@
                 totalPrice += item.price;
             });
 
-            document.getElementById('total-price').textContent = totalPrice.toFixed(2);
-
             // Adicionar evento de exclusão aos botões de remover
             document.querySelectorAll('.remove-item').forEach(button => {
                 button.addEventListener('click', function() {
@@ -135,6 +123,9 @@
                     removeItemFromCart(index);
                 });
             });
+
+            // Mostrar o preço total
+            document.getElementById('total-price').textContent = totalPrice.toFixed(2);
         }
 
         // Função para remover um item do carrinho
@@ -146,11 +137,40 @@
             loadCart();  // Atualizar a lista de itens no carrinho
         }
 
-        // Função para esvaziar o carrinho
-        document.getElementById('clear-cart').addEventListener('click', function() {
-            localStorage.removeItem('cart');  // Limpar o carrinho do localStorage
-            loadCart();  // Atualizar a interface
+        // Função para mostrar a opção de troco
+        document.querySelectorAll('input[name="payment"]').forEach((input) => {
+            input.addEventListener('change', function() {
+                if (this.value === 'money') {
+                    document.getElementById('change-option').style.display = 'block';
+                    document.getElementById('change-info').style.display = 'block';
+                } else {
+                    document.getElementById('change-option').style.display = 'none';
+                    document.getElementById('change-info').style.display = 'none';
+                }
+            });
         });
+
+        // Função para enviar as informações para o WhatsApp
+        function sendWhatsAppInfo() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const totalPrice = cart.reduce((total, item) => total + item.price, 0);
+            const paymentMethod = document.querySelector('input[name="payment"]:checked')?.value || 'Não especificado';
+            const changeAmount = document.getElementById('troco-amount').value || 'Não aplicável';
+
+            const message = `Novo pedido:
+Produto(s): ${cart.map(item => item.name).join(', ')}
+Total: R$${totalPrice.toFixed(2)}
+Forma de pagamento: ${paymentMethod}
+Troco: ${changeAmount}
+`;
+
+            const phoneNumber = '5521999999999'; // Substitua pelo seu número de WhatsApp
+            const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.location.href = url; // Redireciona para o WhatsApp
+        }
+
+        // Adicionar um evento ao finalizar a compra
+        document.getElementById('finalizar-compra').addEventListener('click', sendWhatsAppInfo);
 
         // Carregar os itens do carrinho ao carregar a página
         loadCart();
