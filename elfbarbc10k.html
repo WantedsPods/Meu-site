@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elfbar BC 10K</title>
+    <title>ELFBAR BC 10K (especial edition)</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -84,47 +84,84 @@
     </style>
 </head>
 <body>
+    <h1>ELFBAR BC 10K (especial edition)</h1>
+    <img src="logo.png" alt="Logo" id="logo">
 
-<!-- Logo no topo -->
-<img src="logo.png" alt="Logo" id="logo">
-
-<!-- Carrinho -->
-<div id="cart-icon">
-    <img src="cart.png" alt="Carrinho">
-    <span id="cart-count">0</span>
-</div>
-
-<!-- Página do Produto Elfbar BC 10K -->
-<div class="product-page">
-    <div class="product-info">
-        <img src="img2.png" alt="Elfbar BC 10K">
-        <p>Preço: 115$</p>
-        <div class="flavors">
-            <div class="flavor" data-name="Blue Razz Ice" data-price="115">Blue Razz Ice</div>
-            <div class="flavor" data-name="Admiration Blue" data-price="115">Admiration Blue</div>
-        </div>
-        <button class="add-to-cart">Adicionar ao Carrinho</button>
+    <!-- Carrinho -->
+    <div id="cart-icon">
+        <a href="carrinho.html">
+            <img src="cart.png" alt="Carrinho">
+            <span id="cart-count">0</span>
+        </a>
     </div>
-</div>
 
-<script>
-    let cart = [];
-    let cartCount = 0;
+    <!-- Página do Produto ELFBAR BC 10K (especial edition) -->
+    <div class="product-page">
+        <div class="product-info">
+            <img src="elfbar_bc_10k.png" alt="ELFBAR BC 10K (especial edition)">
+            <p>Preço: 115$</p>
+            <div class="flavors">
+                <div class="flavor" data-name="Blue Razz Ice" data-price="115">Blue Razz Ice</div>
+                <div class="flavor" data-name="Admiration Blue" data-price="115">Admiration Blue</div>
+            </div>
+            <button class="add-to-cart">Adicionar ao Carrinho</button>
+        </div>
+    </div>
 
-    // Função para atualizar o carrinho
-    function updateCart() {
-        const cartCountElement = document.getElementById('cart-count');
-        cartCountElement.textContent = cartCount;
-    }
+    <script>
+        let cartCount = 0;
 
-    // Função para adicionar item ao carrinho
-    document.querySelector('.add-to-cart').addEventListener('click', function() {
-        const selectedFlavor = document.querySelector('.flavor.selected');
-        if (selectedFlavor) {
-            const productName = "Elfbar BC 10K - " + selectedFlavor.getAttribute('data-name');
-            const productPrice = parseFloat(selectedFlavor.getAttribute('data-price'));
-            cart.push({ name: productName, price: productPrice });
-            cartCount++;
+        // Função para atualizar o carrinho
+        function updateCart() {
+            const cartCountElement = document.getElementById('cart-count');
+            cartCountElement.textContent = cartCount;
+        }
+
+        // Carregar o carrinho do localStorage ao carregar a página
+        function loadCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cartCount = cart.length;
             updateCart();
-        } else {
-            alert('Por favor, selecione um sabor
+        }
+
+        // Carregar o carrinho ao iniciar
+        loadCart();
+
+        // Função para adicionar item ao carrinho
+        document.querySelector('.add-to-cart').addEventListener('click', function() {
+            const selectedFlavor = document.querySelector('.flavor.selected');
+            if (selectedFlavor) {
+                const productName = "ELFBAR BC 10K (especial edition) - " + selectedFlavor.getAttribute('data-name');
+                const productPrice = parseFloat(selectedFlavor.getAttribute('data-price'));
+
+                // Criar o item do carrinho
+                const item = { name: productName, price: productPrice };
+
+                // Obter o carrinho atual do localStorage (se existir) ou criar um novo array
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+                // Adicionar o item ao carrinho
+                cart.push(item);
+
+                // Salvar o carrinho atualizado no localStorage
+                localStorage.setItem('cart', JSON.stringify(cart));
+
+                // Atualizar o contador de itens no carrinho
+                cartCount++;
+                updateCart();
+            } else {
+                alert('Por favor, selecione um sabor!');
+            }
+        });
+
+        // Função para selecionar sabor
+        document.querySelectorAll('.flavor').forEach(flavor => {
+            flavor.addEventListener('click', function() {
+                document.querySelectorAll('.flavor').forEach(f => f.classList.remove('selected'));
+                flavor.classList.add('selected');
+            });
+        });
+    </script>
+
+</body>
+</html>
