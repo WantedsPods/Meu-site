@@ -11,6 +11,11 @@
             color: #fff;
             margin: 0;
             padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
         }
         #logo {
             display: block;
@@ -28,8 +33,11 @@
             height: 50px;
         }
         .cart-container {
-            margin-top: 80px;
             padding: 20px;
+            width: 80%;
+            max-width: 600px;
+            background-color: #222;
+            border-radius: 10px;
         }
         .product-item {
             display: flex;
@@ -92,6 +100,21 @@
         #total {
             font-size: 22px;
             font-weight: bold;
+        }
+        #finish-button {
+            width: 100%;
+            padding: 20px;
+            font-size: 18px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        #finish-button:hover {
+            background-color: #218838;
         }
     </style>
 </head>
@@ -234,14 +257,13 @@
             Total: R$ ${total.toFixed(2)}
         `;
 
-        const whatsappUrl = `https://wa.me/55${phone}?text=${encodeURIComponent(message)}`;
+        const whatsappUrl = `https://wa.me/5516997434084?text=${encodeURIComponent(message)}`;
         window.location.href = whatsappUrl;
     }
 
     // Inicializa o carrinho
     updateCartCount();
     updateCartItems();
-
 </script>
 
 </body>
